@@ -15,7 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 
@@ -25,7 +25,7 @@ class Ui_Dialog
 {
 public:
     QVBoxLayout *verticalLayout_2;
-    QListView *listView;
+    QListWidget *listWidget;
     QTextEdit *textEdit;
 
     void setupUi(QDialog *Dialog)
@@ -37,10 +37,10 @@ public:
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        listView = new QListView(Dialog);
-        listView->setObjectName(QStringLiteral("listView"));
+        listWidget = new QListWidget(Dialog);
+        listWidget->setObjectName(QStringLiteral("listWidget"));
 
-        verticalLayout_2->addWidget(listView);
+        verticalLayout_2->addWidget(listWidget);
 
         textEdit = new QTextEdit(Dialog);
         textEdit->setObjectName(QStringLiteral("textEdit"));
