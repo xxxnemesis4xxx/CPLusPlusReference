@@ -15,18 +15,40 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QListView>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Dialog
 {
 public:
+    QVBoxLayout *verticalLayout_2;
+    QListView *listView;
+    QTextEdit *textEdit;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QStringLiteral("Dialog"));
         Dialog->resize(400, 300);
+        verticalLayout_2 = new QVBoxLayout(Dialog);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        listView = new QListView(Dialog);
+        listView->setObjectName(QStringLiteral("listView"));
+
+        verticalLayout_2->addWidget(listView);
+
+        textEdit = new QTextEdit(Dialog);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setAcceptDrops(false);
+        textEdit->setReadOnly(true);
+
+        verticalLayout_2->addWidget(textEdit);
+
 
         retranslateUi(Dialog);
 
