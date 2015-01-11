@@ -6,13 +6,18 @@
 class TupleAndPair
 {
 public:
+    enum index { ITERATOR, MAKETUPLE, REFVALUE, TUPLEWITHREFVALUES, INITTUPLEWITHLIST}
+
     static const QStringList ListExamples()
     {
-        return QStringList() << "Iterate Over Elements" << "Create an Tuple with make_tuple()" << "Assign a reference Value to Tuple" <<
-                                "Create a Tuple with Reference Values" << "Initialise a Tuple with a List";
+        return QStringList() << iteOverElms() << makeTuple() << referenceValue() << tupleWithRefValues() << initTupleList();
     }
 
-    //static const QString
+    static const QString iteOverElms() { return "Iterate Over Elements"; }
+    static const QString makeTuple() { return "Create an Tuple with make_tuple()"; }
+    static const QString referenceValue() { return "Assign a reference Value to Tuple"; }
+    static const QString tupleWithRefValues() { return "Create a Tuple with Reference Values"; }
+    static const QString initTupleList() { return "Initialise a Tuple with a List"; }
 
     static void IterateOverElements();
     static void CreateTupleWithMakeTuple();
