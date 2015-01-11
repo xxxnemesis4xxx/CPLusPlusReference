@@ -6,20 +6,21 @@
 #include "tupleandpair.h"
 using namespace std;
 
-string TupleAndPair::AssignReferenceToTuple()
+QString TupleAndPair::AssignReferenceToTuple()
 {
     //Like Pair, you can assign reference variable to a tuple
     std::string s;
     tuple<std::string&> t4(s);
     s = "Hello";
-    cout << "\n\nCreating a tuple with a reference variable" << endl;
-    cout << get<0>(t4) << endl;
 
-    return "";
+    std::string display = "Creating a tuple with a reference variable\n" + get<0>(t4);
+
+    return QString::fromStdString(display);
 }
 
-string TupleAndPair::CreateTupleWithMakeTuple()
+QString TupleAndPair::CreateTupleWithMakeTuple()
 {
+    string display;
     // create tuple with make_tuple()
     // - auto declares t2 with type of right-hand side
     // - thus, type of t2 is tuple
@@ -27,9 +28,11 @@ string TupleAndPair::CreateTupleWithMakeTuple()
     tuple<int,float,string> t1(41,6.3,"nico");
 
     // assign second value in t2 to t1 we declared earlier
-    cout << "\nValue stored in t2 : " << get<0>(t2) << " " << get<1>(t2) << " " << get<2>(t2) << endl;
+    display = "Value stored in t2 : " + to_string(get<0>(t2)) + " " + to_string(get<1>(t2)) +
+            " " + get<2>(t2) + "\n";
     get<1>(t1) = get<1>(t2);
-    cout << "Value stored in t1 after the assignment : " << get<0>(t1) << " " << get<1>(t1) << " " << get<2>(t1) << endl;
+    display += "Value stored in t1 after the assignment : " + to_string(get<0>(t1)) +
+            " " + to_string(get<1>(t1)) + " " + get<2>(t1) + "\n";
 
     // comparison and assignment
     // - including type conversion from tuple<int,int,const char*>
@@ -39,10 +42,10 @@ string TupleAndPair::CreateTupleWithMakeTuple()
         t1 = t2; // OK, assigns value for value
     }
 
-    return "";
+    return QString::fromStdString(display);
 }
 
-string TupleAndPair::CreateTupleWithReferenceValues()
+QString TupleAndPair::CreateTupleWithReferenceValues()
 {
     //There is 2 way to create a tuple with the current library in c++11
 
@@ -66,10 +69,10 @@ string TupleAndPair::CreateTupleWithReferenceValues()
     auto t7 = make_tuple(456,2.6,"Light shall burn you!");
     std::tie(int2,float2,str2) = t7;
 
-    return "";
+    return QString("");
 }
 
-string TupleAndPair::InitialiseTupleWithList()
+QString TupleAndPair::InitialiseTupleWithList()
 {
     //There is one main difference between Pair and Tuple
     //Tuple-> You can only initialize a tuple explicitly, so we are sure no one can initiate one with a single value
@@ -80,7 +83,7 @@ string TupleAndPair::InitialiseTupleWithList()
     //But this can be done with a pair container
     std::vector<std::pair<int,float>> v1 { {1,1.0}, {2,2.0} }; // OK -> Not supported by MCVS 2012
 
-    return "";
+    return QString("");
 }
 
 QString TupleAndPair::IterateOverElements()
@@ -93,8 +96,8 @@ QString TupleAndPair::IterateOverElements()
     tuple<int,float,string> t1(41,6.3,"nico");
 
     //‘‘iterate’’ over elements:
-    std::string Test = to_string(get<0>(t1)) + " " + to_string(get<1>(t1)). + " " + get<2>(t1);
+    std::string display = to_string(get<0>(t1)) + " " + to_string(get<1>(t1)) + " " + get<2>(t1);
 
-    return QString::fromStdString(Test);
+    return QString::fromStdString(display);
 }
 

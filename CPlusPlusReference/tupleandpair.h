@@ -19,10 +19,10 @@ public:
     static const QString initTupleList() { return "Initialise a Tuple with a List"; }
 
     static QString IterateOverElements();
-    static std::string CreateTupleWithMakeTuple();
-    static std::string AssignReferenceToTuple();
-    static std::string CreateTupleWithReferenceValues();
-    static std::string InitialiseTupleWithList();
+    static QString CreateTupleWithMakeTuple();
+    static QString AssignReferenceToTuple();
+    static QString CreateTupleWithReferenceValues();
+    static QString InitialiseTupleWithList();
 };
 
 #endif // TUPLEANDPAIR
