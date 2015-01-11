@@ -51,12 +51,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
     {
         if (TupleAndPair::ListExamples().contains(text))
         {
-            QString test = "Test";
             switch(row)
             {
             case TupleAndPair::ITERATOR :
-                ui->outputExample->setText(test);
-                //ui->outputExample->setText(test);
+                ui->outputExample->setText(TupleAndPair::IterateOverElements());
                 break;
             case TupleAndPair::INITTUPLEWITHLIST :
                 //ui->outputExample->setText(QString::fromStdString(TupleAndPair::InitialiseTupleWithList()));

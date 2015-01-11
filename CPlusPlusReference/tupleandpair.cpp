@@ -4,9 +4,7 @@
 #include <string>
 #include <vector>
 #include "tupleandpair.h"
-
 using namespace std;
-string outputText;
 
 string TupleAndPair::AssignReferenceToTuple()
 {
@@ -85,20 +83,18 @@ string TupleAndPair::InitialiseTupleWithList()
     return "";
 }
 
-//const QString TupleAndPair::IterateOverElements()
-//{
-    // create a four-element tuple
-    // - elements are initialized with default value (0 for fundamental types)
-    //tuple<string,int,int,complex<double>> t;
+QString TupleAndPair::IterateOverElements()
+{
+    //create a four-element tuple
+    //- elements are initialized with default value (0 for fundamental types)
+    tuple<string,int,int,complex<double>> t;
 
-    // create and initialize a tuple explicitly
-    //tuple<int,float,string> t1(41,6.3,"nico");
+    //create and initialize a tuple explicitly
+    tuple<int,float,string> t1(41,6.3,"nico");
 
-    // ‘‘iterate’’ over elements:
-    //outputText = get<0>(t1) + " ";
-    //outputText += get<1>(t1) + " ";
-    //outputtext += get<2>(t1);
+    //‘‘iterate’’ over elements:
+    std::string Test = to_string(get<0>(t1)) + " " + to_string(get<1>(t1)). + " " + get<2>(t1);
 
-//    return "";
-//}
+    return QString::fromStdString(Test);
+}
 

@@ -1,9 +1,6 @@
 #ifndef TUPLEANDPAIR
 #define TUPLEANDPAIR
 #include "dialog.h"
-#include <QStringList>
-#include <QString>
-#include <string>
 
 class TupleAndPair
 {
@@ -21,7 +18,7 @@ public:
     static const QString tupleWithRefValues() { return "Create a Tuple with Reference Values"; }
     static const QString initTupleList() { return "Initialise a Tuple with a List"; }
 
-    static const QString IterateOverElements() {return "Test"; }
+    static QString IterateOverElements();
     static std::string CreateTupleWithMakeTuple();
     static std::string AssignReferenceToTuple();
     static std::string CreateTupleWithReferenceValues();
