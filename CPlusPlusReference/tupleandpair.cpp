@@ -6,8 +6,9 @@
 #include "tupleandpair.h"
 
 using namespace std;
+string outputText;
 
-void TupleAndPair::AssignReferenceToTuple()
+string TupleAndPair::AssignReferenceToTuple()
 {
     //Like Pair, you can assign reference variable to a tuple
     std::string s;
@@ -15,9 +16,11 @@ void TupleAndPair::AssignReferenceToTuple()
     s = "Hello";
     cout << "\n\nCreating a tuple with a reference variable" << endl;
     cout << get<0>(t4) << endl;
+
+    return "";
 }
 
-void TupleAndPair::CreateTupleWithMakeTuple()
+string TupleAndPair::CreateTupleWithMakeTuple()
 {
     // create tuple with make_tuple()
     // - auto declares t2 with type of right-hand side
@@ -38,9 +41,10 @@ void TupleAndPair::CreateTupleWithMakeTuple()
         t1 = t2; // OK, assigns value for value
     }
 
+    return "";
 }
 
-void TupleAndPair::CreateTupleWithReferenceValues()
+string TupleAndPair::CreateTupleWithReferenceValues()
 {
     //There is 2 way to create a tuple with the current library in c++11
 
@@ -64,9 +68,10 @@ void TupleAndPair::CreateTupleWithReferenceValues()
     auto t7 = make_tuple(456,2.6,"Light shall burn you!");
     std::tie(int2,float2,str2) = t7;
 
+    return "";
 }
 
-void TupleAndPair::InitialiseTupleWithList()
+string TupleAndPair::InitialiseTupleWithList()
 {
     //There is one main difference between Pair and Tuple
     //Tuple-> You can only initialize a tuple explicitly, so we are sure no one can initiate one with a single value
@@ -77,22 +82,23 @@ void TupleAndPair::InitialiseTupleWithList()
     //But this can be done with a pair container
     std::vector<std::pair<int,float>> v1 { {1,1.0}, {2,2.0} }; // OK -> Not supported by MCVS 2012
 
+    return "";
 }
 
-void TupleAndPair::IterateOverElements()
-{
+//const QString TupleAndPair::IterateOverElements()
+//{
     // create a four-element tuple
     // - elements are initialized with default value (0 for fundamental types)
-    tuple<string,int,int,complex<double>> t;
+    //tuple<string,int,int,complex<double>> t;
 
     // create and initialize a tuple explicitly
-    tuple<int,float,string> t1(41,6.3,"nico");
-
+    //tuple<int,float,string> t1(41,6.3,"nico");
 
     // ‘‘iterate’’ over elements:
-    cout << get<0>(t1) << " ";
-    cout << get<1>(t1) << " ";
-    cout << get<2>(t1) << " ";
-    cout << endl;
-}
+    //outputText = get<0>(t1) + " ";
+    //outputText += get<1>(t1) + " ";
+    //outputtext += get<2>(t1);
+
+//    return "";
+//}
 

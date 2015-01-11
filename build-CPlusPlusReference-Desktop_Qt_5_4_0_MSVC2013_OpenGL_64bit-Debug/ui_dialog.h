@@ -26,7 +26,8 @@ class Ui_Dialog
 public:
     QVBoxLayout *verticalLayout_2;
     QListWidget *listWidget;
-    QTextEdit *textEdit;
+    QTextEdit *outputExample;
+    QTextEdit *codeOverview;
 
     void setupUi(QDialog *Dialog)
     {
@@ -42,12 +43,17 @@ public:
 
         verticalLayout_2->addWidget(listWidget);
 
-        textEdit = new QTextEdit(Dialog);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setAcceptDrops(false);
-        textEdit->setReadOnly(true);
+        outputExample = new QTextEdit(Dialog);
+        outputExample->setObjectName(QStringLiteral("outputExample"));
+        outputExample->setAcceptDrops(false);
+        outputExample->setReadOnly(true);
 
-        verticalLayout_2->addWidget(textEdit);
+        verticalLayout_2->addWidget(outputExample);
+
+        codeOverview = new QTextEdit(Dialog);
+        codeOverview->setObjectName(QStringLiteral("codeOverview"));
+
+        verticalLayout_2->addWidget(codeOverview);
 
 
         retranslateUi(Dialog);
