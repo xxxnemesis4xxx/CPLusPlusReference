@@ -15,6 +15,9 @@ public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
 
+private slots:
+    void on_listWidget_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::Dialog *ui;
 };
