@@ -1,7 +1,7 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 #include "categorie.h"
-#include <QVariant>
+#include "tupleandpair.h"
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -18,11 +18,13 @@ Dialog::~Dialog()
 
 void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
 {
+    int row = index.row();
     ui->listWidget->clear();
 
-    switch(index.row())
+    switch(row)
     {
     case Categorie::TUPLE:
+        ui->listWidget->addItems(TupleAndPair::ListExamples());
         break;
     case Categorie::ITERATOR:
         break;
@@ -35,6 +37,7 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
     case Categorie::THREAD:
         break;
     default:
+        ui->listWidget->addItems(Categorie::Categories());
         break;
     }
 }

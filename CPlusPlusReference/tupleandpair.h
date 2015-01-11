@@ -6,7 +6,7 @@
 class TupleAndPair
 {
 public:
-    static const QStringList Categories()
+    static const QStringList ListExamples()
     {
         return QStringList() << "Iterate Over Elements" << "Create an Tuple with make_tuple()" << "Assign a reference Value to Tuple" <<
                                 "Create a Tuple with Reference Values" << "Initialise a Tuple with a List";
