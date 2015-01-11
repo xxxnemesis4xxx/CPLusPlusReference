@@ -1,12 +1,14 @@
 #ifndef TUPLEANDPAIR
 #define TUPLEANDPAIR
+#include "dialog.h"
 #include <QStringList>
 #include <QString>
+#include <string>
 
 class TupleAndPair
 {
 public:
-    enum index { ITERATOR, MAKETUPLE, REFVALUE, TUPLEWITHREFVALUES, INITTUPLEWITHLIST}
+    enum index { ITERATOR, MAKETUPLE, REFVALUE, TUPLEWITHREFVALUES, INITTUPLEWITHLIST};
 
     static const QStringList ListExamples()
     {
@@ -19,11 +21,11 @@ public:
     static const QString tupleWithRefValues() { return "Create a Tuple with Reference Values"; }
     static const QString initTupleList() { return "Initialise a Tuple with a List"; }
 
-    static void IterateOverElements();
-    static void CreateTupleWithMakeTuple();
-    static void AssignReferenceToTuple();
-    static void CreateTupleWithReferenceValues();
-    static void InitialiseTupleWithList();
+    static const QString IterateOverElements() {return "Test"; }
+    static std::string CreateTupleWithMakeTuple();
+    static std::string AssignReferenceToTuple();
+    static std::string CreateTupleWithReferenceValues();
+    static std::string InitialiseTupleWithList();
 };
 
 #endif // TUPLEANDPAIR

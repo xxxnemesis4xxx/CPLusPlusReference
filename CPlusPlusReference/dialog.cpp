@@ -2,6 +2,8 @@
 #include "ui_dialog.h"
 #include "categorie.h"
 #include "tupleandpair.h"
+#include <QVariant>
+#include <QDebug>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -19,25 +21,56 @@ Dialog::~Dialog()
 void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
 {
     int row = index.row();
-    ui->listWidget->clear();
+    QVariant result = index.data();
+    QString text = result.toString();
 
-    switch(row)
+    if (Categorie::Categories().contains(text))
     {
-    case Categorie::TUPLE:
-        ui->listWidget->addItems(TupleAndPair::ListExamples());
-        break;
-    case Categorie::ITERATOR:
-        break;
-    case Categorie::FUNCOBJLAM :
-        break;
-    case Categorie::STLALGO :
-        break;
-    case Categorie::STLSTAND :
-        break;
-    case Categorie::THREAD:
-        break;
-    default:
-        ui->listWidget->addItems(Categorie::Categories());
-        break;
+        ui->listWidget->clear();
+        switch(row)
+        {
+        case Categorie::TUPLE:
+            ui->listWidget->addItems(TupleAndPair::ListExamples());
+            break;
+        case Categorie::ITERATOR:
+            break;
+        case Categorie::FUNCOBJLAM :
+            break;
+        case Categorie::STLALGO :
+            break;
+        case Categorie::STLSTAND :
+            break;
+        case Categorie::THREAD:
+            break;
+        default:
+            ui->listWidget->addItems(Categorie::Categories());
+            break;
+        }
+    }
+    else
+    {
+        if (TupleAndPair::ListExamples().contains(text))
+        {
+            QString test = "Test";
+            switch(row)
+            {
+            case TupleAndPair::ITERATOR :
+                ui->outputExample->setText(test);
+                //ui->outputExample->setText(test);
+                break;
+            case TupleAndPair::INITTUPLEWITHLIST :
+                //ui->outputExample->setText(QString::fromStdString(TupleAndPair::InitialiseTupleWithList()));
+                break;
+            case TupleAndPair::MAKETUPLE :
+                //ui->outputExample->setText(QString::fromStdString(TupleAndPair::CreateTupleWithMakeTuple()));
+                break;
+            case TupleAndPair::REFVALUE :
+                //ui->outputExample->setText(QString::fromStdString(TupleAndPair::InitialiseTupleWithList()));
+                break;
+            case TupleAndPair::TUPLEWITHREFVALUES:
+                //ui->outputExample->setText(QString::fromStdString(TupleAndPair::CreateTupleWithReferenceValues()));
+                break;
+            }
+        }
     }
 }
