@@ -23,6 +23,12 @@ public:
     static QString AssignReferenceToTuple();
     static QString CreateTupleWithReferenceValues();
     static QString InitialiseTupleWithList();
+
+    static QString IterateOverElementsCode();
+    static QString CreateTupleWithMakeTupleCode();
+    static QString AssignReferenceToTupleCode();
+    static QString CreateTupleWithReferenceValuesCode();
+    static QString InitialiseTupleWithListCode();
 };
 
 #endif // TUPLEANDPAIR

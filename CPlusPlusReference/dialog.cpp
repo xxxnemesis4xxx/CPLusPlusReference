@@ -55,18 +55,23 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             {
             case TupleAndPair::ITERATOR :
                 ui->outputExample->setText(TupleAndPair::IterateOverElements());
+                ui->codeOverview->setText(TupleAndPair::IterateOverElementsCode());
                 break;
             case TupleAndPair::INITTUPLEWITHLIST :
                 ui->outputExample->setText(TupleAndPair::InitialiseTupleWithList());
+                ui->codeOverview->setText(TupleAndPair::InitialiseTupleWithListCode());
                 break;
             case TupleAndPair::MAKETUPLE :
                 ui->outputExample->setText(TupleAndPair::CreateTupleWithMakeTuple());
+                ui->codeOverview->setText(TupleAndPair::CreateTupleWithMakeTupleCode());
                 break;
             case TupleAndPair::REFVALUE :
-                ui->outputExample->setText(TupleAndPair::InitialiseTupleWithList());
+                ui->outputExample->setText(TupleAndPair::AssignReferenceToTuple());
+                ui->codeOverview->setText(TupleAndPair::AssignReferenceToTupleCode());
                 break;
             case TupleAndPair::TUPLEWITHREFVALUES:
                 ui->outputExample->setText(TupleAndPair::CreateTupleWithReferenceValues());
+                ui->codeOverview->setText(TupleAndPair::CreateTupleWithReferenceValuesCode());
                 break;
             }
         }
