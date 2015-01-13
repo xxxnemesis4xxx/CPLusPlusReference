@@ -25,7 +25,17 @@ QString Pair::DisplayPairValueExample()
     return display;
 }
 
-QString Pair::CreatePairWithPairMakeExample();
+QString Pair::CreatePairWithPairMakeExample()
+{
+    QString display = "Making a pair with pair_make()\n";
+    pair newPair = std::make_pair('C',3.1416);
+
+    display += QString("Pair values = ('" + to_string(newPair.first) + "',"
+            + to_string(newPair.second) + ")");
+
+    return display;
+}
+
 QString Pair::MovingPairValueWithSemanticExample();
 QString Pair::EnforceRefMoveSemanticWithPairExample();
 QString Pair::EnforceRefMoveSemanticWithTupleExample();
@@ -41,7 +51,17 @@ QString Pair::DisplayPairValueExampleCode()
     return display;
 }
 
-QString Pair::CreatePairWithPairMakeCode();
+QString Pair::CreatePairWithPairMakeCode()
+{
+    QString display = QString(
+                "pair newPair = std::make_pair('C',3.1416)\n" +
+                "display += QString(\"Pair values = ('\" + to_string(newPair.first) + \"',\" + "
+                "to_string(newPair.second) + \")\");"
+                );
+
+    return display;
+}
+
 QString Pair::MovingPairValueWithSemanticCode();
 QString Pair::EnforceRefMoveSemanticWithPairCode();
 QString Pair::EnforceRefMoveSemanticWithTupleCode();
