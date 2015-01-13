@@ -87,10 +87,6 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
         {
             switch(row)
             {
-            case Pair::CREATEPAIR :
-                ui->outputExample->setText(Pair::CreatePairWithPairMakeExample());
-                ui->codeOverview->setText(Pair::CreatePairWithPairMakeCode());
-                break;
             case Pair::CREATEPAIRDEFTYPE :
                 ui->outputExample->setText(Pair::MakePairWithDefinedTypeExample());
                 ui->codeOverview->setText(Pair::MakePairWithDefinedTypeCode());

@@ -22,18 +22,7 @@ QString Pair::DisplayPairValueExample()
 
     //Display the elements inside the PairStruct
     pair<int,int> PairStruct(5,6);
-    display = QString(to_string(PairStruct.first) + " " + to_string(PairStruct.second));
-
-    return display;
-}
-
-QString Pair::CreatePairWithPairMakeExample()
-{
-    QString display = "Making a pair with pair_make()\n";
-    pair newPair = std::make_pair('C',3.1416);
-
-    display += "Pair values = ('" + to_string(newPair.first) + "',"
-            + to_string(newPair.second) + ")";
+    display = QString(QString::fromStdString(to_string(PairStruct.first)) + " " + QString::fromStdString(to_string(PairStruct.second)));
 
     return display;
 }
@@ -46,8 +35,8 @@ QString Pair::MovingPairValueWithSemanticExample()
 
     auto p = std::make_pair(std::move(s),std::move(t));
 
-    display += "Value inside pair = (" + p.first + "," + p.second + ")\n";
-    display += "Value inside s and t now.\ns = " + s + "\nt = " + t;
+    display += QString("Value inside pair = (" + QString::fromStdString(p.first) + "," + QString::fromStdString(p.second) + ")\n");
+    display += QString("Value inside s and t now.\ns = " + QString::fromStdString(s) + "\nt = " + QString::fromStdString(t));
 
     return display;
 }
@@ -59,8 +48,8 @@ QString Pair::EnforceRefMoveSemanticWithPairExample()
     auto k = std::make_pair(std::ref(i),std::ref(i));
     k.first++;
     k.second++;
-    display += "Did our value changed? " + to_string(i);
-    display += "\nValues in the pair : (" + to_string(k.first) + "," + to_string(k.second) + ")";
+    display += QString("Did our value changed? " + QString::fromStdString(to_string(i)));
+    display += QString("\nValues in the pair : (" + QString::fromStdString(to_string(k.first)) + "," + QString::fromStdString(to_string(k.second)) + ")");
 
     return display;
 }
@@ -71,11 +60,11 @@ QString Pair::EnforceRefMoveSemanticWithTupleExample()
 
     std::string strTest = "Hello";
     std::tuple<std::string&> oo(strTest);
-    display = "Assign value \"Hello\" to our string and create the tuple with a reference to it\n";
-    display += "Our tuple = " + std::get<o>(oo) + "\n\nAltering the value of our tuple\n";
+    display = QString("Assign value \"Hello\" to our string and create the tuple with a reference to it\n");
+    display += QString("Our tuple = " + QString::fromStdString(std::get<0>(oo)) + "\n\nAltering the value of our tuple\n");
 
     std::get<0>(oo) = "World";
-    display += "Now, what is the value of our string?   string = " + strTest;
+    display += QString("Now, what is the value of our string?   string = " + QString::fromStdString(strTest));
 
     return display;
 }
@@ -84,7 +73,7 @@ QString Pair::MakePairWithDefinedTypeExample()
 {
     QString display = "Creating a pair with defined type of <char,char> : \n";
     std::pair<char,char> a = std::make_pair('x','y');
-    display += "value of the pair = ('" + to_string(a) + "','" + to_string(y) + "')";
+    display += QString("value of the pair = ('" + QString::fromStdString(to_string(a.first)) + "','" + QString::fromStdString(to_string(a.second)) + "')");
 
     return display;
 }
@@ -96,7 +85,7 @@ QString Pair::ExtractSpecificValueFromPairExample()
     std::pair<char,char> a = std::make_pair('x','y');
 
     std::tie(std::ignore,c) = a;
-    display = "We extract the value : '" + to_string(c) + "' from the pair a = ('" + to_string(a) + "','" + to_string(y) + "')";
+    display = QString("We extract the value : '" + QString::fromStdString(to_string(c)) + "' from the pair a = ('" + QString::fromStdString(to_string(a.first)) + "','" + QString::fromStdString(to_string(a.second)) + "')");
 
     return display;
 }
@@ -110,15 +99,6 @@ QString Pair::DisplayPairValueExampleCode()
     return display;
 }
 
-QString Pair::CreatePairWithPairMakeCode()
-{
-    QString display = QString(
-                "std::pair newPair = std::make_pair('C',3.1416);\n";
-                );
-
-    return display;
-}
-
 QString Pair::MovingPairValueWithSemanticCode()
 {
     QString display = "auto p = std::make_pair(std::move(s),std::move(t));";
@@ -128,9 +108,9 @@ QString Pair::MovingPairValueWithSemanticCode()
 
 QString Pair::EnforceRefMoveSemanticWithPairCode()
 {
-    QString display = "int i = 0;\n" +
-            "auto k = std::make_pair(std::ref(i),std::ref(i));\n" +
-            "k.first++;\nk.second++;";
+    QString display = QString("int i = 0;\n" +
+            QString("auto k = std::make_pair(std::ref(i),std::ref(i));\n") +
+            QString("k.first++;\nk.second++;"));
 
     return display;
 }
@@ -138,9 +118,9 @@ QString Pair::EnforceRefMoveSemanticWithPairCode()
 QString Pair::EnforceRefMoveSemanticWithTupleCode()
 {
     QString display =
-            "std::string strTest = \"Hello\";\n" +
-            "std::tuple<std::string&> oo(strTest);\n" +
-            "std::get<0>(oo) = \"World\";\n";
+            QString("std::string strTest = \"Hello\";\n" +
+            QString("std::tuple<std::string&> oo(strTest);\n") +
+            QString("std::get<0>(oo) = \"World\";\n"));
 
     return display;
 }
@@ -155,8 +135,8 @@ QString Pair::MakePairWithDefinedTypeCode()
 QString Pair::ExtractSpecificValueFromPairCode()
 {
     QString display =
-            "char c;\nstd::pair<char,char> a = std::make_pair('x','y');\n" +
-            "std::tie(std::ignore,c) = a;";
+            QString("char c;\nstd::pair<char,char> a = std::make_pair('x','y');\n" +
+            QString("std::tie(std::ignore,c) = a;"));
 
     return display;
 }
