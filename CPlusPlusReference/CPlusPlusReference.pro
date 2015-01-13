@@ -14,10 +14,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         dialog.cpp \
-    tupleandpair.cpp
+    tuple.cpp
 
 HEADERS  += dialog.h \
     categorie.h \
-    tupleandpair.h
+    tuple.h
 
 FORMS    += dialog.ui

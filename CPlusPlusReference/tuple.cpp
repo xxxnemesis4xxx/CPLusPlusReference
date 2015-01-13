@@ -3,10 +3,10 @@
 #include <complex>
 #include <string>
 #include <vector>
-#include "tupleandpair.h"
+#include "tuple.h"
 using namespace std;
 
-QString TupleAndPair::AssignReferenceToTuple()
+QString Tuple::AssignReferenceToTuple()
 {
     //Like Pair, you can assign reference variable to a tuple
     std::string s;
@@ -18,7 +18,7 @@ QString TupleAndPair::AssignReferenceToTuple()
     return QString::fromStdString(display);
 }
 
-QString TupleAndPair::AssignReferenceToTupleCode()
+QString Tuple::AssignReferenceToTupleCode()
 {
     QString display = QString("std::string s;\ntuple<std::string&> t4(s);s = \"Hello\"; \n\n")
             + QString("std::string display = \"Creating a tuple with a reference variable\n + get<0>(t4);\n\n")
@@ -27,7 +27,7 @@ QString TupleAndPair::AssignReferenceToTupleCode()
     return display;
 }
 
-QString TupleAndPair::CreateTupleWithMakeTuple()
+QString Tuple::CreateTupleWithMakeTuple()
 {
     string display;
     // create tuple with make_tuple()
@@ -54,7 +54,7 @@ QString TupleAndPair::CreateTupleWithMakeTuple()
     return QString::fromStdString(display);
 }
 
-QString TupleAndPair::CreateTupleWithMakeTupleCode()
+QString Tuple::CreateTupleWithMakeTupleCode()
 {
     QString display = QString("string display;\n\nauto t2 = make_tuple(22,44,\"nico\");\ntuple<int,float,string>t1(41,6.3,\"nico\");\n\n")
             + QString("display = \"Value stored in t2 :\" + to_string(get<0>(t2)) + to_string(get<1>(t2))")
@@ -65,7 +65,7 @@ QString TupleAndPair::CreateTupleWithMakeTupleCode()
     return display;
 }
 
-QString TupleAndPair::CreateTupleWithReferenceValues()
+QString Tuple::CreateTupleWithReferenceValues()
 {
     //There is 2 way to create a tuple with the current library in c++11
 
@@ -92,7 +92,7 @@ QString TupleAndPair::CreateTupleWithReferenceValues()
     return QString("");
 }
 
-QString TupleAndPair::CreateTupleWithReferenceValuesCode()
+QString Tuple::CreateTupleWithReferenceValuesCode()
 {
     QString display = QString("First way:\nstd::tuple <int,float,std::string> t5(77,1.1,\"more light\");")
             + QString("\nint int1;\nfloat float1;\nstd::string str1;\n")
@@ -105,7 +105,7 @@ QString TupleAndPair::CreateTupleWithReferenceValuesCode()
     return display;
 }
 
-QString TupleAndPair::InitialiseTupleWithList()
+QString Tuple::InitialiseTupleWithList()
 {
     //There is one main difference between Pair and Tuple
     //Tuple-> You can only initialize a tuple explicitly, so we are sure no one can initiate one with a single value
@@ -119,14 +119,14 @@ QString TupleAndPair::InitialiseTupleWithList()
     return QString("");
 }
 
-QString TupleAndPair::InitialiseTupleWithListCode()
+QString Tuple::InitialiseTupleWithListCode()
 {
     QString display = QString("std::vector<std::pair<int,float>> v1 { {1,1.0}, {2,2.0} };");
 
     return display;
 }
 
-QString TupleAndPair::IterateOverElements()
+QString Tuple::IterateOverElements()
 {
     //create a four-element tuple
     //- elements are initialized with default value (0 for fundamental types)
@@ -141,7 +141,7 @@ QString TupleAndPair::IterateOverElements()
     return QString::fromStdString(display);
 }
 
-QString TupleAndPair::IterateOverElementsCode()
+QString Tuple::IterateOverElementsCode()
 {
     QString display = QString("tuple<string,int,int,complex<double>> t;\n\ntuple<int,float,string> t1(41,6.3,\"nice\");\n\n")
             + QString("std::string display = to_string(get<0>(t1)) + to_string(get<1>(t1)) + ")
