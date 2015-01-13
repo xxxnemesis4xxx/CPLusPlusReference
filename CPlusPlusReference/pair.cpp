@@ -89,7 +89,17 @@ QString Pair::MakePairWithDefinedTypeExample()
     return display;
 }
 
-QString Pair::ExtractSpecificValueFromPairExample();
+QString Pair::ExtractSpecificValueFromPairExample()
+{
+    QString display;
+    char c;
+    std::pair<char,char> a = std::make_pair('x','y');
+
+    std::tie(std::ignore,c) = a;
+    display = "We extract the value : '" + to_string(c) + "' from the pair a = ('" + to_string(a) + "','" + to_string(y) + "')";
+
+    return display;
+}
 
 QString Pair::DisplayPairValueExampleCode()
 {
@@ -142,4 +152,11 @@ QString Pair::MakePairWithDefinedTypeCode()
     return display;
 }
 
-QString Pair::ExtractSpecificValueFromPairCode();
+QString Pair::ExtractSpecificValueFromPairCode()
+{
+    QString display =
+            "char c;\nstd::pair<char,char> a = std::make_pair('x','y');\n" +
+            "std::tie(std::ignore,c) = a;";
+
+    return display;
+}
