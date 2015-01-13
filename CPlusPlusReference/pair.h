@@ -2,11 +2,22 @@
 #define PAIR_H
 
 #include <QString>
+#include <QStringList>
 
 
 class Pair
 {
 public:
+    enum indexPair {DISPLAYVALUE, CREATEPAIR, MOVSEMPAIR, REFMOVSEMPAIR, REFMOVSEMTUPLE,
+                   CREATEPAIRDEFTYPE ,EXTSPECVALUEFROMPAIR, RETURN};
+
+    static const QStringList ListExamples()
+    {
+        return QStringList() << DisplayPairValue() << CreatePairWithPairMake() << MovingPairValueWithSemantic() << EnforceRefMoveSemanticWithPair()
+                                  << EnforceRefMoveSemanticWithTuple() << MakePairWithDefinedType() << ExtractSpecificValueFromPair()
+                                  << "Return";
+    }
+
     Pair();
     ~Pair();
 
