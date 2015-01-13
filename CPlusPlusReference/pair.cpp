@@ -80,7 +80,15 @@ QString Pair::EnforceRefMoveSemanticWithTupleExample()
     return display;
 }
 
-QString Pair::MakePairWithDefinedTypeExample();
+QString Pair::MakePairWithDefinedTypeExample()
+{
+    QString display = "Creating a pair with defined type of <char,char> : \n";
+    std::pair<char,char> a = std::make_pair('x','y');
+    display += "value of the pair = ('" + to_string(a) + "','" + to_string(y) + "')";
+
+    return display;
+}
+
 QString Pair::ExtractSpecificValueFromPairExample();
 
 QString Pair::DisplayPairValueExampleCode()
@@ -127,5 +135,11 @@ QString Pair::EnforceRefMoveSemanticWithTupleCode()
     return display;
 }
 
-QString Pair::MakePairWithDefinedTypeCode();
+QString Pair::MakePairWithDefinedTypeCode()
+{
+    QString display = "std::pair<char,char> a = std::make_pair('x','y');";
+
+    return display;
+}
+
 QString Pair::ExtractSpecificValueFromPairCode();
