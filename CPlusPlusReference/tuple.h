@@ -1,15 +1,15 @@
-#ifndef TUPLEANDPAIR
-#define TUPLEANDPAIR
+#ifndef TUPLE
+#define TUPLE
 #include "dialog.h"
 
-class TupleAndPair
+class Tuple
 {
 public:
-    enum index { ITERATOR, MAKETUPLE, REFVALUE, TUPLEWITHREFVALUES, INITTUPLEWITHLIST};
+    enum indexTuple { ITERATOR, MAKETUPLE, REFVALUE, TUPLEWITHREFVALUES, INITTUPLEWITHLIST, RETURN};
 
     static const QStringList ListExamples()
     {
-        return QStringList() << iteOverElms() << makeTuple() << referenceValue() << tupleWithRefValues() << initTupleList();
+        return QStringList() << iteOverElms() << makeTuple() << referenceValue() << tupleWithRefValues() << initTupleList() << "Return";
     }
 
     static const QString iteOverElms() { return "Iterate Over Elements"; }
@@ -31,5 +31,5 @@ public:
     static QString InitialiseTupleWithListCode();
 };
 
-#endif // TUPLEANDPAIR
+#endif // TUPLE
 
