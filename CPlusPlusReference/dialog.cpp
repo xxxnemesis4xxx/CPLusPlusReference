@@ -2,6 +2,7 @@
 #include "ui_dialog.h"
 #include "categorie.h"
 #include "tuple.h"
+#include "pair.h"
 #include <QVariant>
 #include <QDebug>
 
@@ -33,6 +34,7 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             ui->listWidget->addItems(Tuple::ListExamples());
             break;
         case Categorie::PAIRS:
+            ui->listWidget->addItems(Pair::ListExamples());
             break;
         case Categorie::ITERATOR:
             break;
@@ -76,6 +78,30 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->codeOverview->setText(Tuple::CreateTupleWithReferenceValuesCode());
                 break;
             case Tuple::RETURN :
+                ui->listWidget->clear();
+                ui->listWidget->addItems(Categorie::Categories());
+                break;
+            }
+        }
+        if (Pair::ListExamples().contains(text))
+        {
+            switch(row)
+            {
+            case Pair::CREATEPAIR :
+                break;
+            case Pair::CREATEPAIRDEFTYPE :
+                break;
+            case Pair::DISPLAYVALUE :
+                break;
+            case Pair::EXTSPECVALUEFROMPAIR :
+                break;
+            case Pair::MOVSEMPAIR :
+                break;
+            case Pair::REFMOVSEMPAIR :
+                break;
+            case Pair::REFMOVSEMTUPLE :
+                break;
+            case Pair::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
                 break;
