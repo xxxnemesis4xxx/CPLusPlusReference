@@ -11,7 +11,6 @@ public:
     ~Pair();
 
     static const QString DisplayPairValue() { return "Display or Access Pair values"; }
-    static const QString ReturnSizePair() { return "Find the size of the pair"; }
     static const QString CreatePairWithPairMake() { return "Create a pair with pair_make()"; }
     static const QString MovingPairValueWithSemantic() { return "Move Pair Values with Semantic"; }
     static const QString EnforceRefMoveSemanticWithPair() { return "Force ref move semantic with pair"; }
@@ -20,7 +19,6 @@ public:
     static const QString ExtractSpecificValueFromPair() { return "Extracting a value from the pair"; }
 
     static QString DisplayPairValueExample();
-    static QString ReturnSizePairExample();
     static QString CreatePairWithPairMakeExample();
     static QString MovingPairValueWithSemanticExample();
     static QString EnforceRefMoveSemanticWithPairExample();
@@ -29,7 +27,6 @@ public:
     static QString ExtractSpecificValueFromPairExample();
 
     static QString DisplayPairValueExampleCode();
-    static QString ReturnSizePairCode();
     static QString CreatePairWithPairMakeCode();
     static QString MovingPairValueWithSemanticCode();
     static QString EnforceRefMoveSemanticWithPairCode();

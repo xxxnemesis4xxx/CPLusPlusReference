@@ -25,7 +25,6 @@ QString Pair::DisplayPairValueExample()
     return display;
 }
 
-QString Pair::ReturnSizePairExample();
 QString Pair::CreatePairWithPairMakeExample();
 QString Pair::MovingPairValueWithSemanticExample();
 QString Pair::EnforceRefMoveSemanticWithPairExample();
@@ -42,7 +41,6 @@ QString Pair::DisplayPairValueExampleCode()
     return display;
 }
 
-QString Pair::ReturnSizePairCode();
 QString Pair::CreatePairWithPairMakeCode();
 QString Pair::MovingPairValueWithSemanticCode();
 QString Pair::EnforceRefMoveSemanticWithPairCode();
