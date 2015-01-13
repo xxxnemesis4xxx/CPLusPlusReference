@@ -32,6 +32,8 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
         case Categorie::TUPLES :
             ui->listWidget->addItems(Tuple::ListExamples());
             break;
+        case Categorie::PAIRS:
+            break;
         case Categorie::ITERATOR:
             break;
         case Categorie::FUNCOBJLAM :
