@@ -18,7 +18,7 @@
     <widget class="QListWidget" name="listWidget"/>
    </item>
    <item>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="outputExample">
      <property name="acceptDrops">
       <bool>false</bool>
      </property>
@@ -26,6 +26,9 @@
       <bool>true</bool>
      </property>
     </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="codeOverview"/>
    </item>
   </layout>
  </widget>
