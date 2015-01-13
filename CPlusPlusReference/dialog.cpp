@@ -88,18 +88,32 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             switch(row)
             {
             case Pair::CREATEPAIR :
+                ui->outputExample->setText(Pair::CreatePairWithPairMakeExample());
+                ui->codeOverview->setText(Pair::CreatePairWithPairMakeCode());
                 break;
             case Pair::CREATEPAIRDEFTYPE :
+                ui->outputExample->setText(Pair::MakePairWithDefinedTypeExample());
+                ui->codeOverview->setText(Pair::MakePairWithDefinedTypeCode());
                 break;
             case Pair::DISPLAYVALUE :
+                ui->outputExample->setText(Pair::DisplayPairValueExample());
+                ui->codeOverview->setText(Pair::DisplayPairValueExampleCode());
                 break;
             case Pair::EXTSPECVALUEFROMPAIR :
+                ui->outputExample->setText(Pair::ExtractSpecificValueFromPairExample());
+                ui->codeOverview->setText(Pair::ExtractSpecificValueFromPairCode());
                 break;
             case Pair::MOVSEMPAIR :
+                ui->outputExample->setText(Pair::MovingPairValueWithSemanticExample());
+                ui->codeOverview->setText(Pair::MovingPairValueWithSemanticCode());
                 break;
             case Pair::REFMOVSEMPAIR :
+                ui->outputExample->setText(Pair::EnforceRefMoveSemanticWithPairExample());
+                ui->codeOverview->setText(Pair::EnforceRefMoveSemanticWithPairCode());
                 break;
             case Pair::REFMOVSEMTUPLE :
+                ui->outputExample->setText(Pair::EnforceRefMoveSemanticWithTupleExample());
+                ui->codeOverview->setText(Pair::EnforceRefMoveSemanticWithTupleCode());
                 break;
             case Pair::RETURN :
                 ui->listWidget->clear();
