@@ -65,7 +65,21 @@ QString Pair::EnforceRefMoveSemanticWithPairExample()
     return display;
 }
 
-QString Pair::EnforceRefMoveSemanticWithTupleExample();
+QString Pair::EnforceRefMoveSemanticWithTupleExample()
+{
+    QString display;
+
+    std::string strTest = "Hello";
+    std::tuple<std::string&> oo(strTest);
+    display = "Assign value \"Hello\" to our string and create the tuple with a reference to it\n";
+    display += "Our tuple = " + std::get<o>(oo) + "\n\nAltering the value of our tuple\n";
+
+    std::get<0>(oo) = "World";
+    display += "Now, what is the value of our string?   string = " + strTest;
+
+    return display;
+}
+
 QString Pair::MakePairWithDefinedTypeExample();
 QString Pair::ExtractSpecificValueFromPairExample();
 
@@ -103,6 +117,15 @@ QString Pair::EnforceRefMoveSemanticWithPairCode()
     return display;
 }
 
-QString Pair::EnforceRefMoveSemanticWithTupleCode();
+QString Pair::EnforceRefMoveSemanticWithTupleCode()
+{
+    QString display =
+            "std::string strTest = \"Hello\";\n" +
+            "std::tuple<std::string&> oo(strTest);\n" +
+            "std::get<0>(oo) = \"World\";\n";
+
+    return display;
+}
+
 QString Pair::MakePairWithDefinedTypeCode();
 QString Pair::ExtractSpecificValueFromPairCode();
