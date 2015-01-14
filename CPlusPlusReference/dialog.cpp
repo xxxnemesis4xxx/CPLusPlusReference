@@ -3,6 +3,7 @@
 #include "categorie.h"
 #include "tuple.h"
 #include "pair.h"
+#include "iterator.h"
 #include <QVariant>
 #include <QDebug>
 
@@ -37,6 +38,7 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             ui->listWidget->addItems(Pair::ListExamples());
             break;
         case Categorie::ITERATOR:
+            ui->listWidget->addItems(Iterator::listExamples());
             break;
         case Categorie::FUNCOBJLAM :
             break;
@@ -114,6 +116,14 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             case Pair::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
+                break;
+            }
+        }
+        if (Iterator::listExamples().contains(text))
+        {
+            switch(row)
+            {
+            case Iterator::RETURN:
                 break;
             }
         }
