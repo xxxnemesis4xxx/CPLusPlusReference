@@ -10,16 +10,16 @@ public:
     Iterator();
     ~Iterator();
 
-    enum indexIterator {INSERTELEMENT,DISPLAYVALUE, RETURN};
+    enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE, RETURN};
 
     static const QStringList listExamples()
     {
-        return QStringList() << InsertElement() << DisplayElement() << "Return";
+        return QStringList() << InsertElement() << DisplayElement() << Advance() << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
     static QString DisplayElement() { return "Display element"; }
-    static QString Advance() { return "Advance function"; }
+    static QString Advance() { return "Function advance()"; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();

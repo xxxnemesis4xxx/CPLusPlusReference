@@ -59,23 +59,35 @@ QString Iterator::DisplayElementCode()
     return display;
 }
 
-//QString Iterator::AdvanceExample()
-//{
-//    list<int>::iterator pos = coll.begin();
+QString Iterator::AdvanceExample()
+{
+    QString display;
+    std::list<int> coll;
 
-//    //Print actual element
-//    cout << *pos << endl;
+    for (int i = 1; i <= 9; ++i)
+        coll.push_back(i);
+    std::list<int>::iterator pos = coll.begin();
 
-//    //step three elements forward
-//    advance(pos,3);
+    //step three elements forward
+    advance(pos,3);
 
-//    //Print actual element
-//    cout << *pos << endl;
+    //Print actual element
+    display = QString("Value of the iterator after moving forward of 3 positions\nPos = " + QString::fromStdString(std::to_string(*pos)));
 
-//    //Step one element backward
-//    advance(pos,-1);
+    //Step one element backward
+    advance(pos,-1);
 
-//    //print actual element
-//    cout << *pos << endl;
+    //print actual element
+    display += QString("\n\nValue of the iterator after moving backward of 1 position\n Pos = " + QString::fromStdString(std::to_string(*pos)));
 
-//}
+    return display;
+}
+
+QString Iterator::AdvanceCode()
+{
+    QString display = QString(
+                "advance(pos,3);\nadvance(pos,-1);"
+                );
+
+    return display;
+}
