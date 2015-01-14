@@ -23,22 +23,26 @@ Dialog::~Dialog()
 void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
 {
     int row = index.row();
-    QVariant result = index.data();
-    QString text = result.toString();
 
-    if (Categorie::Categories().contains(text))
+    if (getDebut())
     {
         ui->listWidget->clear();
         switch(row)
         {
         case Categorie::TUPLES :
             ui->listWidget->addItems(Tuple::ListExamples());
+            setPosition(0);
+            setDebut(false);
             break;
         case Categorie::PAIRS:
             ui->listWidget->addItems(Pair::ListExamples());
+            setPosition(1);
+            setDebut(false);
             break;
         case Categorie::ITERATOR:
             ui->listWidget->addItems(Iterator::listExamples());
+            setPosition(2);
+            setDebut(false);
             break;
         case Categorie::FUNCOBJLAM :
             break;
@@ -55,8 +59,9 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
     }
     else
     {
-        if (Tuple::ListExamples().contains(text))
+        switch(getPosition())
         {
+        case 0:
             switch(row)
             {
             case Tuple::ITERATOR :
@@ -82,11 +87,11 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             case Tuple::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
                 break;
             }
-        }
-        if (Pair::ListExamples().contains(text))
-        {
+            break;
+        case 1:
             switch(row)
             {
             case Pair::CREATEPAIRDEFTYPE :
@@ -116,16 +121,26 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             case Pair::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
                 break;
             }
-        }
-        if (Iterator::listExamples().contains(text))
-        {
+            break;
+        case 2:
             switch(row)
             {
+            case Iterator::INSERTELEMENT:
+                ui->codeOverview->setText(Iterator::InsertElementCode());
+                ui->outputExample->setText(Iterator::InsertElementExample());
+                break;
             case Iterator::RETURN:
+                ui->listWidget->clear();
+                ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
                 break;
             }
+            break;
+        default:
+            break;
         }
     }
 }
