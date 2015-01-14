@@ -59,7 +59,7 @@ QString Iterator::DisplayElementCode()
     return display;
 }
 
-QString Iterator::AdvanceExample()
+QString Iterator::MoveIteratorExample()
 {
     QString display;
     std::list<int> coll;
@@ -83,7 +83,7 @@ QString Iterator::AdvanceExample()
     return display;
 }
 
-QString Iterator::AdvanceCode()
+QString Iterator::MoveIteratorCode()
 {
     QString display = QString(
                 "advance(pos,3);\nadvance(pos,-1);"
@@ -91,3 +91,4 @@ QString Iterator::AdvanceCode()
 
     return display;
 }
+

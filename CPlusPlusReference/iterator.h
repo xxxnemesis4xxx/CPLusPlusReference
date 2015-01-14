@@ -14,20 +14,20 @@ public:
 
     static const QStringList listExamples()
     {
-        return QStringList() << InsertElement() << DisplayElement() << Advance() << "Return";
+        return QStringList() << InsertElement() << DisplayElement() << MoveIterator() << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
     static QString DisplayElement() { return "Display element"; }
-    static QString Advance() { return "Function advance()"; }
+    static QString MoveIterator() { return "Moving Iterator"; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
-    static QString AdvanceExample();
+    static QString MoveIteratorExample();
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
-    static QString AdvanceCode();
+    static QString MoveIteratorCode();
 };
 
 #endif // ITERATOR_H

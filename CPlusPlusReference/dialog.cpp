@@ -137,8 +137,8 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(Iterator::DisplayElementExample());
                 break;
             case Iterator::ADVANCE :
-                ui->outputExample->setText(Iterator::AdvanceExample());
-                ui->codeOverview->setText(Iterator::AdvanceCode());
+                ui->outputExample->setText(Iterator::MoveIteratorExample());
+                ui->codeOverview->setText(Iterator::MoveIteratorCode());
                 break;
             case Iterator::RETURN:
                 ui->listWidget->clear();
