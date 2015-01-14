@@ -92,3 +92,13 @@ QString Iterator::MoveIteratorCode()
     return display;
 }
 
+QString Iterator::InsertElementAtEndExample()
+{
+
+}
+
+QString Iterator::InsertElementAtEndCode()
+{
+
+}
+
