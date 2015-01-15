@@ -3,7 +3,9 @@
 #include <iostream>
 #include <list>
 #include <algorithm>
-
+#include <vector>
+#include <algorithm>
+#include <string>
 
 Iterator::Iterator()
 {
@@ -94,11 +96,25 @@ QString Iterator::MoveIteratorCode()
 
 QString Iterator::InsertElementAtEndExample()
 {
+    QString display;
+    std::vector<int> coll;
 
+    std::back_inserter(coll) = 44;
+    std::back_inserter(coll) = 55;
+
+    display = QString("Value inside the vector : ");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
 }
 
 QString Iterator::InsertElementAtEndCode()
 {
+    QString display = QString(
+                "std::vector<int> coll;\n\nstd::back_inserter(coll) = 44;\nstd::back_inserter(coll) = 55;"
+                );
 
+    return display;
 }
 
