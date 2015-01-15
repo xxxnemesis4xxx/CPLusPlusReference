@@ -176,3 +176,41 @@ QString Iterator::FindElementInContainerCode()
     return display;
 }
 
+QString Iterator::DistanceFromBeginningExample()
+{
+    QString display;
+    std::list<int> coll;
+
+    //insert elements from -3 to 9
+    for (int i=-3; i<=9;++i)
+        coll.push_back(i);
+
+    //Search element with value 5
+    std::list<int>::iterator pos;
+    pos = std::find(coll.begin(), coll.end(), 5);
+
+    if (pos != coll.end())
+    {
+        //Process and print difference from the beginning
+        display = QString("Difference between beginning and 5: " + QString::fromStdString(std::to_string(std::distance(coll.begin(),pos))));
+    }
+    else
+    {
+        display = QString("5 not found");
+    }
+
+    return display;
+}
+
+QString Iterator::DistanceFromBeginningCode()
+{
+    QString display = QString(
+                "std::list<int> coll;\n\nfor (int i = -3;i <= 9; ++i)\n   coll.push_back(i);\n\n"
+                "std::list<int>::iterator pos;\npos = std::find(coll.begin(),coll.end(), 5);\n\n"
+                "if (pos != coll.end())\n{\ndisplay = std::distance(coll.begin(),pos);\n}\nelse\n{\n"
+                "display = \"5 not found\";\n}"
+                );
+
+    return display;
+}
+
