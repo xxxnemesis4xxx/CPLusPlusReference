@@ -148,3 +148,31 @@ QString Iterator::AppendAllElementWithBackInserterCode()
     return display;
 }
 
+QString Iterator::FindElementInContainerExample()
+{
+    QString display;
+    std::list<int> coll;
+
+    //insert elements from -3 to 9
+    for (int i=-3; i<=9;++i)
+        coll.push_back(i);
+
+    //Search element with value 5
+    std::list<int>::iterator pos;
+    pos = std::find(coll.begin(), coll.end(), 5);
+
+    display = QString("Finding the value 5 inside the list. The value of the Iterator -> " + QString::fromStdString(std::to_string(*pos)));
+
+    return display;
+}
+
+QString Iterator::FindElementInContainerCode()
+{
+    QString display = QString(
+                "std::list<int> coll;\n\nfor (int i = -3;i <= 9; ++i)\n   coll.push_back(i);\n\n"
+                "std::list<int>::iterator pos;\npos = std::find(coll.begin(),coll.end(), 5);"
+                );
+
+    return display;
+}
+
