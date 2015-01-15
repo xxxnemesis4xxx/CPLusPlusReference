@@ -45,8 +45,8 @@ QString Iterator::DisplayElementExample()
         coll.push_back(i);
     std::list<int>::iterator pos = coll.begin();
 
-   display = QString("Print the actual value of the iterator : " +
-                              QString::fromStdString(std::to_string(*pos)));
+    display = QString("Print the actual value of the iterator : " +
+                      QString::fromStdString(std::to_string(*pos)));
 
     return display;
 }
@@ -113,6 +113,36 @@ QString Iterator::InsertElementAtEndCode()
 {
     QString display = QString(
                 "std::vector<int> coll;\n\nstd::back_inserter(coll) = 44;\nstd::back_inserter(coll) = 55;"
+                );
+
+    return display;
+}
+
+QString Iterator::AppendAllElementWithBackInserterExample()
+{
+    QString display;
+    std::vector<int> coll;
+
+    std::back_inserter(coll) = 44;
+    std::back_inserter(coll) = 55;
+
+    // Use back inserter to append all elements again
+    // -Reserve enough memory to avoid reallocation
+    coll.reserve(2*coll.size());
+    std::copy(coll.begin(),coll.end(),std::back_inserter(coll));
+
+    display = QString("Value inside the vector : ");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString Iterator::AppendAllElementWithBackInserterCode()
+{
+    QString display = QString(
+                "std::vector<int> coll;\n\nstd::back_inserter(coll) = 44;\nstd::back_inserter(coll) = 55;"
+                "\n\ncoll.reserve(2*coll.size());\nstd::copy(coll.begin(),coll.end(),std::back_inserter(coll));"
                 );
 
     return display;
