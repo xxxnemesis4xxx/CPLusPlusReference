@@ -164,6 +164,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(Iterator::AppendAllElementWithFrontInserterExample());
                 ui->codeOverview->setText(Iterator::AppendAllElementWithFrontInserterCode());
                 break;
+            case Iterator::INSERTER :
+                ui->outputExample->setText(Iterator::InsertValueWithAnInserterExample());
+                ui->codeOverview->setText(Iterator::InsertValueWithAnInserterCode());
+                break;
             case Iterator::RETURN:
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

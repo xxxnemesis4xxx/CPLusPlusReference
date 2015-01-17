@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <set>
 
 Iterator::Iterator()
 {
@@ -268,6 +269,31 @@ QString Iterator::AppendAllElementWithFrontInserterCode()
     QString display = QString(
                 "std::list<int> coll;\n\nstd::front_inserter(coll) = 44;\nstd::front_inserter(coll) = 55;\n"
                 "std::copy(coll.begin(),coll.end(),std::front_inserter(coll));"
+                );
+
+    return display;
+}
+
+QString Iterator::InsertValueWithAnInserterExample()
+{
+    QString display;
+    std::set<int> coll;
+
+    std::inserter(coll,coll.end()) = 44;
+    std::inserter(coll,coll.end()) = 55;
+
+    display = QString("Inserter value 44 and 55 inside the container\nValues in the container :");
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem))+ " ");
+
+    return display;
+}
+
+QString Iterator::InsertValueWithAnInserterCode()
+{
+    QString display = QString(
+                "std::set<int> coll;\n\nstd::inserter(coll,coll.end()) = 44;\nstd::inserter(coll,coll.end()) = 55;"
                 );
 
     return display;
