@@ -11,14 +11,14 @@ public:
     ~Iterator();
 
     enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE, FRONTINSERTER, FRONTINSERTER2,
-                        INSERTER, INSERTER2, RETURN};
+                        INSERTER, INSERTER2, INSERTER3, RETURN};
 
     static const QStringList listExamples()
     {
         return QStringList() << InsertElement() << DisplayElement() << MoveIterator() << InsertElementAtEnd()
                              << AppendAllElementWithBackInserter() << FindElementInContainer() << DistanceFromBeginning()
                              << InsertElementAtBeginning() << AppendAllElementWithFrontInserter() << InsertValueWithAnInserter()
-                             << AppendAllElementWithInserter() <<"Return";
+                             << AppendAllElementWithInserter() << InsertElementAtSpecificLocation() << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
@@ -32,6 +32,7 @@ public:
     static QString AppendAllElementWithFrontInserter() { return "Append all elements with front_inserter()"; }
     static QString InsertValueWithAnInserter() { return "Insert value with the function inserter()"; }
     static QString AppendAllElementWithInserter() { return "Append all elements with inserter()"; }
+    static QString InsertElementAtSpecificLocation() { return "Insert element at a specific location"; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
@@ -44,6 +45,7 @@ public:
     static QString AppendAllElementWithFrontInserterExample();
     static QString InsertValueWithAnInserterExample();
     static QString AppendAllElementWithInserterExample();
+    static QString InsertElementAtSpecificLocationExample();
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
@@ -56,6 +58,7 @@ public:
     static QString AppendAllElementWithFrontInserterCode();
     static QString InsertValueWithAnInserterCode();
     static QString AppendAllElementWithInserterCode();
+    static QString InsertElementAtSpecificLocationCode();
 };
 
 #endif // ITERATOR_H

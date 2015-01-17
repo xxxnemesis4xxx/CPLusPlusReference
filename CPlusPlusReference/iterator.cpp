@@ -313,7 +313,7 @@ QString Iterator::AppendAllElementWithInserterExample()
     for(const auto& elem : coll)
         display += QString(QString::fromStdString(std::to_string(elem))+ " ");
 
-    display = QString("\n\nUse inserter to insert all elements into a list\nValues in the list :");
+    display += QString("\n\nUse inserter to insert all elements into a list\nValues in the list :");
     std::copy(coll.begin(),coll.end(),inserter(coll2,coll2.begin()));
 
     for (const auto& elem : coll2)
@@ -328,6 +328,47 @@ QString Iterator::AppendAllElementWithInserterCode()
                 "std::set<int> coll;\nstd::list<int> coll2;\n\nstd::inserter(coll,coll.end()) = 44;\n"
                 "std::inserter(coll,coll.end()) = 55;\n\n"
                 "std::copy(coll.begin(),coll.end(),inserter(coll2,coll2.begin()));"
+                );
+
+    return display;
+}
+
+QString Iterator::InsertElementAtSpecificLocationExample()
+{
+    QString display;
+    std::set<int> coll;
+    std::list<int> coll2;
+
+    std::inserter(coll,coll.end()) = 44;
+    std::inserter(coll,coll.end()) = 55;
+
+    display = QString("Inserter value 44 and 55 inside the container\nValues in the container :");
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem))+ " ");
+
+    display += QString("\n\nUse inserter to insert all elements into a list\nValues in the list :");
+    std::copy(coll.begin(),coll.end(),inserter(coll2,coll2.begin()));
+
+    for (const auto& elem : coll2)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    display += QString("\n\nReinsert all element into the list before second element\nValues in the list :");
+    std::copy(coll.begin(),coll.end(),inserter(coll2, ++coll2.begin()));
+
+    for (const auto& elem : coll2)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString Iterator::InsertElementAtSpecificLocationCode()
+{
+    QString display = QString(
+                "std::set<int> coll;\nstd::list<int> coll2;\n\nstd::inserter(coll,coll.end()) = 44;\n"
+                "std::inserter(coll,coll.end()) = 55;\n\n"
+                "std::copy(coll.begin(),coll.end(),inserter(coll2,coll2.begin()));\n\n"
+                "std::copy(coll.begin(),coll.end(),inserter(coll2,++coll2.begin()));"
                 );
 
     return display;
