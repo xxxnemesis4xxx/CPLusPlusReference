@@ -240,3 +240,35 @@ QString Iterator::InsertElementAtBeginningCode()
 
     return display;
 }
+
+QString Iterator::AppendAllElementWithFrontInserterExample()
+{
+    QString display;
+    std::list<int> coll;
+
+    std::front_inserter(coll) = 44;
+    std::front_inserter(coll) = 55;
+
+    display = QString("Inserting value 44 and 55 to the container.\n\nValue inside the container :\n");
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    std::copy(coll.begin(),coll.end(),std::front_inserter(coll));
+    display += QString("\n\nNow, we are appending values inside the container to the same container:\nValue inside the container :");
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString Iterator::AppendAllElementWithFrontInserterCode()
+{
+    QString display = QString(
+                "std::list<int> coll;\n\nstd::front_inserter(coll) = 44;\nstd::front_inserter(coll) = 55;\n"
+                "std::copy(coll.begin(),coll.end(),std::front_inserter(coll));"
+                );
+
+    return display;
+}
