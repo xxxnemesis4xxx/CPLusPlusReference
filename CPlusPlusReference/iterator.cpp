@@ -214,3 +214,29 @@ QString Iterator::DistanceFromBeginningCode()
     return display;
 }
 
+QString Iterator::InsertElementAtBeginningExample()
+{
+    QString display;
+    std::list<int> coll;
+
+    std::front_inserter(coll) = 44;
+    std::front_inserter(coll) = 55;
+
+    display = QString("Inserting value 44 and 55 to the container.\n\nValue inside the container :\n");
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+
+
+    return display;
+}
+
+QString Iterator::InsertElementAtBeginningCode()
+{
+    QString display = QString(
+                "std::list<int> coll;\n\nstd::front_inserter(coll) = 44;\nstd::front_inserter(coll) = 55;"
+                );
+
+    return display;
+}

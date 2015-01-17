@@ -10,14 +10,14 @@ public:
     Iterator();
     ~Iterator();
 
-    enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE,
+    enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE, FRONTINSERTER,
                         RETURN};
 
     static const QStringList listExamples()
     {
         return QStringList() << InsertElement() << DisplayElement() << MoveIterator() << InsertElementAtEnd()
                              << AppendAllElementWithBackInserter() << FindElementInContainer() << DistanceFromBeginning()
-                             << "Return";
+                             << InsertElementAtBeginning() <<"Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
@@ -27,6 +27,7 @@ public:
     static QString AppendAllElementWithBackInserter() { return "Append all elements with back_inserter()"; }
     static QString FindElementInContainer() { return "Find element inside a container"; }
     static QString DistanceFromBeginning() { return "Distance from the beginning"; }
+    static QString InsertElementAtBeginning() { return "Insert element at the beginning"; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
@@ -35,6 +36,8 @@ public:
     static QString AppendAllElementWithBackInserterExample();
     static QString FindElementInContainerExample();
     static QString DistanceFromBeginningExample();
+    static QString InsertElementAtBeginningExample();
+
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
@@ -43,6 +46,7 @@ public:
     static QString AppendAllElementWithBackInserterCode();
     static QString FindElementInContainerCode();
     static QString DistanceFromBeginningCode();
+    static QString InsertElementAtBeginningCode();
 };
 
 #endif // ITERATOR_H
