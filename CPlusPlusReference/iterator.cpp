@@ -373,3 +373,28 @@ QString Iterator::InsertElementAtSpecificLocationCode()
 
     return display;
 }
+
+QString Iterator::MoveIteratorOffNPositionExample()
+{
+    QString display;
+    std::list<int> mylist;
+    for (int i=0; i<10; ++i)
+        mylist.push_back(i*10);
+
+    std::list<int>::iterator it = mylist.begin();
+
+    std::advance (it,5);
+    display = QString("The sixth element in mylist is: " + QString::fromStdString(std::to_string(*it)));
+
+    return display;
+}
+
+QString Iterator::MoveIteratorOffNPositionCode()
+{
+    QString display = QString(
+                "std::list<int> mylist;\nfor (int i=0; i<10; ++i)\n  mylist.push_back(i*10);\n\n"
+                "std::list<int>::iterator it = mylist.begin();\n\n std::advance(it,5);"
+                );
+
+    return display;
+}
