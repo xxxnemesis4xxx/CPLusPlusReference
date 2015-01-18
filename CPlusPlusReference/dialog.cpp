@@ -180,6 +180,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(Iterator::MoveIteratorOffNPositionExample());
                 ui->codeOverview->setText(Iterator::MoveIteratorOffNPositionCode());
                 break;
+            case Iterator::SWAP:
+                ui->outputExample->setText(Iterator::SwapFirstAndSecondValueExample());
+                ui->codeOverview->setText(Iterator::SwapFirstAndSecondValueCode());
+                break;
             case Iterator::RETURN:
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

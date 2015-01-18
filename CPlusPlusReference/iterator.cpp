@@ -398,3 +398,36 @@ QString Iterator::MoveIteratorOffNPositionCode()
 
     return display;
 }
+
+QString Iterator::SwapFirstAndSecondValueExample()
+{
+    QString display;
+    std::list<int> coll;
+
+    for(int i = 0; i <= 9; ++i)
+        coll.push_back(i);
+
+    display = QString(
+                "Insert values from 1 to 9 in the container.\nValues in the container : "
+                );
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    std::iter_swap(coll.begin(),std::next(coll.begin()));
+    display += QString("\n\nSwapping first and second value in the container\nValues in the container : ");
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString Iterator::SwapFirstAndSecondValueCode()
+{
+    QString display = QString(
+                "std::list<int> coll;\n\nfor(int i = 0;i <= 9; ++i)\n  coll.push_back(i);\n\n"
+                "std::iter_swap(coll.begin(),std::next(coll.begin()));"
+                );
+
+    return display;
+}
