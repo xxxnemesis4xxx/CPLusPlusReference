@@ -11,7 +11,7 @@ public:
     ~Iterator();
 
     enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE, FRONTINSERTER, FRONTINSERTER2,
-                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, OSTREAM, RETURN};
+                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, OSTREAM, PREVANDNEXT, RETURN};
 
     static const QStringList listExamples()
     {
@@ -20,7 +20,7 @@ public:
                              << InsertElementAtBeginning() << AppendAllElementWithFrontInserter() << InsertValueWithAnInserter()
                              << AppendAllElementWithInserter() << InsertElementAtSpecificLocation() << MoveIteratorOffNPosition()
                              << SwapFirstAndSecondValue() << SwapFirstAndLastValue() << ReadValueWithOstreamIterator()
-                             << "Return";
+                             << UsageOfPrevAndNext() << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
@@ -39,6 +39,7 @@ public:
     static QString SwapFirstAndSecondValue() { return "Swap first and second value"; }
     static QString SwapFirstAndLastValue(){ return "Swap first and last value" ; }
     static QString ReadValueWithOstreamIterator() { return "Read value with ostream iterator"; }
+    static QString UsageOfPrevAndNext() { return "Usage of prev() and next() with iterator";}
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
@@ -56,6 +57,7 @@ public:
     static QString SwapFirstAndSecondValueExample();
     static QString SwapFirstAndLastValueExample();
     static QString ReadValueWithOstreamIteratorExample();
+    static QString UsageOfPrevAndNextExample();
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
@@ -73,6 +75,7 @@ public:
     static QString SwapFirstAndSecondValueCode();
     static QString SwapFirstAndLastValueCode();
     static QString ReadValueWithOstreamIteratorCode();
+    static QString UsageOfPrevAndNextCode();
 };
 
 #endif // ITERATOR_H

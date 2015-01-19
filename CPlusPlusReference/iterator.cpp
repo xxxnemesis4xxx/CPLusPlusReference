@@ -515,3 +515,38 @@ QString Iterator::ReadValueWithOstreamIteratorCode()
                 "std::copy(coll.cbegin(),coll.cend(),std::ostream_iterator<int>(std::cout,strDelimiter.c_str()));"
                 );
 }
+
+QString Iterator::UsageOfPrevAndNextExample()
+{
+    QString display = "Comparing values : \n";
+    std::list<int> coll
+    {
+        3,40,12,62,1,16,34,12,98,25,12,32,50,33,65,42,21,30
+    };
+
+    auto pos = coll.begin();
+    while (pos !=coll.end() && std::next(pos) != coll.end())
+    {
+        auto var = std::next(pos);
+        if (*pos > *var)
+            display += QString(QString::fromStdString(std::to_string(*pos)) + " > " + QString::fromStdString(std::to_string(*var)) + "\n");
+        else if (*pos == *var)
+            display += QString(QString::fromStdString(std::to_string(*pos)) + " = " + QString::fromStdString(std::to_string(*var)) + "\n");
+        else
+            display += QString(QString::fromStdString(std::to_string(*pos)) + " < " + QString::fromStdString(std::to_string(*var)) + "\n");
+
+        ++pos;
+    };
+
+    return display;
+}
+
+QString Iterator::UsageOfPrevAndNextCode()
+{
+    return QString(
+                "std::list<int> coll { 3,40,12,62,1,16,34,12,98,25,12,32,50,33,65,42,21,30 };"
+                "\n\nauto pos = coll.begin();\nwhile(pos != coll.end() && std::next(pos) != coll.end())\n{\n"
+                "auto var = std::next(pos);\nif(*pos > *var)\ndisplay += ...;\nelse if (*pos == *var)\ndisplay += ...;\n"
+                "else\ndisplay += ...;\n\n++pos;\n};"
+                );
+}
