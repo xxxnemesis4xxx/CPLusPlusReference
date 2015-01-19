@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <string>
 #include <set>
+#include <QDebug>
 
 Iterator::Iterator()
 {
@@ -463,4 +464,54 @@ QString Iterator::SwapFirstAndLastValueCode()
                 );
 
     return display;
+}
+
+QString Iterator::ReadValueWithOstreamIteratorExample()
+{
+    //Create ostream iterator for stream cout
+    std::ostream_iterator<int> intWriter(std::cout,"\n");
+
+    //Write element with the usual iterator interface
+    *intWriter = 42;
+    ++intWriter;
+    *intWriter = 77;
+    ++intWriter;
+    *intWriter = -5;
+
+    //Create a collection with elements from 1 to 9
+    std::vector<int> coll = {1,2,3,4,5,6,7,8,9};
+
+    //Write all elementw without delimiter
+    std::copy(coll.cbegin(),coll.cend(),std::ostream_iterator<int>(std::cout));
+    std::cout << std::endl;
+
+    //Write all elements with " < " delimiter
+    std::copy(coll.cbegin(),coll.cend(),std::ostream_iterator<int>(std::cout," < "));
+    std::cout << std::endl;
+
+    //Write all element with a string deliter
+    // Note : .c_str() convert out string array into a char* string because the function only accept c style string
+    std::string strDelimiter = " != ";
+    std::copy(coll.cbegin(), coll.cend(), std::ostream_iterator<int>(std::cout,strDelimiter.c_str()));
+
+    return QString("This can only be run on console!");
+}
+
+QString Iterator::ReadValueWithOstreamIteratorCode()
+{
+    return QString(
+                "<FONT COLOR=green>//Create ostream iterator for stream cout</font><br/>"
+                "std::ostream_iterator<int> intWritter(std::cout,\"\\n\");<br/><br/>"
+                "<FONT COLOR=green>//Write elements with the usual iterator interface</font><br/>"
+                "*intWritter = 42;<br/>++intWritter;<br/>*intWritter = 77;<br/>++intWritter;<br/>*intWritter = -5;<br/><br/>"
+                "<FONT COLOR=green>//Create collection with elements from 1 to 9</font><br/>"
+                "std::vector<int> coll = {1,2,3,4,5,6,7,8,9};<br/><br/>"
+                "<FONT COLOR=green>Write all elements without delimiter</font><br/>"
+                "std::copy(coll.cbegin(),coll.cend(),std::ostream_iterator<int>(std::cout));<br/><br/>"
+                "<FONT COLOR=green>Write all elements with delimiter</font><br/>"
+                "std::copy(coll.cbegin(),coll.cend(),std::ostream_iterator<int>(std::cout,\"  \"));<br/><br/>"
+                "<FONT COLOR=green>Write all element with a string delimiter</font><br/>"
+                "std::string strDelimiter = \" != \";<br/>"
+                "std::copy(coll.cbegin(),coll.cend(),std::ostream_iterator<int>(std::cout,strDelimiter.c_str()));"
+                );
 }

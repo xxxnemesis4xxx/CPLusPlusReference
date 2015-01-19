@@ -11,7 +11,7 @@ public:
     ~Iterator();
 
     enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE, FRONTINSERTER, FRONTINSERTER2,
-                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, RETURN};
+                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, OSTREAM, RETURN};
 
     static const QStringList listExamples()
     {
@@ -19,7 +19,8 @@ public:
                              << AppendAllElementWithBackInserter() << FindElementInContainer() << DistanceFromBeginning()
                              << InsertElementAtBeginning() << AppendAllElementWithFrontInserter() << InsertValueWithAnInserter()
                              << AppendAllElementWithInserter() << InsertElementAtSpecificLocation() << MoveIteratorOffNPosition()
-                             << SwapFirstAndSecondValue() << SwapFirstAndLastValue() << "Return";
+                             << SwapFirstAndSecondValue() << SwapFirstAndLastValue() << ReadValueWithOstreamIterator()
+                             << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
@@ -37,6 +38,7 @@ public:
     static QString MoveIteratorOffNPosition() { return "Advances the iterator by N elements"; }
     static QString SwapFirstAndSecondValue() { return "Swap first and second value"; }
     static QString SwapFirstAndLastValue(){ return "Swap first and last value" ; }
+    static QString ReadValueWithOstreamIterator() { return "Read value with ostream iterator"; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
@@ -53,6 +55,7 @@ public:
     static QString MoveIteratorOffNPositionExample();
     static QString SwapFirstAndSecondValueExample();
     static QString SwapFirstAndLastValueExample();
+    static QString ReadValueWithOstreamIteratorExample();
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
@@ -69,6 +72,7 @@ public:
     static QString MoveIteratorOffNPositionCode();
     static QString SwapFirstAndSecondValueCode();
     static QString SwapFirstAndLastValueCode();
+    static QString ReadValueWithOstreamIteratorCode();
 };
 
 #endif // ITERATOR_H
