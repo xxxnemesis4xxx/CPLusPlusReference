@@ -11,7 +11,7 @@ public:
     ~Iterator();
 
     enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE, FRONTINSERTER, FRONTINSERTER2,
-                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, RETURN};
+                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, RETURN};
 
     static const QStringList listExamples()
     {
@@ -19,7 +19,7 @@ public:
                              << AppendAllElementWithBackInserter() << FindElementInContainer() << DistanceFromBeginning()
                              << InsertElementAtBeginning() << AppendAllElementWithFrontInserter() << InsertValueWithAnInserter()
                              << AppendAllElementWithInserter() << InsertElementAtSpecificLocation() << MoveIteratorOffNPosition()
-                             << SwapFirstAndSecondValue() << "Return";
+                             << SwapFirstAndSecondValue() << SwapFirstAndLastValue() << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
@@ -36,6 +36,7 @@ public:
     static QString InsertElementAtSpecificLocation() { return "Insert element at a specific location"; }
     static QString MoveIteratorOffNPosition() { return "Advances the iterator by N elements"; }
     static QString SwapFirstAndSecondValue() { return "Swap first and second value"; }
+    static QString SwapFirstAndLastValue(){ return "Swap first and last value" ; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
@@ -51,6 +52,7 @@ public:
     static QString InsertElementAtSpecificLocationExample();
     static QString MoveIteratorOffNPositionExample();
     static QString SwapFirstAndSecondValueExample();
+    static QString SwapFirstAndLastValueExample();
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
@@ -66,6 +68,7 @@ public:
     static QString InsertElementAtSpecificLocationCode();
     static QString MoveIteratorOffNPositionCode();
     static QString SwapFirstAndSecondValueCode();
+    static QString SwapFirstAndLastValueCode();
 };
 
 #endif // ITERATOR_H

@@ -184,6 +184,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(Iterator::SwapFirstAndSecondValueExample());
                 ui->codeOverview->setText(Iterator::SwapFirstAndSecondValueCode());
                 break;
+            case Iterator::SWAP2:
+                ui->outputExample->setText(Iterator::SwapFirstAndLastValueExample());
+                ui->codeOverview->setText(Iterator::SwapFirstAndLastValueCode());
+                break;
             case Iterator::RETURN:
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
