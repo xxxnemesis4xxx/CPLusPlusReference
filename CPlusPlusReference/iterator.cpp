@@ -553,10 +553,36 @@ QString Iterator::UsageOfPrevAndNextCode()
 
 QString Iterator::RandomAccessIteratorExample()
 {
+    QString display("Print all elements inside the container :\n");
+    std::vector<int> coll;
 
+    for (int i = -3; i <= 9; ++i)
+        coll.push_back(i);
+
+    std::vector<int>::iterator pos;
+    for (pos = coll.begin(); pos < coll.end(); ++pos)
+        display += QString(QString::fromStdString(std::to_string(*pos)) + ",");
+
+    display += QString("\n\nPrint all element inside the container with a second technique :\n");
+    for (int i = 0; i < coll.size(); ++i)
+        display += QString(QString::fromStdString(std::to_string(coll.begin()[i])) + ",");
+
+    display += QString("\n\nPrint number of elements by processing the the distance : ");
+    display += QString("\nNumber/distance : " + QString::fromStdString(std::to_string(coll.end()-coll.begin())));
+    display += QString("\n\nPrint every second element :\n");
+
+    for (pos = coll.begin(); pos < coll.end() -1 ; pos += 2)
+        display += QString(QString::fromStdString(std::to_string(*pos)) + ",");
+
+    return display;
 }
 
 QString Iterator::RandomAccessIteratorCode()
 {
-
+    return QString(
+                "std::vector<int> coll;\n\nfor(int i = -3; i <= 9; ++i)\n  coll.push_back(i);\n\n"
+                "std::vector<int> pos;\nfor (pos = coll.begin(); pos < coll.end(); ++pos)\n  display += *pos;\n\n"
+                "display += coll.end() - coll.begin();\n\nfor (int i = 0; i < coll.size(); ++i)\n  display += coll.begin()[i];\n\n"
+                "for (pos = coll.begin(); pos < coll.end() - 1; pos += 2)\n  display += *pos;"
+                );
 }
