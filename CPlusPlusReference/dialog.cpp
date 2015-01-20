@@ -4,6 +4,7 @@
 #include "tuple.h"
 #include "pair.h"
 #include "iterator.h"
+#include "funcobjandlambda.h"
 #include <QVariant>
 #include <QDebug>
 
@@ -45,6 +46,9 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             setDebut(false);
             break;
         case Categorie::FUNCOBJLAM :
+            ui->listWidget->addItems(FuncObjAndLambda::listExamples());
+            setPosition(3);
+            setDebut(false);
             break;
         case Categorie::STLALGO :
             break;
@@ -218,6 +222,17 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 setDebut(true);
                 break;
             }
+            break;
+        case 3:
+            switch(row)
+            {
+            case FuncObjAndLambda::RETURN :
+                ui->listWidget->clear();
+                ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
+                break;
+            }
+
             break;
         default:
             break;
