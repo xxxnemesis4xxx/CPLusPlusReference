@@ -200,6 +200,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(Iterator::RandomAccessIteratorExample());
                 ui->codeOverview->setText(Iterator::RandomAccessIteratorCode());
                 break;
+            case Iterator::REVERSE :
+                ui->outputExample->setText(Iterator::PrintAllElementInReverseExample());
+                ui->codeOverview->setText(Iterator::PrintAllElementInReverseCode());
+                break;
             case Iterator::RETURN:
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

@@ -586,3 +586,31 @@ QString Iterator::RandomAccessIteratorCode()
                 "for (pos = coll.begin(); pos < coll.end() - 1; pos += 2)\n  display += *pos;"
                 );
 }
+
+QString Iterator::PrintAllElementInReverseExample()
+{
+    QString display = "Print values from left to right :\n";
+    std::list<int> coll { 1,2,3,4,5,6,7,8,9};
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    display += QString ("\n\nPrint values from right to left :\n");
+    auto pos = coll.rbegin();
+    while (pos != coll.rend())
+    {
+        display += QString(QString::fromStdString(std::to_string(*pos)) + " ");
+        ++pos;
+    }
+
+    return display;
+}
+
+QString Iterator::PrintAllElementInReverseCode()
+{
+    return QString(
+                "std::list<int> coll { 1,2,3,4,5,6,7,8,9 };\n\nfor(const auto& elem : coll)\n"
+                "  display += ...;\n\nauto pos = coll.rbegin();\nwhile(pos != coll.rend())\n{\ndisplay += ...;\n"
+                "++pos;\n}"
+                );
+}
