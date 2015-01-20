@@ -8,6 +8,8 @@
 #include <string>
 #include <set>
 #include <QDebug>
+#include <unordered_set>
+
 
 Iterator::Iterator()
 {
@@ -637,5 +639,49 @@ QString Iterator::UsageOfForEachCode()
     return QString(
                 "void doubleValue(int& elem)\n{\n   elem = elem * 2;\n}\n\n"
                 "std::list<int> coll = { 1,2,3,4,5,6,7,8,9 };\nstd::for_each(coll.begin();coll.end();doubleValue);"
+                );
+}
+
+QString Iterator::UserDefineIteratorsExample()
+{
+    QString display = "Iterator class defined by the user\n\n";
+    std::unordered_set<int> coll;
+
+    //Create inserter for coll
+    display += QString("Insert elements 44 and 55 inside the container\n");
+    asso_inserter(coll) = 44;
+    asso_inserter(coll) = 55;
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    //User inserter with an algorithm
+    display += QString("\n\nInsert elements of another container in our unordered_set\n");
+    std::vector<int> vals = { 33,67,-4,13,5,2 };
+    std::copy(vals.begin(),vals.end(),asso_inserter(coll));
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString Iterator::UserDefineIteratorsCode()
+{
+    return QString(
+                "template <typename Container>\n"
+                "class asso_insert_iterator : public std::iterator\n"
+                "<std::output_iterator_tag, typename Container::value_type>\n"
+                "{\nprotected:\n  Container& container;\n\npublic :\n"
+                "   explicit asso_insert_iterator(Container& c) : container(c) {}\n\n"
+                "   asso_insert_iterator<Container>& operator= (const typename Container::value_type& value)\n"
+                "   {\n      container.insert(value);\n      return *this;\n   }\n\n"
+                "   asso_insert_iterator<Container>& operator* ()\n   {\n      return *this;\n   }\n\n"
+                "   asso_insert_iterator<Container>& operator++ () { return *this; }\n"
+                "   asso_insert_iterator<Container>& operator++ (int) { return *this; }\n"
+                "};\n\ntemplate <typename Container>\n"
+                "inline asso_insert_iterator<Container> asso_inserter( Container& c)\n{\n"
+                "   return asso_insert_iterator<Container>(c);\n}\n\n"
+                "----------------------------------------------------------------------------"
+                "std::unordered_set<int> coll;\n\nasso_inserter(coll) = 44;\nasso_inserter(coll) = 55;\n\n"
+                "std::vector<int> vals = { 33,67,-4,13,5,2 };\nstd::copy(vals.begin(),vals.end(),asso_inserter(coll));"
                 );
 }

@@ -3,6 +3,41 @@
 
 #include <QString>
 #include <QStringList>
+#include <iterator>
+
+template <typename Container>
+class asso_insert_iterator : public std::iterator
+        <std::output_iterator_tag,typename Container::value_type>
+{
+protected:
+    Container& container; //Container in whcih elements are inserted
+
+public :
+    //Constructor
+    explicit asso_insert_iterator(Container& c) : container(c) {}
+
+    //Assignment operator
+    //- insert a value into the container
+    asso_insert_iterator<Container>& operator= (const typename Container::value_type& value)
+    {
+        container.insert(value);
+        return *this;
+    }
+
+    //Dereferencing is a no-op that returns the iterator itself
+    asso_insert_iterator<Container>& operator* () {return *this;}
+
+    //Increment operation is a no-op that returns the iterator itself
+    asso_insert_iterator<Container>& operator++ () { return *this; }
+    asso_insert_iterator<Container>& operator++ (int) { return *this; }
+};
+
+//Convenience function to create the inserter
+template <typename Container>
+inline asso_insert_iterator<Container> asso_inserter (Container& c)
+{
+    return asso_insert_iterator<Container>(c);
+}
 
 class Iterator
 {
@@ -12,7 +47,7 @@ public:
 
     enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE, FRONTINSERTER, FRONTINSERTER2,
                         INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, OSTREAM, PREVANDNEXT, RANDOMACCESS, REVERSE, FOREACH,
-                        RETURN};
+                        USERDEFINEDITERATOR, RETURN};
 
     static const QStringList listExamples()
     {
@@ -22,7 +57,7 @@ public:
                              << AppendAllElementWithInserter() << InsertElementAtSpecificLocation() << MoveIteratorOffNPosition()
                              << SwapFirstAndSecondValue() << SwapFirstAndLastValue() << ReadValueWithOstreamIterator()
                              << UsageOfPrevAndNext() << RandomAccessIterator() << PrintAllElementInReverse() << UsageOfForEach()
-                             << "Return";
+                             << UserDefineIterators() << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
@@ -45,6 +80,7 @@ public:
     static QString RandomAccessIterator() { return "Random access with Iterator"; }
     static QString PrintAllElementInReverse() { return "Print all element in reverse"; }
     static QString UsageOfForEach() { return "How to use for_each()"; }
+    static QString UserDefineIterators() { return "User defined Iterators"; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
@@ -66,6 +102,7 @@ public:
     static QString RandomAccessIteratorExample();
     static QString PrintAllElementInReverseExample();
     static QString UsageOfForEachExample();
+    static QString UserDefineIteratorsExample();
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
@@ -87,6 +124,7 @@ public:
     static QString RandomAccessIteratorCode();
     static QString PrintAllElementInReverseCode();
     static QString UsageOfForEachCode();
+    static QString UserDefineIteratorsCode();
 };
 
 #endif // ITERATOR_H
