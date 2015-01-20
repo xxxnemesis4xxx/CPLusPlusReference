@@ -550,3 +550,13 @@ QString Iterator::UsageOfPrevAndNextCode()
                 "else\ndisplay += ...;\n\n++pos;\n};"
                 );
 }
+
+QString Iterator::RandomAccessIteratorExample()
+{
+
+}
+
+QString Iterator::RandomAccessIteratorCode()
+{
+
+}
