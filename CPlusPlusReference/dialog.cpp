@@ -3,6 +3,7 @@
 #include "categorie.h"
 #include "tuple.h"
 #include "pair.h"
+#include "iterator.h"
 #include <QVariant>
 #include <QDebug>
 
@@ -22,21 +23,26 @@ Dialog::~Dialog()
 void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
 {
     int row = index.row();
-    QVariant result = index.data();
-    QString text = result.toString();
 
-    if (Categorie::Categories().contains(text))
+    if (getDebut())
     {
         ui->listWidget->clear();
         switch(row)
         {
         case Categorie::TUPLES :
             ui->listWidget->addItems(Tuple::ListExamples());
+            setPosition(0);
+            setDebut(false);
             break;
         case Categorie::PAIRS:
             ui->listWidget->addItems(Pair::ListExamples());
+            setPosition(1);
+            setDebut(false);
             break;
         case Categorie::ITERATOR:
+            ui->listWidget->addItems(Iterator::listExamples());
+            setPosition(2);
+            setDebut(false);
             break;
         case Categorie::FUNCOBJLAM :
             break;
@@ -53,8 +59,9 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
     }
     else
     {
-        if (Tuple::ListExamples().contains(text))
+        switch(getPosition())
         {
+        case 0:
             switch(row)
             {
             case Tuple::ITERATOR :
@@ -80,11 +87,11 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             case Tuple::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
                 break;
             }
-        }
-        if (Pair::ListExamples().contains(text))
-        {
+            break;
+        case 1:
             switch(row)
             {
             case Pair::CREATEPAIRDEFTYPE :
@@ -114,8 +121,106 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             case Pair::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
                 break;
             }
+            break;
+        case 2:
+            switch(row)
+            {
+            case Iterator::INSERTELEMENT:
+                ui->codeOverview->setText(Iterator::InsertElementCode());
+                ui->outputExample->setText(Iterator::InsertElementExample());
+                break;
+            case Iterator::DISPLAYVALUE :
+                ui->codeOverview->setText(Iterator::DisplayElementCode());
+                ui->outputExample->setText(Iterator::DisplayElementExample());
+                break;
+            case Iterator::ADVANCE :
+                ui->outputExample->setText(Iterator::MoveIteratorExample());
+                ui->codeOverview->setText(Iterator::MoveIteratorCode());
+                break;
+            case Iterator::BACKINSERTER :
+                ui->outputExample->setText(Iterator::InsertElementAtEndExample());
+                ui->codeOverview->setText(Iterator::InsertElementAtEndCode());
+                break;
+            case Iterator::BACKINSERTER2:
+                ui->outputExample->setText(Iterator::AppendAllElementWithBackInserterExample());
+                ui->codeOverview->setText(Iterator::AppendAllElementWithBackInserterCode());
+                break;
+            case Iterator::FIND:
+                ui->outputExample->setText(Iterator::FindElementInContainerExample());
+                ui->codeOverview->setText(Iterator::FindElementInContainerCode());
+                break;
+            case Iterator::DISTANCE:
+                ui->outputExample->setText(Iterator::DistanceFromBeginningExample());
+                ui->codeOverview->setText(Iterator::DistanceFromBeginningCode());
+                break;
+            case Iterator::FRONTINSERTER:
+                ui->outputExample->setText(Iterator::InsertElementAtBeginningExample());
+                ui->codeOverview->setText(Iterator::InsertElementAtBeginningCode());
+                break;
+            case Iterator::FRONTINSERTER2 :
+                ui->outputExample->setText(Iterator::AppendAllElementWithFrontInserterExample());
+                ui->codeOverview->setText(Iterator::AppendAllElementWithFrontInserterCode());
+                break;
+            case Iterator::INSERTER :
+                ui->outputExample->setText(Iterator::InsertValueWithAnInserterExample());
+                ui->codeOverview->setText(Iterator::InsertValueWithAnInserterCode());
+                break;
+            case Iterator::INSERTER2:
+                ui->outputExample->setText(Iterator::AppendAllElementWithInserterExample());
+                ui->codeOverview->setText(Iterator::AppendAllElementWithInserterCode());
+                break;
+            case Iterator::INSERTER3:
+                ui->outputExample->setText(Iterator::InsertElementAtSpecificLocationExample());
+                ui->codeOverview->setText(Iterator::InsertElementAtSpecificLocationCode());
+                break;
+            case Iterator::ADVANCES:
+                ui->outputExample->setText(Iterator::MoveIteratorOffNPositionExample());
+                ui->codeOverview->setText(Iterator::MoveIteratorOffNPositionCode());
+                break;
+            case Iterator::SWAP:
+                ui->outputExample->setText(Iterator::SwapFirstAndSecondValueExample());
+                ui->codeOverview->setText(Iterator::SwapFirstAndSecondValueCode());
+                break;
+            case Iterator::SWAP2:
+                ui->outputExample->setText(Iterator::SwapFirstAndLastValueExample());
+                ui->codeOverview->setText(Iterator::SwapFirstAndLastValueCode());
+                break;
+            case Iterator::OSTREAM:
+                ui->outputExample->setText(Iterator::ReadValueWithOstreamIteratorExample());
+                ui->codeOverview->setText(Iterator::ReadValueWithOstreamIteratorCode());
+                break;
+            case Iterator::PREVANDNEXT :
+                ui->outputExample->setText(Iterator::UsageOfPrevAndNextExample());
+                ui->codeOverview->setText(Iterator::UsageOfPrevAndNextCode());
+                break;
+            case Iterator::RANDOMACCESS:
+                ui->outputExample->setText(Iterator::RandomAccessIteratorExample());
+                ui->codeOverview->setText(Iterator::RandomAccessIteratorCode());
+                break;
+            case Iterator::REVERSE :
+                ui->outputExample->setText(Iterator::PrintAllElementInReverseExample());
+                ui->codeOverview->setText(Iterator::PrintAllElementInReverseCode());
+                break;
+            case Iterator::FOREACH :
+                ui->outputExample->setText(Iterator::UsageOfForEachExample());
+                ui->codeOverview->setText(Iterator::UsageOfForEachCode());
+                break;
+            case Iterator::USERDEFINEDITERATOR :
+                ui->outputExample->setText(Iterator::UserDefineIteratorsExample());
+                ui->codeOverview->setText(Iterator::UserDefineIteratorsCode());
+                break;
+            case Iterator::RETURN:
+                ui->listWidget->clear();
+                ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
+                break;
+            }
+            break;
+        default:
+            break;
         }
     }
 }
