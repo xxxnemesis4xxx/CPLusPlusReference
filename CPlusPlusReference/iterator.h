@@ -11,7 +11,8 @@ public:
     ~Iterator();
 
     enum indexIterator {INSERTELEMENT,DISPLAYVALUE,ADVANCE,BACKINSERTER, BACKINSERTER2, FIND, DISTANCE, FRONTINSERTER, FRONTINSERTER2,
-                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, OSTREAM, PREVANDNEXT, RANDOMACCESS, REVERSE, RETURN};
+                        INSERTER, INSERTER2, INSERTER3, ADVANCES, SWAP, SWAP2, OSTREAM, PREVANDNEXT, RANDOMACCESS, REVERSE, FOREACH,
+                        RETURN};
 
     static const QStringList listExamples()
     {
@@ -20,7 +21,8 @@ public:
                              << InsertElementAtBeginning() << AppendAllElementWithFrontInserter() << InsertValueWithAnInserter()
                              << AppendAllElementWithInserter() << InsertElementAtSpecificLocation() << MoveIteratorOffNPosition()
                              << SwapFirstAndSecondValue() << SwapFirstAndLastValue() << ReadValueWithOstreamIterator()
-                             << UsageOfPrevAndNext() << RandomAccessIterator() << PrintAllElementInReverse() << "Return";
+                             << UsageOfPrevAndNext() << RandomAccessIterator() << PrintAllElementInReverse() << UsageOfForEach()
+                             << "Return";
     }
 
     static QString InsertElement() { return "Insert elements"; }
@@ -42,6 +44,7 @@ public:
     static QString UsageOfPrevAndNext() { return "Usage of prev() and next() with iterator";}
     static QString RandomAccessIterator() { return "Random access with Iterator"; }
     static QString PrintAllElementInReverse() { return "Print all element in reverse"; }
+    static QString UsageOfForEach() { return "How to use for_each()"; }
 
     static QString InsertElementExample();
     static QString DisplayElementExample();
@@ -62,6 +65,7 @@ public:
     static QString UsageOfPrevAndNextExample();
     static QString RandomAccessIteratorExample();
     static QString PrintAllElementInReverseExample();
+    static QString UsageOfForEachExample();
 
     static QString InsertElementCode();
     static QString DisplayElementCode();
@@ -82,6 +86,7 @@ public:
     static QString UsageOfPrevAndNextCode();
     static QString RandomAccessIteratorCode();
     static QString PrintAllElementInReverseCode();
+    static QString UsageOfForEachCode();
 };
 
 #endif // ITERATOR_H

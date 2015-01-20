@@ -614,3 +614,28 @@ QString Iterator::PrintAllElementInReverseCode()
                 "++pos;\n}"
                 );
 }
+
+void doubleValue(int& elem)
+{
+    elem = elem * 2;
+}
+
+QString Iterator::UsageOfForEachExample()
+{
+    QString display = "Print all elements in a container\n";
+    std::list<int> coll = {1,2,3,4,5,6,7,8,9 };
+
+    std::for_each(coll.begin(),coll.end(),doubleValue);
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString Iterator::UsageOfForEachCode()
+{
+    return QString(
+                "void doubleValue(int& elem)\n{\n   elem = elem * 2;\n}\n\n"
+                "std::list<int> coll = { 1,2,3,4,5,6,7,8,9 };\nstd::for_each(coll.begin();coll.end();doubleValue);"
+                );
+}
