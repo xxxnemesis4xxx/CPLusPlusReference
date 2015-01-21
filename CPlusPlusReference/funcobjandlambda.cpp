@@ -1,6 +1,10 @@
 #include "funcobjandlambda.h"
 #include <functional>
 #include <iostream>
+#include <algorithm>
+#include <locale>
+#include <string>
+
 
 FuncObjAndLambda::FuncObjAndLambda()
 {
@@ -42,6 +46,48 @@ QString FuncObjAndLambda::MathematicalOperationsCode()
                 "int result2 = plus10times2(7);\n\nauto pow3 = std::bind(std::multiplies<int>(),std::bind(std::multiplies<int>(),std::placeholders::_1,std::placeholders::_1),std::placeholders::_1);\n"
                 "int result3 = pow3(7);\n\nauto inversDivide = std::bind(std::divides<double>(),std::placeholders::_2,std::placeholders::_1);\n"
                 "double result4 = inversDivide(49,7);"
+                );
+}
+
+char myToupper(char c)
+{
+    //Local is for international portability
+    std::locale loc;
+
+    return std::use_facet<std::ctype<char>>(loc).toupper(c);
+}
+
+char myTolower(char c)
+{
+    //Loal is for international portability
+    std::locale loc;
+
+    return std::use_facet<std::ctype<char>>(loc).tolower(c);
+}
+
+QString FuncObjAndLambda::CapitalAndLowercaseLetterExample()
+{
+    QString display = "Turning a lowercase word into a uppercase word\nhello -> ";
+    std::string word = "hello";
+
+    for(int i = 0; i < word.size(); ++i)
+        word[i] = myToupper(word[i]);
+    display += QString(QString::fromStdString(word) + "\n\n");
+
+    for(int i = 0; i < word.size(); ++i)
+        word[i] = myTolower(word[i]);
+    display += QString("Turning a Capital word into a lowercase word\nHELLO -> " + QString::fromStdString(word));
+
+    return display;
+}
+
+QString FuncObjAndLambda::CapitalAndLowercaseLetterCode()
+{
+    return QString(
+                "char myToupper(char c)\n{\n   std::locale c;\n   return std::use_facet<std::ctype<char>>(loc).toupper(c);\n}\n\n"
+                "char myTolower(char c)\n{\n   std::locale c;\n   return std::use_facet<std::ctype<char>>(loc).tolower(c);\n}\n\n"
+                "std::string word = \"hello\";\n\nfor(int i = 0; i < word.size(); ++i)\n   word[i] = myToupper(word[i]);\ndisplay += word;\n\n"
+                "for (int i = 0; i < word.size(); ++i)\n   word[i] = myTolower(word[i]);\ndisplay += word;"
                 );
 }
 

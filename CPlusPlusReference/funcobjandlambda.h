@@ -10,18 +10,21 @@ public:
     FuncObjAndLambda();
     ~FuncObjAndLambda();
 
-    enum indexFuncObjAndLambda {BIND, RETURN };
+    enum indexFuncObjAndLambda {BIND, BIND2, RETURN };
 
     static const QStringList listExamples()
     {
-        return QStringList() << MathematicalOperations() << "Return";
+        return QStringList() << MathematicalOperations() << CapitalAndLowercaseLetter() << "Return";
     }
 
     static QString MathematicalOperations() { return "Mathematical operations"; }
+    static QString CapitalAndLowercaseLetter() { return "Capital and lowercase letters"; }
 
     static QString MathematicalOperationsExample();
+    static QString CapitalAndLowercaseLetterExample();
 
     static QString MathematicalOperationsCode();
+    static QString CapitalAndLowercaseLetterCode();
 };
 
 #endif // FUNCOBJANDLAMBDA_H
