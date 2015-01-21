@@ -10,12 +10,18 @@ public:
     FuncObjAndLambda();
     ~FuncObjAndLambda();
 
-    enum indexFuncObjAndLambda { RETURN };
+    enum indexFuncObjAndLambda {BIND, RETURN };
 
     static const QStringList listExamples()
     {
-        return QStringList() << "Return";
+        return QStringList() << MathematicalOperations() << "Return";
     }
+
+    static QString MathematicalOperations() { return "Mathematical operations"; }
+
+    static QString MathematicalOperationsExample();
+
+    static QString MathematicalOperationsCode();
 };
 
 #endif // FUNCOBJANDLAMBDA_H

@@ -226,6 +226,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
         case 3:
             switch(row)
             {
+            case FuncObjAndLambda::BIND:
+                ui->outputExample->setText(FuncObjAndLambda::MathematicalOperationsExample());
+                ui->codeOverview->setText(FuncObjAndLambda::MathematicalOperationsCode());
+                break;
             case FuncObjAndLambda::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
