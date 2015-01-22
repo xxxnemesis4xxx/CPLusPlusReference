@@ -246,6 +246,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(FuncObjAndLambda::PrintMeanValueExample());
                 ui->codeOverview->setText(FuncObjAndLambda::PrintMeanValueCode());
                 break;
+            case FuncObjAndLambda::LAMBDA2 :
+                ui->outputExample->setText(FuncObjAndLambda::RemoveThirdElementExample());
+                ui->codeOverview->setText(FuncObjAndLambda::RemoveThirdElementCode());
+                break;
             case FuncObjAndLambda::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

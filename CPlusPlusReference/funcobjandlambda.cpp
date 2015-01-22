@@ -205,5 +205,37 @@ QString FuncObjAndLambda::PrintMeanValueCode()
                 );
 }
 
+QString FuncObjAndLambda::RemoveThirdElementExample()
+{
+    QString display = "Remove the third element inside a container\n\nValue inside the container :\n";
+    std::list<int> coll = { 1,2,3,4,5,6,7,8,9,10 };
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    std::list<int>::iterator pos;
+    int count = 0;
+    pos = remove_if(coll.begin(),coll.end(),[&count] (int) mutable
+    {
+       return ++count == 3;
+    });
+    coll.erase(pos,coll.end());
+
+    display += QString("\n\nValue inside the container now :\n");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString FuncObjAndLambda::RemoveThirdElementCode()
+{
+    return QString(
+                "std::list<int> coll = { 1,2,3,4,5,6,7,8,9,10 };\nstd::list<int>::iterator pos;\nint count = 0;\n"
+                "\npos = remove_if(coll.begin(),coll.end(),[&count] (int) mutable\n{\n   return ++count == 3;\n}\n"
+                "coll.erase(pos,coll.end());"
+                );
+}
+
 
 
