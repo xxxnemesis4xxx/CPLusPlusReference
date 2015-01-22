@@ -237,5 +237,34 @@ QString FuncObjAndLambda::RemoveThirdElementCode()
                 );
 }
 
+QString FuncObjAndLambda::SearchSubcaseStringInsensitiveExample()
+{
+    QString display = "Search substring case insensitive\n";
+    std::string s("Internationalization");
+    std::string sub("Nation");
+    display += QString("First word = " + QString::fromStdString(s) + "\nSecond word = " + QString::fromStdString(sub) + "\n\n");
+
+    std::string::iterator pos;
+    pos = search(s.begin(),s.end(),sub.begin(),sub.end(),[] (char c1, char c2)
+    {
+       return myToupper(c1)==myToupper(c2);
+    });
+
+    if (pos != s.end())
+        display += QString("\"" + QString::fromStdString(sub) + "\" is part of \"" + QString::fromStdString(s) + "\"");
+
+    return display;
+}
+
+QString FuncObjAndLambda::SearchSubcaseStringInsensitiveCode()
+{
+    return QString(
+                "char myToupper(char c)\n{\n   std::locale c;\n   return std::use_facet<std::ctype<char>>(loc).toupper(c);\n}\n\n"
+                "std::string s(\"Internationalization\");\nstd::string sub(\"nation\");\n\n"
+                "std::string::iterator pos;\npos = search(s.begin(),s.end(),sub.begin(),sub.end(),[] (char c1, char c2)\n{\n   return myToupper(c1)==myToupper(c2);\n}\n\n"
+                "if (pos != s.end())\n   display += ...; "
+                );
+}
+
 
 

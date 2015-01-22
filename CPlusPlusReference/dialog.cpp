@@ -250,6 +250,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(FuncObjAndLambda::RemoveThirdElementExample());
                 ui->codeOverview->setText(FuncObjAndLambda::RemoveThirdElementCode());
                 break;
+            case FuncObjAndLambda::LAMBDA3 :
+                ui->outputExample->setText(FuncObjAndLambda::SearchSubcaseStringInsensitiveExample());
+                ui->codeOverview->setText(FuncObjAndLambda::SearchSubcaseStringInsensitiveCode());
+                break;
             case FuncObjAndLambda::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
