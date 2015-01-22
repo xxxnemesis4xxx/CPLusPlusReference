@@ -234,6 +234,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(FuncObjAndLambda::CapitalAndLowercaseLetterExample());
                 ui->codeOverview->setText(FuncObjAndLambda::CapitalAndLowercaseLetterCode());
                 break;
+            case FuncObjAndLambda::BIND3 :
+                ui->outputExample->setText(FuncObjAndLambda::SumOfAllIntInMapExample());
+                ui->codeOverview->setText(FuncObjAndLambda::SumOfAllIntInMapCode());
+                break;
             case FuncObjAndLambda::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

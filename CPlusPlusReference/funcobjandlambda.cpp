@@ -4,7 +4,8 @@
 #include <algorithm>
 #include <locale>
 #include <string>
-
+#include <numeric>
+#include <map>
 
 FuncObjAndLambda::FuncObjAndLambda()
 {
@@ -90,4 +91,52 @@ QString FuncObjAndLambda::CapitalAndLowercaseLetterCode()
                 "for (int i = 0; i < word.size(); ++i)\n   word[i] = myTolower(word[i]);\ndisplay += word;"
                 );
 }
+
+QString FuncObjAndLambda::SumOfAllIntInMapExample()
+{
+    QString display = "Calcul the sum of all values inside the map\nValues inside the container : \n";
+    std::map<std::string,int> coll =
+    {
+        {"Number 1", 10},
+        {"Number 2", 20},
+        {"Number 3", 30},
+        {"Number 4", 40},
+        {"Number 5", 50},
+        {"Number 6", 60},
+        {"Number 7", 70},
+        {"Number 8", 80}
+    };
+    for(const auto& elem : coll)
+        display += QString("(" + QString::fromStdString(elem.first) + "," + QString::fromStdString(std::to_string(elem.second)) + ")\n");
+
+    /* coll.begin() -> Beginning of the list
+     * coll.end() -> End of the list
+     * 0 -> starting value
+     * std::bind(std::plus<int>(),std::placeholders::_1 -> Reference to the value 0 which is going to change as we sum new value to it
+     * std::bind<&std::map<std::string,int>::value_type::second,std::placeholders::_2 ->Get the second value inside the map and sum it to the placeholder::_1 using the accumulate function
+    */
+    int sum = std::accumulate(coll.begin(),coll.end(),0,std::bind(std::plus<int>(),std::placeholders::_1,std::bind(&std::map<std::string,int>::value_type::second,std::placeholders::_2)));
+    display += QString("\nSum of all the numbers : " + QString::fromStdString(std::to_string(sum)));
+
+    return display;
+}
+
+QString FuncObjAndLambda::SumOfAllIntInMapCode()
+{
+    return QString(
+                "std::map<std::string,int> coll =\n"
+                "{\n   {\"Number 1\", 10},\n"
+                "   {\"Number 2\", 20},\n"
+                "   {\"Number 3\", 30},\n"
+                "   {\"Number 4\", 40},\n"
+                "   {\"Number 5\", 50},\n"
+                "   {\"Number 6\", 60},\n"
+                "   {\"Number 7\", 70},\n"
+                "   {\"Number 8\", 80}\n};\n"
+                "for(const auto& elem : coll)\n   display += ...;\n\n"
+                "int sum = std::accumulate(coll.begin(),coll.end(),0,std::bind(std::plus<int>(),std::placeholders::_1,std::bind(&std::map<std::string,int>::value_type::second,std::placeholders::_2)));"
+                );
+}
+
+
 
