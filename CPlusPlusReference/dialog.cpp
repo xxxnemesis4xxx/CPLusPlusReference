@@ -4,6 +4,7 @@
 #include "tuple.h"
 #include "pair.h"
 #include "iterator.h"
+#include "funcobjandlambda.h"
 #include <QVariant>
 #include <QDebug>
 
@@ -45,6 +46,9 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             setDebut(false);
             break;
         case Categorie::FUNCOBJLAM :
+            ui->listWidget->addItems(FuncObjAndLambda::listExamples());
+            setPosition(3);
+            setDebut(false);
             break;
         case Categorie::STLALGO :
             break;
@@ -218,6 +222,65 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 setDebut(true);
                 break;
             }
+            break;
+        case 3:
+            switch(row)
+            {
+            case FuncObjAndLambda::BIND:
+                ui->outputExample->setText(FuncObjAndLambda::MathematicalOperationsExample());
+                ui->codeOverview->setText(FuncObjAndLambda::MathematicalOperationsCode());
+                break;
+            case FuncObjAndLambda::BIND2 :
+                ui->outputExample->setText(FuncObjAndLambda::CapitalAndLowercaseLetterExample());
+                ui->codeOverview->setText(FuncObjAndLambda::CapitalAndLowercaseLetterCode());
+                break;
+            case FuncObjAndLambda::BIND3 :
+                ui->outputExample->setText(FuncObjAndLambda::SumOfAllIntInMapExample());
+                ui->codeOverview->setText(FuncObjAndLambda::SumOfAllIntInMapCode());
+                break;
+            case FuncObjAndLambda::BIND4 :
+                ui->outputExample->setText(FuncObjAndLambda::PowerUp3WithValueInsideContainerExample());
+                ui->codeOverview->setText(FuncObjAndLambda::PowerUp3WithValueInsideContainerCode());
+                break;
+            case FuncObjAndLambda::LAMBDA :
+                ui->outputExample->setText(FuncObjAndLambda::PrintMeanValueExample());
+                ui->codeOverview->setText(FuncObjAndLambda::PrintMeanValueCode());
+                break;
+            case FuncObjAndLambda::LAMBDA2 :
+                ui->outputExample->setText(FuncObjAndLambda::RemoveThirdElementExample());
+                ui->codeOverview->setText(FuncObjAndLambda::RemoveThirdElementCode());
+                break;
+            case FuncObjAndLambda::LAMBDA3 :
+                ui->outputExample->setText(FuncObjAndLambda::SearchSubcaseStringInsensitiveExample());
+                ui->codeOverview->setText(FuncObjAndLambda::SearchSubcaseStringInsensitiveCode());
+                break;
+            case FuncObjAndLambda::REMOVEIF :
+                ui->outputExample->setText(FuncObjAndLambda::RemoveIfWithFunctionObjectExample());
+                ui->codeOverview->setText(FuncObjAndLambda::RemoveIfWithFunctionObjectCode());
+                break;
+            case FuncObjAndLambda::SEQUENCE :
+                ui->outputExample->setText(FuncObjAndLambda::MultipleStageFuncObExample());
+                ui->codeOverview->setText(FuncObjAndLambda::MultipleStageFuncObCode());
+                break;
+            case FuncObjAndLambda::SEQUENCE2 :
+                ui->outputExample->setText(FuncObjAndLambda::PassingValuesToFuncObjExample());
+                ui->codeOverview->setText(FuncObjAndLambda::PassingValuesToFuncObjCode());
+                break;
+            case FuncObjAndLambda::SEQUENCE3 :
+                ui->outputExample->setText(FuncObjAndLambda::PrintMeanValue2Example());
+                ui->codeOverview->setText(FuncObjAndLambda::PrintMeanValue2Code());
+                break;
+            case FuncObjAndLambda::SORTING :
+                ui->outputExample->setText(FuncObjAndLambda::SortSetWithCriterionExample());
+                ui->codeOverview->setText(FuncObjAndLambda::SortSetWithCriterionCode());
+                break;
+            case FuncObjAndLambda::RETURN :
+                ui->listWidget->clear();
+                ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
+                break;
+            }
+
             break;
         default:
             break;
