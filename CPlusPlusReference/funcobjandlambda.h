@@ -11,13 +11,13 @@ public:
     ~FuncObjAndLambda();
 
     enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, SEQUENCE, SEQUENCE2, SEQUENCE3,
-                                RETURN };
+                                SORTING, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << MathematicalOperations() << CapitalAndLowercaseLetter() << SumOfAllIntInMap() << PowerUp3WithValueInsideContainer()
                                 << PrintMeanValue() << RemoveThirdElement() << SearchSubcaseStringInsensitive() << RemoveIfWithFunctionObject()
-                                << MultipleStageFuncOb() << PassingValuesToFuncObj() << PrintMeanValue2() << "Return";
+                                << MultipleStageFuncOb() << PassingValuesToFuncObj() << PrintMeanValue2() << SortSetWithCriterion() << "Return";
     }
 
     static QString MathematicalOperations() { return "Mathematical operations"; }
@@ -31,6 +31,7 @@ public:
     static QString MultipleStageFuncOb() { return "Multiples states with function object"; }
     static QString PassingValuesToFuncObj() { return "Different way to pass values to function object"; }
     static QString PrintMeanValue2() { return "Print mean value with function object"; }
+    static QString SortSetWithCriterion() { return "Sorting set with criterion"; }
 
     static QString MathematicalOperationsExample();
     static QString CapitalAndLowercaseLetterExample();
@@ -43,6 +44,7 @@ public:
     static QString MultipleStageFuncObExample();
     static QString PassingValuesToFuncObjExample();
     static QString PrintMeanValue2Example();
+    static QString SortSetWithCriterionExample();
 
     static QString MathematicalOperationsCode();
     static QString CapitalAndLowercaseLetterCode();
@@ -55,6 +57,7 @@ public:
     static QString MultipleStageFuncObCode();
     static QString PassingValuesToFuncObjCode();
     static QString PrintMeanValue2Code();
+    static QString SortSetWithCriterionCode();
 };
 
 #endif // FUNCOBJANDLAMBDA_H

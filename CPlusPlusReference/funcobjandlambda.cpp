@@ -10,6 +10,7 @@
 #include <iterator>
 #include <list>
 #include <vector>
+#include <set>
 
 FuncObjAndLambda::FuncObjAndLambda()
 {
@@ -428,4 +429,81 @@ QString FuncObjAndLambda::PrintMeanValue2Code()
                 );
 }
 
+class Person
+{
+private :
+    std::string m_firstname;
+    std::string m_lastname;
+public:
+    Person(std::string first, std::string last)
+        : m_firstname(first), m_lastname(last) {}
+    std::string firstname() const { return m_firstname; }
+    std::string lastname() const { return m_lastname; }
+};
 
+//Class for function predicateR
+// - Operator () returns whether a person is less than another person
+class PersonSortCriterion
+{
+public:
+    bool operator() (const Person& p1, const Person& p2) const
+    {
+        //a person if less than another person
+        // if the last name is less
+        // if the last name is equal and the first name is less
+        return p1.lastname() < p2.lastname() ||
+               (p1.lastname() == p2.lastname() &&
+                p1.firstname() < p2.firstname());
+    }
+};
+
+QString FuncObjAndLambda::SortSetWithCriterionExample()
+{
+    QString display = "Sorting a container with criterion\n\n";
+
+
+    //Create a set with special sorting criterion
+    std::set<Person,PersonSortCriterion> coll;
+    Person p1("Marc","Tetris");
+    Person p2("Jaysen","Gagnon");
+    Person p3("Patrick","St-Pierre");
+    Person p4("Catherine","Sirois");
+    Person p5("Steeve","Bertrand");
+    Person p6("Lydia","Migneault");
+    Person p7("Christopher","Gagne");
+    Person p8("Pascal","Savard");
+    Person p9("Imaqtpie","Twitch");
+
+    //Everytime we insert something, the set will be restructured according to the sorting criterion.
+    coll.insert({p1,p2,p3,p4,p5,p6,p7,p8,p9});
+
+    display += QString("Values inside the container : \n");
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(elem.lastname()) + "," + QString::fromStdString(elem.firstname()) + "\n");
+
+    return display;
+}
+
+QString FuncObjAndLambda::SortSetWithCriterionCode()
+{
+    return QString(
+                "class Person\n{\nprivate :\n   std::string m_firstname;\n   std::string m_lastname;\npublic:\n"
+                "   Person(std::string first,std::string last) : m_firstname(first), m_lastname(last) {}\n"
+                "   std::string firstname() const { return m_firstname; }"
+                "   std::string lastname() const { return m_lastname; }\n};\n\n"
+                "class PersonSortCriterion\n{\npublic :\n"
+                "   bool operator() (const Person& p1, const Person& p2) const\n{\n   "
+                "return p1.lastname() < p2.lastname() || (p1.lastname() == p2.lastname() && p1.firstname() < p2.firstname());\n}\n};\n\n"
+                "std::set<Person,PersonSortCriterion> coll;\n"
+                "Person p1(\"Marc\",\"Tetris\");\n"
+                "Person p2(\"Jaysen\",\"Gagnon\");\n"
+                "Person p3(\"Patrick\",\"St-Pierre\");\n"
+                "Person p4(\"Catherine\",\"Sirois\");\n"
+                "Person p5(\"Steeve\",\"Bertrand\");\n"
+                "Person p6(\"Lydia\",\"Migneault\");\n"
+                "Person p7(\"Christopher\",\"Gagne\");\n"
+                "Person p8(\"Pascal\",\"Savard\");\n"
+                "Person p9(\"Iamqtpie\",\"Twitch\");\n\n"
+                "coll.insert({p1,p2,p3,p4,p5,p6,p7,p8,p9});"
+                );
+}
