@@ -266,5 +266,44 @@ QString FuncObjAndLambda::SearchSubcaseStringInsensitiveCode()
                 );
 }
 
+class Nth
+{
+private:
+    int nth;
+    int count;
+public :
+    Nth(int n) : nth(n), count(0) {}
+    bool operator() (int) { return ++count == nth; }
+};
+
+QString FuncObjAndLambda::RemoveIfWithFunctionObjectExample()
+{
+    QString display = "Remove third element inside a container\n\n";
+    std::list<int> coll = { 1,2,3,4,5,6,7,8,9,10 };
+    display += QString("Value inside the container : \n");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    std::list<int>::iterator pos;
+    pos = std::remove_copy_if(coll.begin(), coll.end(),coll.begin(),Nth(3));
+    coll.erase(pos, coll.end());
+
+    display += QString("\n\nThird element has been removed\nValues inside the container : \n");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString FuncObjAndLambda::RemoveIfWithFunctionObjectCode()
+{
+    return QString(
+                "class Nth\n{\nprivate :\n   int nth;\n   int count;\npublic:\n"
+                "   Nth(int n) : nth(n),count(0) {}\n   bool operator() (int) { return ++count == nth; }\n};\n\n"
+                "std::list<int> coll = { 1,2,3,4,5,6,7,8,9,10 };"
+                "std::list<int>::iterator pos;\npos = std::remove_copy_if(coll.begin(), coll.end(),coll.begin(),Nth(3));\n"
+                "coll.erase(pos,coll.end());"
+                );
+}
 
 

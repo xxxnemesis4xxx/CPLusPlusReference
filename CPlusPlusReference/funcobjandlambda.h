@@ -10,12 +10,13 @@ public:
     FuncObjAndLambda();
     ~FuncObjAndLambda();
 
-    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, RETURN };
+    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, RETURN };
 
     static const QStringList listExamples()
     {
-        return QStringList() << MathematicalOperations() << CapitalAndLowercaseLetter() << SumOfAllIntInMap() << PowerUp3WithValueInsideContainer()
-                             << PrintMeanValue() << RemoveThirdElement() << SearchSubcaseStringInsensitive() << "Return";
+        return QStringList()    << MathematicalOperations() << CapitalAndLowercaseLetter() << SumOfAllIntInMap() << PowerUp3WithValueInsideContainer()
+                                << PrintMeanValue() << RemoveThirdElement() << SearchSubcaseStringInsensitive() << RemoveIfWithFunctionObject()
+                                << "Return";
     }
 
     static QString MathematicalOperations() { return "Mathematical operations"; }
@@ -25,6 +26,7 @@ public:
     static QString PrintMeanValue() { return "Print mean value"; }
     static QString RemoveThirdElement() { return "Remove the third element in a container"; }
     static QString SearchSubcaseStringInsensitive() { return "Search substring case insensitive"; }
+    static QString RemoveIfWithFunctionObject() { return "Remove_if with function objet"; }
 
     static QString MathematicalOperationsExample();
     static QString CapitalAndLowercaseLetterExample();
@@ -33,6 +35,7 @@ public:
     static QString PrintMeanValueExample();
     static QString RemoveThirdElementExample();
     static QString SearchSubcaseStringInsensitiveExample();
+    static QString RemoveIfWithFunctionObjectExample();
 
     static QString MathematicalOperationsCode();
     static QString CapitalAndLowercaseLetterCode();
@@ -41,6 +44,7 @@ public:
     static QString PrintMeanValueCode();
     static QString RemoveThirdElementCode();
     static QString SearchSubcaseStringInsensitiveCode();
+    static QString RemoveIfWithFunctionObjectCode();
 };
 
 #endif // FUNCOBJANDLAMBDA_H
