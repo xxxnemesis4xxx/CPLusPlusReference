@@ -10,13 +10,14 @@ public:
     FuncObjAndLambda();
     ~FuncObjAndLambda();
 
-    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, SEQUENCE, SEQUENCE2, RETURN };
+    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, SEQUENCE, SEQUENCE2, SEQUENCE3,
+                                RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << MathematicalOperations() << CapitalAndLowercaseLetter() << SumOfAllIntInMap() << PowerUp3WithValueInsideContainer()
                                 << PrintMeanValue() << RemoveThirdElement() << SearchSubcaseStringInsensitive() << RemoveIfWithFunctionObject()
-                                << MultipleStageFuncOb() << PassingValuesToFuncObj() << "Return";
+                                << MultipleStageFuncOb() << PassingValuesToFuncObj() << PrintMeanValue2() << "Return";
     }
 
     static QString MathematicalOperations() { return "Mathematical operations"; }
@@ -29,6 +30,7 @@ public:
     static QString RemoveIfWithFunctionObject() { return "Remove_if with function object"; }
     static QString MultipleStageFuncOb() { return "Multiples states with function object"; }
     static QString PassingValuesToFuncObj() { return "Different way to pass values to function object"; }
+    static QString PrintMeanValue2() { return "Print mean value with function object"; }
 
     static QString MathematicalOperationsExample();
     static QString CapitalAndLowercaseLetterExample();
@@ -40,6 +42,7 @@ public:
     static QString RemoveIfWithFunctionObjectExample();
     static QString MultipleStageFuncObExample();
     static QString PassingValuesToFuncObjExample();
+    static QString PrintMeanValue2Example();
 
     static QString MathematicalOperationsCode();
     static QString CapitalAndLowercaseLetterCode();
@@ -51,6 +54,7 @@ public:
     static QString RemoveIfWithFunctionObjectCode();
     static QString MultipleStageFuncObCode();
     static QString PassingValuesToFuncObjCode();
+    static QString PrintMeanValue2Code();
 };
 
 #endif // FUNCOBJANDLAMBDA_H

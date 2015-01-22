@@ -9,6 +9,7 @@
 #include <cmath>
 #include <iterator>
 #include <list>
+#include <vector>
 
 FuncObjAndLambda::FuncObjAndLambda()
 {
@@ -375,6 +376,55 @@ QString FuncObjAndLambda::PassingValuesToFuncObjCode()
                 "std::list<int> coll;\nIntSequence seq(1);\n\n"
                 "std::generate_n<std::back_insert_iterator<std::list<int>>,int,IntSequence&>(std::back_inserter(coll),4,seq);\n\n"
                 "std::generate_n(std::back_inserter(coll),4,seq);"
+                );
+}
+
+class MeanValue
+{
+private :
+    long num; //Number of elements
+    long sum; //Sum of all element values
+
+public :
+    MeanValue()
+        : num(0), sum(0) {}
+
+    //Function call
+    // - Process one more element of the sequence
+    void operator() (int elem)
+    {
+        ++num;
+        sum += elem;
+    }
+
+    //return mean value
+    double value() { return static_cast<double>(sum) / static_cast<double>(num) ; }
+};
+
+
+QString FuncObjAndLambda::PrintMeanValue2Example()
+{
+    QString display = "Print mean value of a container\n\n";
+    std::vector<int> coll = { 1,2,3,4,5,6,7,8,9,10 };
+
+    MeanValue mv = std::for_each(coll.begin(),coll.end(),MeanValue());
+    display += "Values inside the container : \n";
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    display += QString("\n\nMean value = " + QString::fromStdString(std::to_string(mv.value())));
+
+    return display;
+}
+
+QString FuncObjAndLambda::PrintMeanValue2Code()
+{
+    return QString(
+                "class MeanValue\n{\nprivate :\n   long num;\n   long sum;\npublic :\n"
+                "   MeanValue() : num(0),sum(0) {}\n\n   void operator() (int elem)\n{\n"
+                "   ++num;\n   sum += elem;\n}\n\n   double value() { return static_cast<double>(sum) / static_cast<double>(num) ; }\n};\n\n"
+                "std::vector<int> coll = { 1,2,3,4,5,6,7,8,9,10 };\n\nMeanValue mv = std::for_each(coll.begin(),coll.end(),MeanValue());\n"
+                "display += mv.value();"
                 );
 }
 
