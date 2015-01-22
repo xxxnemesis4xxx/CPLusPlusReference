@@ -179,5 +179,31 @@ QString FuncObjAndLambda::PowerUp3WithValueInsideContainerCode()
                 );
 }
 
+QString FuncObjAndLambda::PrintMeanValueExample()
+{
+    QString display = "Process and print the mean value = \n";
+    std::vector<int> coll = { 1,2,3,4,5,6,7,8,9 };
+
+    long sum = 0;
+    std::for_each(coll.begin(),coll.end(),[&sum] (int elem)
+    {
+       sum += elem;
+    });
+
+    double mv = static_cast<double>(sum)/static_cast<double>(coll.size());
+    display += QString::fromStdString(std::to_string(mv));
+
+    return display;
+}
+
+QString FuncObjAndLambda::PrintMeanValueCode()
+{
+    return QString(
+                "std::vector<int> coll = { 1,2,3,4,5,6,7,8,9 };\n\nlong sum = 0;\n"
+                "std::for_each(coll.begin(),coll.end(),[&sum] (int elem)\n{\n   sum += elem;\n});\n\n"
+                "double mv = static_cast<double>(sum)/static_cast<double>(coll.size());"
+                );
+}
+
 
 

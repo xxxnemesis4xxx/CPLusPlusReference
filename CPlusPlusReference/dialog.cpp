@@ -242,6 +242,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(FuncObjAndLambda::PowerUp3WithValueInsideContainerExample());
                 ui->codeOverview->setText(FuncObjAndLambda::PowerUp3WithValueInsideContainerCode());
                 break;
+            case FuncObjAndLambda::LAMBDA :
+                ui->outputExample->setText(FuncObjAndLambda::PrintMeanValueExample());
+                ui->codeOverview->setText(FuncObjAndLambda::PrintMeanValueCode());
+                break;
             case FuncObjAndLambda::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
