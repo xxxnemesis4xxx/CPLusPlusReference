@@ -10,13 +10,13 @@ public:
     FuncObjAndLambda();
     ~FuncObjAndLambda();
 
-    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, SEQUENCE, RETURN };
+    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, SEQUENCE, SEQUENCE2, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << MathematicalOperations() << CapitalAndLowercaseLetter() << SumOfAllIntInMap() << PowerUp3WithValueInsideContainer()
                                 << PrintMeanValue() << RemoveThirdElement() << SearchSubcaseStringInsensitive() << RemoveIfWithFunctionObject()
-                                << MultipleStageFuncOb() << "Return";
+                                << MultipleStageFuncOb() << PassingValuesToFuncObj() << "Return";
     }
 
     static QString MathematicalOperations() { return "Mathematical operations"; }
@@ -28,6 +28,7 @@ public:
     static QString SearchSubcaseStringInsensitive() { return "Search substring case insensitive"; }
     static QString RemoveIfWithFunctionObject() { return "Remove_if with function object"; }
     static QString MultipleStageFuncOb() { return "Multiples states with function object"; }
+    static QString PassingValuesToFuncObj() { return "Different way to pass values to function object"; }
 
     static QString MathematicalOperationsExample();
     static QString CapitalAndLowercaseLetterExample();
@@ -38,6 +39,7 @@ public:
     static QString SearchSubcaseStringInsensitiveExample();
     static QString RemoveIfWithFunctionObjectExample();
     static QString MultipleStageFuncObExample();
+    static QString PassingValuesToFuncObjExample();
 
     static QString MathematicalOperationsCode();
     static QString CapitalAndLowercaseLetterCode();
@@ -48,6 +50,7 @@ public:
     static QString SearchSubcaseStringInsensitiveCode();
     static QString RemoveIfWithFunctionObjectCode();
     static QString MultipleStageFuncObCode();
+    static QString PassingValuesToFuncObjCode();
 };
 
 #endif // FUNCOBJANDLAMBDA_H

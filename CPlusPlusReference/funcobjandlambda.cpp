@@ -348,4 +348,34 @@ QString FuncObjAndLambda::MultipleStageFuncObCode()
                 );
 }
 
+QString FuncObjAndLambda::PassingValuesToFuncObjExample()
+{
+    QString display = "Multiple ways to pass value to a function object \n\n";
+    std::list<int> coll;
+    IntSequence seq(1);
+
+    std::generate_n<std::back_insert_iterator<std::list<int>>,int,IntSequence&>(std::back_inserter(coll),4,seq);
+    display += QString("Values inside the container using a reference:\n");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    display += QString("\n\nValues inside the container using by value:\n");
+    std::generate_n(std::back_inserter(coll),4,seq);
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString FuncObjAndLambda::PassingValuesToFuncObjCode()
+{
+    return QString(
+                "class IntSequence\n{\nprivate :\n   int value;\npublic :\n   IntSequence(int initialValue) : value(initialValue) {}\n"
+                "   int operator() (){ return ++value; }\n};\n\n"
+                "std::list<int> coll;\nIntSequence seq(1);\n\n"
+                "std::generate_n<std::back_insert_iterator<std::list<int>>,int,IntSequence&>(std::back_inserter(coll),4,seq);\n\n"
+                "std::generate_n(std::back_inserter(coll),4,seq);"
+                );
+}
+
 
