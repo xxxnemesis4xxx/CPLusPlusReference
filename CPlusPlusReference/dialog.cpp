@@ -258,6 +258,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(FuncObjAndLambda::RemoveIfWithFunctionObjectExample());
                 ui->codeOverview->setText(FuncObjAndLambda::RemoveIfWithFunctionObjectCode());
                 break;
+            case FuncObjAndLambda::SEQUENCE :
+                ui->outputExample->setText(FuncObjAndLambda::MultipleStageFuncObExample());
+                ui->codeOverview->setText(FuncObjAndLambda::MultipleStageFuncObCode());
+                break;
             case FuncObjAndLambda::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

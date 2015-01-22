@@ -8,6 +8,7 @@
 #include <map>
 #include <cmath>
 #include <iterator>
+#include <list>
 
 FuncObjAndLambda::FuncObjAndLambda()
 {
@@ -303,6 +304,47 @@ QString FuncObjAndLambda::RemoveIfWithFunctionObjectCode()
                 "std::list<int> coll = { 1,2,3,4,5,6,7,8,9,10 };"
                 "std::list<int>::iterator pos;\npos = std::remove_copy_if(coll.begin(), coll.end(),coll.begin(),Nth(3));\n"
                 "coll.erase(pos,coll.end());"
+                );
+}
+
+class IntSequence
+{
+private:
+    int value;
+public :
+    IntSequence(int initialValue)
+        : value(initialValue) {}
+
+    //Function call
+    int operator() () { return ++value; }
+};
+
+QString FuncObjAndLambda::MultipleStageFuncObExample()
+{
+    QString display = "Function with multiples states at the same time";
+    std::list<int> coll;
+
+    std::generate_n(std::back_inserter(coll),9,IntSequence(1));
+
+    display += QString("\n\nValues inside the container : \n");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    std::generate(std::next(coll.begin()),std::prev(coll.end()),IntSequence(42));
+    display += QString("\n\nReplace second to last element but one with value starting at 43 : \n");
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString FuncObjAndLambda::MultipleStageFuncObCode()
+{
+    return QString(
+                "class IntSequence\n{\nprivate :\n   int value;\npublic :\n   IntSequence(int initialValue) : value(initialValue) {}\n"
+                "   int operator() (){ return ++value; }\n};\n\n"
+                "std::list<int> coll;\nstd::generate_n(std::back_inserter(coll),9,IntSequence(1));\n"
+                "std::generate(std::next(coll.begin()),std::prev(coll.end()),IntSequence(42));"
                 );
 }
 

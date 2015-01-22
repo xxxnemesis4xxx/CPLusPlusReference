@@ -10,13 +10,13 @@ public:
     FuncObjAndLambda();
     ~FuncObjAndLambda();
 
-    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, RETURN };
+    enum indexFuncObjAndLambda {BIND, BIND2, BIND3, BIND4, LAMBDA, LAMBDA2, LAMBDA3, REMOVEIF, SEQUENCE, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << MathematicalOperations() << CapitalAndLowercaseLetter() << SumOfAllIntInMap() << PowerUp3WithValueInsideContainer()
                                 << PrintMeanValue() << RemoveThirdElement() << SearchSubcaseStringInsensitive() << RemoveIfWithFunctionObject()
-                                << "Return";
+                                << MultipleStageFuncOb() << "Return";
     }
 
     static QString MathematicalOperations() { return "Mathematical operations"; }
@@ -26,7 +26,8 @@ public:
     static QString PrintMeanValue() { return "Print mean value"; }
     static QString RemoveThirdElement() { return "Remove the third element in a container"; }
     static QString SearchSubcaseStringInsensitive() { return "Search substring case insensitive"; }
-    static QString RemoveIfWithFunctionObject() { return "Remove_if with function objet"; }
+    static QString RemoveIfWithFunctionObject() { return "Remove_if with function object"; }
+    static QString MultipleStageFuncOb() { return "Multiples states with function object"; }
 
     static QString MathematicalOperationsExample();
     static QString CapitalAndLowercaseLetterExample();
@@ -36,6 +37,7 @@ public:
     static QString RemoveThirdElementExample();
     static QString SearchSubcaseStringInsensitiveExample();
     static QString RemoveIfWithFunctionObjectExample();
+    static QString MultipleStageFuncObExample();
 
     static QString MathematicalOperationsCode();
     static QString CapitalAndLowercaseLetterCode();
@@ -45,6 +47,7 @@ public:
     static QString RemoveThirdElementCode();
     static QString SearchSubcaseStringInsensitiveCode();
     static QString RemoveIfWithFunctionObjectCode();
+    static QString MultipleStageFuncObCode();
 };
 
 #endif // FUNCOBJANDLAMBDA_H
