@@ -6,6 +6,8 @@
 #include <string>
 #include <numeric>
 #include <map>
+#include <cmath>
+#include <iterator>
 
 FuncObjAndLambda::FuncObjAndLambda()
 {
@@ -135,6 +137,45 @@ QString FuncObjAndLambda::SumOfAllIntInMapCode()
                 "   {\"Number 8\", 80}\n};\n"
                 "for(const auto& elem : coll)\n   display += ...;\n\n"
                 "int sum = std::accumulate(coll.begin(),coll.end(),0,std::bind(std::plus<int>(),std::placeholders::_1,std::bind(&std::map<std::string,int>::value_type::second,std::placeholders::_2)));"
+                );
+}
+
+template <typename T1, typename T2>
+struct fopow
+{
+    T1 operator() (T1 base, T2 exp) const
+    {
+        return pow(base, exp);
+    }
+};
+
+QString FuncObjAndLambda::PowerUp3WithValueInsideContainerExample()
+{
+    QString display = "Values inside the first container :\n";
+    std::vector<int> coll = { 1,2,3,4,5,6,7,8,9 };
+    std::vector<int> coll2;
+
+    coll2.resize(coll.size());
+    std::transform(coll.begin(),coll.end(),coll2.begin(),std::bind(fopow<float,int>(),std::placeholders::_1,3));
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+    display += QString("\n\nPower up every number with exponent 3\n");
+
+    for (const auto& elem : coll2)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString FuncObjAndLambda::PowerUp3WithValueInsideContainerCode()
+{
+    return QString(
+                "template <typename T1, typename T2>\nstruct fopow\n{\n"
+                "   T1 operator() (T1 base, T2 exp)\n   {\n      return pow(base,exp);\n   }\n};"
+                "\n\nstd::vector<int> coll = { 1,2,3,4,5,6,7,8,9 };\nstd::vector<int> coll2;\n\n"
+                "coll2.resize(coll.size());\n"
+                "std::transform(coll.begin(),coll.end(),coll2.begin(),std::bind(fopow<float,int>(),std::placeholders::_1,3));"
                 );
 }
 
