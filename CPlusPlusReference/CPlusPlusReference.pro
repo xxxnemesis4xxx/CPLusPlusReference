@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     tuple.cpp \
     pair.cpp \
     iterator.cpp \
-    funcobjandlambda.cpp
+    funcobjandlambda.cpp \
+    stlstandard.cpp
 
 HEADERS  += dialog.h \
     categorie.h \
     tuple.h \
     pair.h \
     iterator.h \
-    funcobjandlambda.h
+    funcobjandlambda.h \
+    stlstandard.h
 
 FORMS    += dialog.ui

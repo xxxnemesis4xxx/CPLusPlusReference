@@ -5,6 +5,7 @@
 #include "pair.h"
 #include "iterator.h"
 #include "funcobjandlambda.h"
+#include "stlstandard.h"
 #include <QVariant>
 #include <QDebug>
 
@@ -53,6 +54,9 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
         case Categorie::STLALGO :
             break;
         case Categorie::STLSTAND :
+            ui->listWidget->addItems(StlStandard::listExamples());
+            setPosition(4);
+            setDebut(false);
             break;
         case Categorie::THREAD:
             break;
@@ -282,6 +286,15 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             }
 
             break;
+        case 4:
+            switch(row)
+            {
+            case StlStandard::RETURN :
+                ui->listWidget->clear();
+                ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
+                break;
+            }
         default:
             break;
         }
