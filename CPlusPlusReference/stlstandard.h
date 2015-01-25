@@ -10,12 +10,20 @@ public:
     StlStandard();
     ~StlStandard();
 
-    enum indexStlStandard { RETURN };
+    enum indexStlStandard { BASICVECTOR, RETURN };
 
     static const QStringList listExamples()
     {
-        return QStringList() << "Return";
+        return QStringList() << BasicVectorOperations() << "Return";
     }
+
+    static QString BasicVectorOperations() { return "Basic vector operations"; }
+
+
+    static QString BasicVectorOperationsExample();
+
+    static QString BasicVectorOperationsCode();
+
 };
 
 #endif // STLSTANDARD_H
