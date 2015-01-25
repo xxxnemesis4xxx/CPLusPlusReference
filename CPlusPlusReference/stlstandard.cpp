@@ -1,6 +1,8 @@
 #include "stlstandard.h"
 #include <algorithm>
 #include <vector>
+#include <array>
+#include <string>
 
 template <typename Container>
 QString printContainer(Container coll)
@@ -52,5 +54,28 @@ QString StlStandard::BasicVectorOperationsCode()
     return QString(
                 "std::vector<int> coll = { 2,5,4,1,6,3 };\n\nauto minpos = std::min_element(coll.cbegin(), coll.cend());\nauto maxpos = std::max_element(coll.cbegin(),coll.cend());"
                 "\n\nstd::sort(coll.begin(),coll.end());\n\nauto pos3 = std::find(coll.begin(),coll.end(),3);\n\nstd::reverse(pos3,coll.end());"
+                );
+}
+
+QString StlStandard::PrintStringInArrayExample()
+{
+    QString display = "Values inside de array : \n";
+
+    std::array<std::string,5> coll = { "Hello", "World" };
+   for (const auto& elem : coll)
+       display += QString("\"" + QString::fromStdString(elem) + "\" ");
+
+    display += QString("\n\nPrint each element of the array : \n");
+    for(int i = 0; i < coll.size(); ++i)
+        display += QString("[" + QString::fromStdString(std::to_string(i)) + "] : \"" + QString::fromStdString(coll[i] + "\"\n"));
+
+    return display;
+}
+
+QString StlStandard::PrintStringInArrayCode()
+{
+    return QString(
+                "std::array<std::string,5> coll = { \"Hello\", \"World\" };\n\n"
+                "for(int i = 0; i < coll.size(); ++i)\n   display += ...;"
                 );
 }
