@@ -305,6 +305,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::BinaryPredicatesExample());
                 ui->codeOverview->setText(StlStandard::BinaryPredicatesCode());
                 break;
+            case StlStandard::BINDER :
+                ui->outputExample->setText(StlStandard::BinderExample());
+                ui->codeOverview->setText(StlStandard::BinderCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

@@ -5,6 +5,8 @@
 #include <string>
 #include <unordered_map>
 #include <deque>
+#include <functional>
+#include <set>
 
 template <typename Container>
 QString printContainer(Container coll)
@@ -172,5 +174,45 @@ QString StlStandard::BinaryPredicatesCode()
                 "Person P1(\"Bob\",\"Martin\");\nPerson P2(\"Charlie\",\"Tremblay\");\nPerson P3(\"Jonathan\",\"Pneumatique\");\nPerson P4(\"Kevin\",\"Masson\");\n"
                 "Person P5(\"Lydia\",\"Bernier\");\nPerson P6(\"Catherine\",\"Cantin\");\n\nstd::deque<Person> coll { P1,P2,P3,P4,P5,P6 };\n\n"
                 "for (const auto& elem : coll)\n   display += Person::print(elem);\n\n std::sort(coll.begin(),coll.end(),personSortCriterion);"
+                );
+}
+
+
+QString StlStandard::BinderExample()
+{
+    QString display = "Creating a container with a sorting criterion : \n";
+    std::set<int,std::greater<int>> coll1 { 1,2,3,4,5,6,7,8,9 };
+    std::deque<int> coll2;
+
+    display += printContainer(coll1);
+    display += QString("\n\nCopy every value into another container by multiplying them by 10 :\n");
+
+    std::transform(coll1.begin(),coll1.end(),std::back_inserter(coll2),std::bind(std::multiplies<int>(),std::placeholders::_1,10));
+    display += printContainer(coll2);
+    display += QString("\n\nReplace value 70 with 42\n");
+
+    std::replace_if(coll2.begin(),coll2.end(),std::bind(std::equal_to<int>(),std::placeholders::_1,70),42);
+    display += printContainer(coll2);
+    display += QString("\n\nRemove all elements with values between 50 and 80\n");
+
+    coll2.erase(std::remove_if(coll2.begin(), coll2.end(),
+                              std::bind(std::logical_and<bool>(),
+                                   std::bind(std::greater_equal<int>(),std::placeholders::_1,50),
+                                   std::bind(std::less_equal<int>(),std::placeholders::_1,80))),
+                    coll2.end());
+    display += printContainer(coll2);
+
+    return display;
+}
+
+QString StlStandard::BinderCode()
+{
+    return QString(
+                "std::set<int,std::greater<int>> coll1 { 1,2,3,4,5,6,7,8,9 };\nstd::deque<int> coll2;\n\n"
+                "std::transform(coll1.begin(),coll1.end(),std::back_inserter(coll2),std::bind(std::multiplies<int>(),std::placeholders::_1,10));\n\n"
+                "std::replace_if(coll2.begin(),coll2.end(),std::bind(std::equal_to<int>(),std::placeholders::_1,70),42);\n\n"
+                "coll2.erase(std::remove_if(coll2.begin(), coll2.end(),\n    std::bind(std::logical_and<bool>(),\n   "
+                "std::bind(std::greater_equal<int>(),std::placeholders::_1,50),\n   std::bind(std::less_equal<int>(),std::placeholders::_1,80))),\n"
+                "coll2.end());"
                 );
 }
