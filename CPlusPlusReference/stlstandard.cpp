@@ -216,3 +216,40 @@ QString StlStandard::BinderCode()
                 "coll2.end());"
                 );
 }
+
+//Print optional string optstr followed by
+// all element of the collection coll
+// in one line, separated by spaces
+template <typename T>
+inline QString PRINT_ELEMENTS (const T& coll, const std::string& optstr="")
+{
+    QString display = QString::fromStdString(optstr);
+
+    for (const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString StlStandard::TemplateInlineFuncExample()
+{
+    QString display = "Print optional string followed by all element in the container\n\n";
+    std::set<int> Test2
+        {
+            1,2,3,4,5,6
+        };
+
+    display += PRINT_ELEMENTS(Test2, "All elements : ");
+
+    return display;
+}
+
+QString StlStandard::TemplateInlineFuncCode()
+{
+    return QString(
+                "template <typename T>\ninline QString PRINT_ELEMENTS (const T& coll, const std::string& optstr=\"\")\n"
+                "{\n   QString display = QString::fromStdString(optstr);\n\n   for (const auto& elem : coll)\n   "
+                "display += QString(QString::fromStdString(std::to_string(elem)) + \" \");\n\n   return display;\n}\n\n"
+                "std::set<int> Test2 { 1,2,3,4,5,6 };\n\ndisplay += PRINT_ELEMENTS(Test2,\"All elements : \");"
+                );
+}
