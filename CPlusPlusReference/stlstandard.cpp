@@ -8,6 +8,7 @@
 #include <functional>
 #include <set>
 #include <locale>
+#include <list>
 
 template <typename Container>
 QString printContainer(Container coll)
@@ -320,8 +321,69 @@ QString StlStandard::templateSpecializationCode()
                 "   if (std::is_integral<T>::value)\n   {\n   display += \"This is a integral value\";\n   }\n"
                 "   else\n   {\n      display += \"This is not a integral value\";\n   }\n\n   return display;\n}\n\n"
                 "template<>\nQString foo<std::string>(std::string var)\n{\n   "
-                "return QString(\"This is a string : \" + QString::fromStdString(var)\");\n}\n\n"
+                "return QString(\"This is a string : \" + QString::fromStdString(var));\n}\n\n"
                 "QString display = ...;\nstd::string test = \"Hello\";\nint test2 = 123;\ndouble test3 = 123.123;\n\n"
                 "display += foo(test);\ndisplay += foo(test2);\ndisplay += foo(test3);"
+                );
+}
+
+QString StlStandard::FindExample()
+{
+    QString display = "Multiples std::find() usage\n\n";
+    std::list<int> coll;
+
+    for(int i = 20; i < 40; ++i)
+        coll.push_back(i);
+    display += QString("Values inside the container :\n" + printContainer(coll));
+
+    auto pos3 = std::find(coll.begin(), coll.end(), 3);
+    display += QString("\n\nTrying to find value 3 inside our container :\npos3 = coll.end() -> because these is no value 3 in our container\n\n");
+
+    display +=  QString("Trying to reverse container with pos3, but nothing will happen because it will reverse an empty range\n");
+    std::reverse(pos3,coll.end());
+    display += printContainer(coll);
+
+    std::list<int>::const_iterator pos25,pos35;
+    pos25 = std::find(coll.begin(),coll.end(),25);
+    pos35 = std::find(coll.begin(),coll.end(),35);
+    int maxvalue = *std::max_element(pos25,++pos35);
+    display += QString("\n\nPrint the max value between pos25 and pos35\nValue = " + QString::fromStdString(std::to_string(maxvalue)) + "\n\n");
+
+    display += QString("Advance way to find the first element that has either value 25 or value 35\n");
+    auto pos = std::find_if(coll.begin(),coll.end(),
+                            [] (int i)
+    {
+       return i == 25 || i == 35;
+    });
+
+    if (pos == coll.end())
+    {
+        display += "No element with value 25 or 35 found";
+    }
+    else if (*pos == 25)
+    {
+        pos25 = pos;
+        pos35 = std::find(++pos,coll.end(),35);
+        display += "We found 25 first";
+    }
+    else
+    {
+        pos35 = pos;
+        pos25 = std::find(++pos,coll.end(),25);
+        display += "We found 35 first";
+    }
+
+    return display;
+}
+
+QString StlStandard::FindCode()
+{
+    return QString(
+                "std::list<int> coll;\n\nfor (int i = 20; i < 40; ++i)\n   coll.push_back(i);\n\n"
+                "auto pos3 = std::find(coll.begin(),coll.end(),3);\n\nstd::list<int>::const_iterator pos25,pos35;\n"
+                "pos25 = std::find(coll.begin(),coll.end(),25);\npos35 = std::find(coll.begin(),coll.end(),35);\nint"
+                " maxvalue = *std::max_element(pos25,++pos35);\n\nauto pos = std::find_if(coll.begin(),coll.end(), [] (int i)\n"
+                "{\n   return i == 25 || i == 35;\n});\n\nif(pos == coll.end())\n{\n   display += ...;\n}\nelse if (*pos == 25)\n{\n"
+                "   pos25 = pos;\n   pos35 = std::find(++pos,coll.end(),35);\n}\nelse\n{\n   pos35 = pos;\n   pos25 = std::find(++pos,coll.end(),25);\n}"
                 );
 }

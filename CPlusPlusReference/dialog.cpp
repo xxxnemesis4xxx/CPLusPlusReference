@@ -321,6 +321,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::templateSpecializationExample());
                 ui->codeOverview->setText(StlStandard::templateSpecializationCode());
                 break;
+            case StlStandard::FIND :
+                ui->outputExample->setText(StlStandard::FindExample());
+                ui->codeOverview->setText(StlStandard::FindCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
