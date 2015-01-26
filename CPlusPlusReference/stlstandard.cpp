@@ -7,6 +7,7 @@
 #include <deque>
 #include <functional>
 #include <set>
+#include <locale>
 
 template <typename Container>
 QString printContainer(Container coll)
@@ -271,5 +272,56 @@ QString StlStandard::dequeCode()
 {
     return QString(
                 "std::deque<float> coll;\n\nfor(int i = 1; i <= 6; ++i)\n   coll.push_back(i*1.1);"
+                );
+}
+
+//General template
+template <typename T>
+QString foo(T var)
+{
+    QString display = "This is not a string ";
+    if (std::is_integral<T>::value)
+    {
+        display += "\nThis is a integral value\n\n";
+    }
+    else
+    {
+        display += "\nThis is not a integral value\n\n";
+    }
+
+    return display;
+}
+
+//Template specialization
+template<>
+QString foo<std::string>(std::string var)
+{
+    return QString("This is a string : " + QString::fromStdString(var) + "\n\n");
+}
+
+QString StlStandard::templateSpecializationExample()
+{
+    QString display = "Template specilization\n\n";
+    std::string Test = "Hello";
+    int Test2 = 123;
+    double test3 = 123.123;
+
+    display += foo(Test);
+    display += foo(Test2);
+    display += foo(test3);
+
+    return display;
+}
+
+QString StlStandard::templateSpecializationCode()
+{
+    return QString(
+                "template <typename T>\nQString foo(T var)\n{\n   QString display = \"This is not a string\";\n"
+                "   if (std::is_integral<T>::value)\n   {\n   display += \"This is a integral value\";\n   }\n"
+                "   else\n   {\n      display += \"This is not a integral value\";\n   }\n\n   return display;\n}\n\n"
+                "template<>\nQString foo<std::string>(std::string var)\n{\n   "
+                "return QString(\"This is a string : \" + QString::fromStdString(var)\");\n}\n\n"
+                "QString display = ...;\nstd::string test = \"Hello\";\nint test2 = 123;\ndouble test3 = 123.123;\n\n"
+                "display += foo(test);\ndisplay += foo(test2);\ndisplay += foo(test3);"
                 );
 }

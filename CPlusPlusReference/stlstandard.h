@@ -10,12 +10,12 @@ public:
     StlStandard();
     ~StlStandard();
 
-    enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, RETURN };
+    enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << BasicVectorOperations() << PrintStringInArray() << AssociativeArray() << BinaryPredicates() << Binder()
-                                << TemplateInlineFunc() << deque() << "Return";
+                                << TemplateInlineFunc() << deque() << templateSpecialization() << "Return";
     }
 
     static QString BasicVectorOperations() { return "Basic vector operations"; }
@@ -25,6 +25,7 @@ public:
     static QString Binder() { return "Binder"; }
     static QString TemplateInlineFunc() { return "Template inline function"; }
     static QString deque() { return "Deque"; }
+    static QString templateSpecialization() { return "Template specialization"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -33,6 +34,7 @@ public:
     static QString BinderExample();
     static QString TemplateInlineFuncExample();
     static QString dequeExample();
+    static QString templateSpecializationExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -41,6 +43,7 @@ public:
     static QString BinderCode();
     static QString TemplateInlineFuncCode();
     static QString dequeCode();
+    static QString templateSpecializationCode();
 };
 
 #endif // STLSTANDARD_H
