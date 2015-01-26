@@ -3,6 +3,7 @@
 #include <vector>
 #include <array>
 #include <string>
+#include <unordered_map>
 
 template <typename Container>
 QString printContainer(Container coll)
@@ -62,8 +63,8 @@ QString StlStandard::PrintStringInArrayExample()
     QString display = "Values inside de array : \n";
 
     std::array<std::string,5> coll = { "Hello", "World" };
-   for (const auto& elem : coll)
-       display += QString("\"" + QString::fromStdString(elem) + "\" ");
+    for (const auto& elem : coll)
+        display += QString("\"" + QString::fromStdString(elem) + "\" ");
 
     display += QString("\n\nPrint each element of the array : \n");
     for(int i = 0; i < coll.size(); ++i)
@@ -77,5 +78,30 @@ QString StlStandard::PrintStringInArrayCode()
     return QString(
                 "std::array<std::string,5> coll = { \"Hello\", \"World\" };\n\n"
                 "for(int i = 0; i < coll.size(); ++i)\n   display += ...;"
+                );
+}
+
+QString StlStandard::AssociativeArrayExample()
+{
+    QString display = "Insert elements in the container and display his content :\n";
+    std::unordered_map<std::string,float> coll;
+
+    coll["VAT1"] = 0.16;
+    coll["VAT2"] = 0.07;
+    coll["Pi"] = 3.1415;
+    coll["an arbitrary number"] = 4983.223;
+    coll["Null"] = 0;
+
+    for (const auto elem : coll)
+        display += QString("(\"" + QString::fromStdString(elem.first) +"\"," + QString::fromStdString(std::to_string(elem.second)) + ")\n");
+
+    return display;
+}
+
+QString StlStandard::AssociativeArrayCode()
+{
+    return QString(
+                "std::unordered_map<std::string,float> coll;\n\n"
+                "coll[\"VAT1\"] = 0.16;\ncoll[\"VAT2\"] = 0.07;\ncoll[\"Pi\"] = 3.1415;\ncoll[\"an arbitrary number\"] = 4983.223;\ncoll[\"Null\"] = 0;"
                 );
 }

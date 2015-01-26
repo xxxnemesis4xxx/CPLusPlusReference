@@ -297,6 +297,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::PrintStringInArrayExample());
                 ui->codeOverview->setText(StlStandard::PrintStringInArrayCode());
                 break;
+            case StlStandard::ASSOCIATIVEARRAY :
+                ui->outputExample->setText(StlStandard::AssociativeArrayExample());
+                ui->codeOverview->setText(StlStandard::AssociativeArrayCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
