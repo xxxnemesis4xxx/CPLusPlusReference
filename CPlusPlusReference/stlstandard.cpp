@@ -253,3 +253,23 @@ QString StlStandard::TemplateInlineFuncCode()
                 "std::set<int> Test2 { 1,2,3,4,5,6 };\n\ndisplay += PRINT_ELEMENTS(Test2,\"All elements : \");"
                 );
 }
+
+
+QString StlStandard::dequeExample()
+{
+    QString display = "Display the values inside deque container :\n";
+    std::deque<float> coll;
+
+    for (int i = 1; i <= 6; ++i)
+        coll.push_back(i*1.1);
+    display += printContainer(coll);
+
+    return display;
+}
+
+QString StlStandard::dequeCode()
+{
+    return QString(
+                "std::deque<float> coll;\n\nfor(int i = 1; i <= 6; ++i)\n   coll.push_back(i*1.1);"
+                );
+}

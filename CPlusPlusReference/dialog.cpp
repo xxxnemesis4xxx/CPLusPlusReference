@@ -313,6 +313,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::TemplateInlineFuncExample());
                 ui->codeOverview->setText(StlStandard::TemplateInlineFuncCode());
                 break;
+            case StlStandard::DEQUE :
+                ui->outputExample->setText(StlStandard::dequeExample());
+                ui->codeOverview->setText(StlStandard::dequeCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
