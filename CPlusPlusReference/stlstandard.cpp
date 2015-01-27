@@ -405,3 +405,32 @@ QString StlStandard::ForwardListCode()
                 "std::forward_list<long> coll = { 2,3,5,7,11,13,17 };"
                 );
 }
+
+void doubleValueforeach(int& elem)
+{
+    elem *= elem;
+}
+
+QString StlStandard::ForEachWithContainerExample()
+{
+    QString display = "Print the value inside the container :\n";
+    std::vector<int> coll;
+
+    for(int i = 1; i <= 9; ++i)
+        coll.push_back(i);
+    display += printContainer(coll);
+
+    std::for_each(coll.begin(),coll.end(),doubleValueforeach);
+    display += QString("\n\nValues inside the container now :\n" + printContainer(coll));
+
+    return display;
+}
+
+QString StlStandard::ForEachWithContainerCode()
+{
+    return QString(
+                "void doubleValue(int& elem)\n{\n   elem *= elem;\n}\n\n"
+                "std::vector<int> coll;\n\nfor(int i = 1; i <= 9;++i)\n   coll.push_back(i);\n\n"
+                "std::for_each(coll.begin(),coll.end(),doubleValue);"
+                );
+}
