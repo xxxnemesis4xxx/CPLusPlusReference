@@ -199,10 +199,10 @@ QString StlStandard::BinderExample()
     display += QString("\n\nRemove all elements with values between 50 and 80\n");
 
     coll2.erase(std::remove_if(coll2.begin(), coll2.end(),
-                              std::bind(std::logical_and<bool>(),
-                                   std::bind(std::greater_equal<int>(),std::placeholders::_1,50),
-                                   std::bind(std::less_equal<int>(),std::placeholders::_1,80))),
-                    coll2.end());
+                               std::bind(std::logical_and<bool>(),
+                                         std::bind(std::greater_equal<int>(),std::placeholders::_1,50),
+                                         std::bind(std::less_equal<int>(),std::placeholders::_1,80))),
+                coll2.end());
     display += printContainer(coll2);
 
     return display;
@@ -238,9 +238,9 @@ QString StlStandard::TemplateInlineFuncExample()
 {
     QString display = "Print optional string followed by all element in the container\n\n";
     std::set<int> Test2
-        {
-            1,2,3,4,5,6
-        };
+    {
+        1,2,3,4,5,6
+    };
 
     display += PRINT_ELEMENTS(Test2, "All elements : ");
 
@@ -354,7 +354,7 @@ QString StlStandard::FindExample()
     auto pos = std::find_if(coll.begin(),coll.end(),
                             [] (int i)
     {
-       return i == 25 || i == 35;
+        return i == 25 || i == 35;
     });
 
     if (pos == coll.end())
@@ -447,9 +447,9 @@ QString StlStandard::TransformWithContainerExample()
     std::vector<int> coll2;
 
     //Insert elements from 1 to 9 into coll1
-        for(int i = 1; i <= 9; ++i)
-            coll1.insert(i);
-        display += printContainer(coll1);
+    for(int i = 1; i <= 9; ++i)
+        coll1.insert(i);
+    display += printContainer(coll1);
 
     std::transform(coll1.begin(),coll1.end(),std::back_inserter(coll2),square);
     display += QString("\n\nInserting the square of every value of our first container into the second container\nValues inside the container :\n" + printContainer(coll2));
@@ -549,3 +549,79 @@ QString StlStandard::FunctionObject2Code()
                 );
 }
 
+QString foo(int x, int y)
+{
+    return QString(
+                "This is C\n"
+                "This is the first value " + QString::fromStdString(std::to_string(x)) + "\n"
+                                                                                         "This is the second value " + QString::fromStdString(std::to_string(y)) + "\n\n"
+                );
+}
+
+class C
+{
+public:
+    QString memfunc(int x,int y) const
+    {
+        return QString(
+                    "This is C\n"
+                    "This is the first value " + QString::fromStdString(std::to_string(x)) + "\n"
+                                                                                             "This is the second value " + QString::fromStdString(std::to_string(y)) + "\n\n"
+                    );
+    }
+};
+
+//Function returning a lambda
+std::function<int(int,int)> returnLambda()
+{
+    return [] (int x,int y)
+    {
+        return x*y;
+    };
+}
+
+QString StlStandard::FunctionWrapperExample()
+{
+    QString display = "Calling multiples functions \n\n";
+    std::vector<std::function<QString(int,int)>> tasks;
+
+    tasks.push_back(foo);
+
+    tasks.push_back([] (int x, int y) {
+        return QString(
+                    "This is lambda\n"
+                    "This is the first value " + QString::fromStdString(std::to_string(x)) + "\n"
+                    "This is the second value " + QString::fromStdString(std::to_string(y)) + "\n"
+                    );
+    });
+
+    for(std::function<QString(int,int)> f : tasks)
+        display += f(30,50);
+
+    display += QString("------------------------------------\nMember with function prototype:\n");
+    std::function<QString(const C,int, int)> mf;
+
+    mf = &C::memfunc;
+    display += mf(C(),42,77);
+
+    display += QString("------------------------------------\nWith lambda:\n");
+    auto lf = returnLambda();
+    display += QString::fromStdString(std::to_string(lf(6,7)));
+
+    return display;
+}
+
+QString StlStandard::FunctionWrapperCode()
+{
+    return QString(
+                "QString foo(int x, int y)\n{\n   return QString(...);\n}\n\n"
+                "class C\n{\npublic:\n   QString memfunc(int x, int y) const\n   {\n      return QString(...);\n   }\n}\n\n"
+                "std::function<int(int,int)> returnLambda()\n{\n   return [] (int x,int y)\n   {\n      return x*y;\n"
+                "   };\n}\n\n"
+                "QString display = \"\";\n"
+                "std::vector<std::function<QString(int,int)>> tasks;\ntasks.push_back(foo);\ntasks.push_back([] (int x,int y) {\n"
+                "   return QString(...);\n});\n\nfor(std::function<QString(int,int)> f : tasks)\n   display += f(30,50);\n\n"
+                "std::function<QString(const C,int,int)> mf;\nmf = &C::memfunc;\ndisplay += mf(C(),42,77);\n\nauto lf = returnLambda();\n"
+                "display += QString::fromStdString(std::to_string(lf(6,7)));"
+                );
+}
