@@ -654,3 +654,33 @@ QString StlStandard::HandlingMultipleRangesCode()
                 "std::copy(coll2.begin(),coll2.end(),coll3.begin());"
                 );
 }
+
+QString StlStandard::InsertIteratorExample()
+{
+    QString display = "Print all elements in the first container :\n";
+    std::list<int> coll1 { 1,2,3,4,5,6,7,8,9 };
+    display += printContainer(coll1);
+
+    std::vector<int> coll2;
+    std::copy(coll1.cbegin(), coll1.cend(),std::back_inserter(coll2));
+    display += QString("\n\nPrint all elements in the second container :\n" + printContainer(coll2));
+
+    std::deque<int> coll3;
+    std::copy(coll1.cbegin(),coll1.cend(),std::front_inserter(coll3));
+    display += QString("\n\nPrint all elements in the third container :\n" + printContainer(coll3));
+
+    std::set<int> coll4;
+    std::copy(coll1.cbegin(),coll1.cend(),std::inserter(coll4,coll4.begin()));
+    display += QString("\n\nPrint all elements in the fourth container :\n" + printContainer(coll4));
+
+    return display;
+}
+
+QString StlStandard::InsertIteratorCode()
+{
+    return QString(
+                "std::list<int> coll1 { 1,2,3,4,5,6,7,8,9 };\n\nstd::vector<int> coll2;\nstd::copy(coll1.cbegin(), coll1.cend(),std::back_inserter(coll2));\n\n"
+                "std::deque<int> coll3;\nstd::copy(coll1.cbegin(),coll1.cend(),std::front_inserter(coll3));\n\nstd::set<int> coll4;\n"
+                "std::copy(coll1.cbegin(),coll1.cend(),std::inserter(coll4,coll4.begin()));"
+                );
+}

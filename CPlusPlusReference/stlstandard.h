@@ -11,14 +11,14 @@ public:
     ~StlStandard();
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
-                            FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, RETURN };
+                            FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << BasicVectorOperations() << PrintStringInArray() << AssociativeArray() << BinaryPredicates() << Binder()
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
-                                << "Return";
+                                << InsertIterator() << "Return";
 
     }
 
@@ -38,6 +38,7 @@ public:
     static QString FunctionObject2() { return "Function object2"; }
     static QString FunctionWrapper() { return "Function wrapper"; }
     static QString HandlingMultipleRanges() { return "Handling multiples ranges"; }
+    static QString InsertIterator() { return "Insert Iterators" ; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -55,6 +56,7 @@ public:
     static QString FunctionObject2Example();
     static QString FunctionWrapperExample();
     static QString HandlingMultipleRangesExample();
+    static QString InsertIteratorExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -72,6 +74,7 @@ public:
     static QString FunctionObject2Code();
     static QString FunctionWrapperCode();
     static QString HandlingMultipleRangesCode();
+    static QString InsertIteratorCode();
 };
 
 #endif // STLSTANDARD_H
