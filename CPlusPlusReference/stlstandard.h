@@ -11,13 +11,13 @@ public:
     ~StlStandard();
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
-                            FOREACH, TRANSFORM, RETURN };
+                            FOREACH, TRANSFORM, FUNCOBJ, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << BasicVectorOperations() << PrintStringInArray() << AssociativeArray() << BinaryPredicates() << Binder()
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
-                                << TransformWithContainer() << "Return";
+                                << TransformWithContainer() << FunctionObject() << "Return";
 
     }
 
@@ -33,6 +33,7 @@ public:
     static QString ForwardList() { return "Forward List"; }
     static QString ForEachWithContainer() { return "Using for_each() with container;"; }
     static QString TransformWithContainer() { return "Using transform() with container"; }
+    static QString FunctionObject() { return "Function object"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -46,6 +47,7 @@ public:
     static QString ForwardListExample();
     static QString ForEachWithContainerExample();
     static QString TransformWithContainerExample();
+    static QString FunctionObjectExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -59,6 +61,7 @@ public:
     static QString ForwardListCode();
     static QString ForEachWithContainerCode();
     static QString TransformWithContainerCode();
+    static QString FunctionObjectCode();
 };
 
 #endif // STLSTANDARD_H

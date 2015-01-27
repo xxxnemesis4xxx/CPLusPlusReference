@@ -464,3 +464,42 @@ QString StlStandard::TransformWithContainerCode()
                 "for(int i = 1;i <= 9; ++i)\n   coll1.insert(i);\n\nstd::transform(coll1.begin(),coll1.end(),std::back_inserter(coll2),square);"
                 );
 }
+
+class PrintInt
+{
+private:
+    QString display = "";
+public:
+    void operator() (int elem)
+    {
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+    }
+
+    QString Display() { return display; }
+};
+
+QString StlStandard::FunctionObjectExample()
+{
+    QString display = "Print values inside the container using our function object class :\n";
+    std::vector<int> coll;
+
+    for (int i = 1; i <= 9; ++i)
+        coll.push_back(i);
+
+    PrintInt pi = std::for_each(coll.begin(),coll.end(),PrintInt());
+    display +=  pi.Display();
+
+    return display;
+}
+
+QString StlStandard::FunctionObjectCode()
+{
+    return QString(
+                "class PrintInt\n{\nprivate :\n   QString display = \"\";\npublic :\n   void operator() (int elem)\n   {\n"
+                "      display += ...;\n   }\n\n   QString Display() { return display; }\n};\n\n"
+                "std::vector<int> coll;\n\nfor(int i = 1;i <= 9; ++i)\n   coll.push_back(i);\n\n"
+                "PrintInt pi = std::for_each(coll.begin(),coll.end(),PrintInt());"
+                );
+}
+
+

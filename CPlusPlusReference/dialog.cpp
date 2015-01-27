@@ -337,6 +337,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::TransformWithContainerExample());
                 ui->codeOverview->setText(StlStandard::TransformWithContainerCode());
                 break;
+            case StlStandard::FUNCOBJ :
+                ui->outputExample->setText(StlStandard::FunctionObjectExample());
+                ui->codeOverview->setText(StlStandard::FunctionObjectCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
