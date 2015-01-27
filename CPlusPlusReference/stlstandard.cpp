@@ -625,3 +625,32 @@ QString StlStandard::FunctionWrapperCode()
                 "display += QString::fromStdString(std::to_string(lf(6,7)));"
                 );
 }
+
+QString StlStandard::HandlingMultipleRangesExample()
+{
+    QString display = "Values inside our first container :\n";
+    std::list<int> coll1 { 1,2,3,4,5,6,7,8,9 };
+    std::vector<int> coll2;
+    display += printContainer(coll1);
+
+    display += QString("\n\nResize our second container so we can copy the values of the first container inside the second!\nValues in the second container :\n");
+    coll2.resize(coll1.size());
+    std::copy(coll1.begin(),coll1.end(),coll2.begin());
+    display += printContainer(coll2);
+
+    display += QString("\n\nCreate a third container with enough size for us to copy values of the 2nd container to the third one\nValues in the third container :\n");
+    std::deque<int> coll3(coll2.size());
+    std::copy(coll2.begin(),coll2.end(),coll3.begin());
+    display += printContainer(coll3);
+
+    return display;
+}
+
+QString StlStandard::HandlingMultipleRangesCode()
+{
+    return QString(
+                "std::list<int> coll1 { 1,2,3,4,5,6,7,8,9 };\nstd::vector<int> coll2;\n\ncoll2.resize(coll1.size());\n"
+                "std::copy(coll1.begin(),coll1.end(),coll2.begin());\n\nstd::deque<int> coll3(coll2.size());\n"
+                "std::copy(coll2.begin(),coll2.end(),coll3.begin());"
+                );
+}
