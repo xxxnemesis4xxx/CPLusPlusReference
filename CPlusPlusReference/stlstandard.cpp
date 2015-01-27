@@ -502,4 +502,50 @@ QString StlStandard::FunctionObjectCode()
                 );
 }
 
+class AddValue
+{
+private :
+    int theValue;
+public :
+    //Constructor initializes the value to add
+    AddValue(int v) : theValue(v) {}
+
+    //The function call for the elements adds the value
+    void operator() (int& elem) const
+    {
+        elem += theValue;
+    }
+};
+
+QString StlStandard::FunctionObject2Example()
+{
+    QString display = "Initialized our container\nValues inside :\n";
+    std::list<int> coll;
+    AddValue addx(40);
+
+    for(int i = 1; i <= 9; ++i)
+        coll.push_back(i);
+    display += printContainer(coll);
+
+    std::for_each(coll.begin(),coll.end(),AddValue(10));
+    display += QString("\n\nAfter adding 10 to each element :\n" + printContainer(coll) + "\n\n");
+
+    std::for_each(coll.begin(), coll.end(),AddValue(*coll.begin()));
+    display += QString("After adding first element to each element:\n" + printContainer(coll) + "\n\n");
+
+    std::for_each(coll.begin(),coll.end(),addx);
+    display += QString("After adding addx to each element :\n" + printContainer(coll) + "\n\n");
+
+    return display;
+}
+
+QString StlStandard::FunctionObject2Code()
+{
+    return QString(
+                "class AddValue\n{\nprivate :\n   int theValue;\npublic :\n   AddValue(int v) : theValue(v) {}\n\n   void operator() (int& elem) const\n"
+                "   {\n      elem += theValue;\n   }\n};\n\nstd::list<int> coll;\nAddValue addx(40);\n\nfor(int i = 1;i <= 9;++i)\n   coll.push_back(i);\n\n"
+                "std::for_each(coll.begin(),coll.end(),AddValue(10));\n\nstd::for_each(coll.begin(), coll.end(),AddValue(*coll.begin()));\n\n"
+                "std::for_each(coll.begin(),coll.end(),addx);"
+                );
+}
 
