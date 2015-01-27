@@ -434,3 +434,33 @@ QString StlStandard::ForEachWithContainerCode()
                 "std::for_each(coll.begin(),coll.end(),doubleValue);"
                 );
 }
+
+int square(int value)
+{
+    return value*value;
+}
+
+QString StlStandard::TransformWithContainerExample()
+{
+    QString display = "Values inside our first container:\n";
+    std::set<int> coll1;
+    std::vector<int> coll2;
+
+    //Insert elements from 1 to 9 into coll1
+        for(int i = 1; i <= 9; ++i)
+            coll1.insert(i);
+        display += printContainer(coll1);
+
+    std::transform(coll1.begin(),coll1.end(),std::back_inserter(coll2),square);
+    display += QString("\n\nInserting the square of every value of our first container into the second container\nValues inside the container :\n" + printContainer(coll2));
+
+    return display;
+}
+
+QString StlStandard::TransformWithContainerCode()
+{
+    return QString(
+                "int square(int value)\n{\n   return value*value;\n}\n\nstd::set<int> coll1;\nstd::vector<int> coll2;\n\n"
+                "for(int i = 1;i <= 9; ++i)\n   coll1.insert(i);\n\nstd::transform(coll1.begin(),coll1.end(),std::back_inserter(coll2),square);"
+                );
+}

@@ -11,13 +11,13 @@ public:
     ~StlStandard();
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
-                            FOREACH, RETURN };
+                            FOREACH, TRANSFORM, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << BasicVectorOperations() << PrintStringInArray() << AssociativeArray() << BinaryPredicates() << Binder()
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
-                                << "Return";
+                                << TransformWithContainer() << "Return";
 
     }
 
@@ -32,6 +32,7 @@ public:
     static QString Find() { return "Find"; }
     static QString ForwardList() { return "Forward List"; }
     static QString ForEachWithContainer() { return "Using for_each() with container;"; }
+    static QString TransformWithContainer() { return "Using transform() with container"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -44,6 +45,7 @@ public:
     static QString FindExample();
     static QString ForwardListExample();
     static QString ForEachWithContainerExample();
+    static QString TransformWithContainerExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -56,6 +58,7 @@ public:
     static QString FindCode();
     static QString ForwardListCode();
     static QString ForEachWithContainerCode();
+    static QString TransformWithContainerCode();
 };
 
 #endif // STLSTANDARD_H
