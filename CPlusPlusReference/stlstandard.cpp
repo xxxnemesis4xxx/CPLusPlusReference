@@ -9,6 +9,7 @@
 #include <set>
 #include <locale>
 #include <list>
+#include <forward_list>
 
 template <typename Container>
 QString printContainer(Container coll)
@@ -385,5 +386,22 @@ QString StlStandard::FindCode()
                 " maxvalue = *std::max_element(pos25,++pos35);\n\nauto pos = std::find_if(coll.begin(),coll.end(), [] (int i)\n"
                 "{\n   return i == 25 || i == 35;\n});\n\nif(pos == coll.end())\n{\n   display += ...;\n}\nelse if (*pos == 25)\n{\n"
                 "   pos25 = pos;\n   pos35 = std::find(++pos,coll.end(),35);\n}\nelse\n{\n   pos35 = pos;\n   pos25 = std::find(++pos,coll.end(),25);\n}"
+                );
+}
+
+QString StlStandard::ForwardListExample()
+{
+    QString display = "Values inside the forward list :\n";
+
+    std::forward_list<long> coll = { 2,3,5,7,11,13,17 };
+    display += printContainer(coll);
+
+    return display;
+}
+
+QString StlStandard::ForwardListCode()
+{
+    return QString(
+                "std::forward_list<long> coll = { 2,3,5,7,11,13,17 };"
                 );
 }

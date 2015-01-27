@@ -325,6 +325,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::FindExample());
                 ui->codeOverview->setText(StlStandard::FindCode());
                 break;
+            case StlStandard::FORWARDLIST :
+                ui->outputExample->setText(StlStandard::ForwardListExample());
+                ui->codeOverview->setText(StlStandard::ForwardListCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
