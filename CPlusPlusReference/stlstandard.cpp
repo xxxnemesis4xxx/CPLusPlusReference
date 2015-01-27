@@ -684,3 +684,36 @@ QString StlStandard::InsertIteratorCode()
                 "std::copy(coll1.cbegin(),coll1.cend(),std::inserter(coll4,coll4.begin()));"
                 );
 }
+
+QString StlStandard::IteratorsManipulationsExample()
+{
+    QString display = "Print all elements inside the first container :\n";
+    std::list<char> coll;
+    for(char c='a'; c <= 'z'; ++c)
+        coll.push_back(c);
+    display += printContainer(coll);
+
+    std::map<int,int> coll2
+    {
+        {1,2},
+        {3,4},
+        {5,6},
+        {7,8},
+        {9,10}
+    };
+    std::map<int,int>::const_iterator pos;
+    display += QString("\n\nPrint all elements inside the second container :\n");
+    for (pos = coll2.begin(); pos != coll2.end(); ++pos)
+        display += QString(QString::fromStdString(std::to_string(pos->first)) + ", " + QString::fromStdString(std::to_string(pos->second)));
+
+    return display;
+}
+
+QString StlStandard::IteratorsManipulationsCode()
+{
+    return QString(
+                "std::list<char> coll;\nfor(char c='a'; c <= 'z'; ++c)\n  coll.push_back(c);\n\nstd::map<int,int> coll2 { {1,2},{3,4},"
+                "{5,6},{7,8},{9,10}};\nstd::map<int,int>::const_iterator pos;\nfor (pos = coll2.begin(); pos != coll2.end(); ++pos)\n"
+                "   display += ...;"
+                );
+}

@@ -11,14 +11,14 @@ public:
     ~StlStandard();
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
-                            FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, RETURN };
+                            FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << BasicVectorOperations() << PrintStringInArray() << AssociativeArray() << BinaryPredicates() << Binder()
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
-                                << InsertIterator() << "Return";
+                                << InsertIterator() << IteratorsManipulations() << "Return";
 
     }
 
@@ -39,6 +39,7 @@ public:
     static QString FunctionWrapper() { return "Function wrapper"; }
     static QString HandlingMultipleRanges() { return "Handling multiples ranges"; }
     static QString InsertIterator() { return "Insert Iterators" ; }
+    static QString IteratorsManipulations() { return "Iterator manipulations"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -57,6 +58,7 @@ public:
     static QString FunctionWrapperExample();
     static QString HandlingMultipleRangesExample();
     static QString InsertIteratorExample();
+    static QString IteratorsManipulationsExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -75,6 +77,7 @@ public:
     static QString FunctionWrapperCode();
     static QString HandlingMultipleRangesCode();
     static QString InsertIteratorCode();
+    static QString IteratorsManipulationsCode();
 };
 
 #endif // STLSTANDARD_H
