@@ -591,7 +591,7 @@ QString StlStandard::FunctionWrapperExample()
         return QString(
                     "This is lambda\n"
                     "This is the first value " + QString::fromStdString(std::to_string(x)) + "\n"
-                    "This is the second value " + QString::fromStdString(std::to_string(y)) + "\n"
+                                                                                             "This is the second value " + QString::fromStdString(std::to_string(y)) + "\n"
                     );
     });
 
@@ -761,3 +761,44 @@ QString StlStandard::LambdaAlgorithm2Code()
                 "});"
                 );
 }
+
+QString StlStandard::LambdaAlgorithm3Example()
+{
+    QString display = "Values inside the container :\n";
+    Person P1("Bob","Martin");
+    Person P2("Charlie","Tremblay");
+    Person P3("Jonathan","Pneumatique");
+    Person P4("Kevin","Masson");
+    Person P5("Lydia","Bernier");
+    Person P6("Catherine","Cantin");
+
+    std::deque<Person> coll { P1,P2,P3,P4,P5,P6 };
+    for(const auto& elem : coll)
+        display += Person::print(elem);
+
+    std::sort(coll.begin(),coll.end(), [] (const Person& p1, const Person& p2)
+    {
+        return p1.lastname() < p2.lastname() || (p1.lastname() == p2.lastname() && p1.firstname() < p2.firstname());
+    });
+    display += QString("\n\nSort all the persons according to their lastname.\nValues inside the container now :\n");
+    for(const auto& elem : coll)
+        display += Person::print(elem);
+
+    return display;
+}
+
+QString StlStandard::LambdaAlgorithm3Code()
+{
+    return QString(
+                "Person P1(\"Bob\",\"Martin\");\n"
+                "Person P2(\"Charlie\",\"Tremblay\");\n"
+                "Person P3(\"Jonathan\",\"Pneumatique\");\n"
+                "Person P4(\"Kevin\",\"Masson\");\n"
+                "Person P5(\"Lydia\",\"Bernier\");\n"
+                "Person P6(\"Catherine\",\"Cantin\");\n\n"
+                "std::deque<Person> coll { P1,P2,P3,P4,P5,P6 };\n\nstd::sort(coll.begin(),coll.end(), [] (const Person& p1, const Person& p2)\n"
+                "{\n   return p1.lastname() < p2.lastname() || (p1.lastname() == p2.lastname() && p1.firstname() < p2.firstname());\n});"
+                );
+}
+
+
