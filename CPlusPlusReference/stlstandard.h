@@ -11,14 +11,14 @@ public:
     ~StlStandard();
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
-                            FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, RETURN };
+                            FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, LAMBDA, RETURN };
 
     static const QStringList listExamples()
     {
         return QStringList()    << BasicVectorOperations() << PrintStringInArray() << AssociativeArray() << BinaryPredicates() << Binder()
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
-                                << InsertIterator() << IteratorsManipulations() << "Return";
+                                << InsertIterator() << IteratorsManipulations() << LambdaAlgorithm() <<  "Return";
 
     }
 
@@ -40,6 +40,7 @@ public:
     static QString HandlingMultipleRanges() { return "Handling multiples ranges"; }
     static QString InsertIterator() { return "Insert Iterators" ; }
     static QString IteratorsManipulations() { return "Iterator manipulations"; }
+    static QString LambdaAlgorithm() { return "Using Lambda with Algorithm"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -59,6 +60,7 @@ public:
     static QString HandlingMultipleRangesExample();
     static QString InsertIteratorExample();
     static QString IteratorsManipulationsExample();
+    static QString LambdaAlgorithmExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -78,6 +80,7 @@ public:
     static QString HandlingMultipleRangesCode();
     static QString InsertIteratorCode();
     static QString IteratorsManipulationsCode();
+    static QString LambdaAlgorithmCode();
 };
 
 #endif // STLSTANDARD_H

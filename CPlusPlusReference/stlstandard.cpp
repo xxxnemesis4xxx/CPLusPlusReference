@@ -717,3 +717,22 @@ QString StlStandard::IteratorsManipulationsCode()
                 "   display += ...;"
                 );
 }
+
+QString StlStandard::LambdaAlgorithmExample()
+{
+    QString display = "Print all elements inside the container \n";
+    std::vector<int> coll { 1,2,3,4,5,6,7,8,9 };
+    display += printContainer(coll);
+
+    std::transform(coll.begin(),coll.end(),coll.begin(),[](int n) {return n*n*n;});
+    display += QString("\n\nTransform all elements to the power of 3 :\n" + printContainer(coll));
+
+    return display;
+}
+
+QString StlStandard::LambdaAlgorithmCode()
+{
+    return QString(
+                "std::vector<int> coll { 1,2,3,4,5,6,7,8,9 };\n\nstd::transform(coll.begin(),coll.end(),coll.begin(),[](int n) {return n*n*n;});"
+                );
+}
