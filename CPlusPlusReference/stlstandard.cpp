@@ -969,3 +969,30 @@ QString StlStandard::PredicatesCode()
                 );
 }
 
+template <typename T>
+void incNumber(T var)
+{
+    var += 1;
+}
+
+QString StlStandard::ReferenceWrappersExample()
+{
+    QString display = "Reference Wrappers\n\n";
+    int x = 0;
+    display += QString("The value of x is now :" + QString::fromStdString(std::to_string(x)) + "\n\n");
+    incNumber(x);
+    display += QString("The value of x is now :" + QString::fromStdString(std::to_string(x)) + "\n\n");
+
+    incNumber(std::ref(x));
+    display += QString("The value of x is now :" + QString::fromStdString(std::to_string(x)) + "\n\n");
+
+    return display;
+}
+
+QString StlStandard::ReferenceWrappersCode()
+{
+    return QString(
+                "template <typename T>\nvoid incNumber(T var)\n{\n   var += 1;\n}\n\n"
+                "int x = 0;\n\nincNumber(x);\n\nincNumber(std::ref(x));"
+                );
+}
