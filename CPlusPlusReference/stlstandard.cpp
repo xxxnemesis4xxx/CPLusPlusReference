@@ -920,22 +920,22 @@ QString StlStandard::PredefinedFuncObjCode()
 bool isPrime(int number)
 {
     //Ignore negative sign
-        number = std::abs(number);
+    number = std::abs(number);
 
-        //0 and 1 are no prime numbers
-        if (number == 0 || number == 1)
-            return false;
+    //0 and 1 are no prime numbers
+    if (number == 0 || number == 1)
+        return false;
 
-        //find divisor that divides without a remainder
-        int divisor;
-        for( divisor = number /2; number%divisor != 0; --divisor)
-        {
-            ;
-        }
+    //find divisor that divides without a remainder
+    int divisor;
+    for( divisor = number /2; number%divisor != 0; --divisor)
+    {
+        ;
+    }
 
-        //if no divisor greather than 1 is found, it is a prime number
-        //True if divisor == 1, false if not
-        return divisor == 1;
+    //if no divisor greather than 1 is found, it is a prime number
+    //True if divisor == 1, false if not
+    return divisor == 1;
 }
 
 QString StlStandard::PredicatesExample()
@@ -994,5 +994,36 @@ QString StlStandard::ReferenceWrappersCode()
     return QString(
                 "template <typename T>\nvoid incNumber(T var)\n{\n   var += 1;\n}\n\n"
                 "int x = 0;\n\nincNumber(x);\n\nincNumber(std::ref(x));"
+                );
+}
+
+QString StlStandard::Remove1Example()
+{
+    QString display = "Insert element and print all the values inside our container :\n";
+    std::list<int> coll;
+
+    for(int i = 1;i <= 6; ++i)
+    {
+        coll.push_front(i);
+        coll.push_back(i);
+    }
+    display += printContainer(coll);
+
+    std::list<int>::iterator end = std::remove(coll.begin(),coll.end(),3);
+    display += QString("\n\nRemove all elements with value 3\n" + printContainer(coll));
+
+    display += QString("\n\nNumber of removed elements : " + QString::fromStdString(std::to_string(std::distance(end,coll.end()))));
+
+    coll.erase(end,coll.end());
+    display += QString("\n\nPrint all elements with the correct end:\n" + printContainer(coll));
+
+    return display;
+}
+
+QString StlStandard::Remove1Code()
+{
+    return QString(
+                "std::list<int> coll;\n\nfor (int i = 1; i <= 6; ++i)\n{\n   coll.push_front(i);\n   coll.push_back(i);\n}\n\n"
+                "std::list<int>::iterator end = std::remove(coll.begin(),coll.end(),3);\n\n coll.erase(end,coll.end());"
                 );
 }

@@ -12,7 +12,7 @@ public:
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
                             FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, LAMBDA, LAMBDA2, LAMBDA3,
-                            LIST, MULTIMAPS, MULTISET, PREDFUNCOBJ, PREDICATES, FUNCWRAPPERS, RETURN };
+                            LIST, MULTIMAPS, MULTISET, PREDFUNCOBJ, PREDICATES, FUNCWRAPPERS, REMOVE1, RETURN };
 
     static const QStringList listExamples()
     {
@@ -21,7 +21,7 @@ public:
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
                                 << InsertIterator() << IteratorsManipulations() << LambdaAlgorithm() << LambdaAlgorithm2() << LambdaAlgorithm3()
                                 << List() << MultimapOverview() << MultisetOverview() << PredefinedFuncObj() << Predicates() << FunctionWrapper()
-                                << "Return";
+                                << Remove1() << "Return";
 
     }
 
@@ -52,6 +52,7 @@ public:
     static QString PredefinedFuncObj() { return "Predefined function object"; }
     static QString Predicates() { return "Predicates"; }
     static QString ReferenceWrappers() { return "Reference wrappers"; }
+    static QString Remove1() { return "Remove 1"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -80,6 +81,7 @@ public:
     static QString PredefinedFuncObjExample();
     static QString PredicatesExample();
     static QString ReferenceWrappersExample();
+    static QString Remove1Example();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -108,6 +110,7 @@ public:
     static QString PredefinedFuncObjCode();
     static QString PredicatesCode();
     static QString ReferenceWrappersCode();
+    static QString Remove1Code();
 };
 
 #endif // STLSTANDARD_H
