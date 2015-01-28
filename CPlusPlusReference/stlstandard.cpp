@@ -871,3 +871,49 @@ QString StlStandard::MultisetOverviewCode()
                 );
 }
 
+QString StlStandard::PredefinedFuncObjExample()
+{
+    QString display = "Create a set with sorting criterion :\n";
+    std::set<int,std::greater<int>> coll
+    {
+        1,3,2,4,6,5,8,7,9
+    };
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    display += "\n\nCreate a set with another sorting criterion :\n";
+    std::set<int,std::less<int>> coll2
+    {
+        1,3,2,4,6,5,8,7,9
+    };
+    display += printContainer(coll2);
+
+    display += QString("\n\nCreate a third container :\n");
+    std::deque<int> coll3
+    {
+        1,2,3,5,7,11,13,17,19
+    };
+    display += printContainer(coll3);
+
+    display += QString("\n\nNegate all values inside the container :\n");
+    std::transform(coll3.cbegin(),coll3.cend(),coll3.begin(),std::negate<int>());
+    display += printContainer(coll3);
+
+    display += QString("\n\nSquare all values in the container :\n");
+    std::transform(coll3.cbegin(),coll3.cend(),coll3.begin(),coll3.begin(),std::multiplies<int>());
+    display += printContainer(coll3);
+
+
+    return display;
+}
+
+QString StlStandard::PredefinedFuncObjCode()
+{
+    return QString(
+                "std::set<int,std::greater<int>> coll\n{\n   1,3,2,4,6,5,8,7,9\n};\n\nstd::set<int,std::less<int>> coll2\n{\n"
+                "   1,3,2,4,6,5,8,7,9\n};\n\nstd::deque<int> coll3\n{\n   1,2,3,5,7,11,13,17,19\n};\n\n"
+                "std::transform(coll3.cbegin(),coll3.cend(),coll3.begin(),std::negate<int>());\n\n"
+                "std::transform(coll3.cbegin(),coll3.cend(),coll3.begin(),coll3.begin(),std::multiplies<int>());"
+                );
+}
+

@@ -12,7 +12,7 @@ public:
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
                             FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, LAMBDA, LAMBDA2, LAMBDA3,
-                            LIST, MULTIMAPS, MULTISET, RETURN };
+                            LIST, MULTIMAPS, MULTISET, PREDFUNCOBJ, RETURN };
 
     static const QStringList listExamples()
     {
@@ -20,7 +20,7 @@ public:
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
                                 << InsertIterator() << IteratorsManipulations() << LambdaAlgorithm() << LambdaAlgorithm2() << LambdaAlgorithm3()
-                                << List() << MultimapOverview() << MultisetOverview() << "Return";
+                                << List() << MultimapOverview() << MultisetOverview() << PredefinedFuncObj() << "Return";
 
     }
 
@@ -48,6 +48,7 @@ public:
     static QString List() { return "List"; }
     static QString MultimapOverview() { return "Multimaps"; }
     static QString MultisetOverview() { return "Multisets"; }
+    static QString PredefinedFuncObj() { return "Predefined function object"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -73,6 +74,7 @@ public:
     static QString ListExample();
     static QString MultimapOverviewExample();
     static QString MultisetOverviewExample();
+    static QString PredefinedFuncObjExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -98,6 +100,7 @@ public:
     static QString ListCode();
     static QString MultimapOverviewCode();
     static QString MultisetOverviewCode();
+    static QString PredefinedFuncObjCode();
 };
 
 #endif // STLSTANDARD_H
