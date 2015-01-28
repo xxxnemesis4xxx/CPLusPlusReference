@@ -12,7 +12,7 @@ public:
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
                             FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, LAMBDA, LAMBDA2, LAMBDA3,
-                            RETURN };
+                            LIST, RETURN };
 
     static const QStringList listExamples()
     {
@@ -20,7 +20,7 @@ public:
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
                                 << InsertIterator() << IteratorsManipulations() << LambdaAlgorithm() << LambdaAlgorithm2() << LambdaAlgorithm3()
-                                << "Return";
+                                << List() << "Return";
 
     }
 
@@ -45,6 +45,7 @@ public:
     static QString LambdaAlgorithm() { return "Using Lambda with Algorithm"; }
     static QString LambdaAlgorithm2() { return "Using Lambda with Algorithm 2"; }
     static QString LambdaAlgorithm3() { return "Using Lambda with Algorithm 3"; }
+    static QString List() { return "List"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -67,6 +68,7 @@ public:
     static QString LambdaAlgorithmExample();
     static QString LambdaAlgorithm2Example();
     static QString LambdaAlgorithm3Example();
+    static QString ListExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -89,6 +91,7 @@ public:
     static QString LambdaAlgorithmCode();
     static QString LambdaAlgorithm2Code();
     static QString LambdaAlgorithm3Code();
+    static QString ListCode();
 };
 
 #endif // STLSTANDARD_H

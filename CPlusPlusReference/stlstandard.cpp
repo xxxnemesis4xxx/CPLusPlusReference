@@ -801,4 +801,25 @@ QString StlStandard::LambdaAlgorithm3Code()
                 );
 }
 
+QString StlStandard::ListExample()
+{
+    QString display = "Insert and print all the values inside the container :\n";
+    std::list<char> coll;
+
+    for(char c = 'a'; c <= 'z'; ++c)
+        coll.push_back(c);
+
+    for(const auto& elem : coll)
+        display += QString(QString::fromStdString(std::to_string(elem)) + " ");
+
+    return display;
+}
+
+QString StlStandard::ListCode()
+{
+    return QString(
+                "std::list<char> coll;\n\nfor(char c = 'a';c <= 'z'; ++c)\n   coll.push_back(c);"
+                );
+}
+
 

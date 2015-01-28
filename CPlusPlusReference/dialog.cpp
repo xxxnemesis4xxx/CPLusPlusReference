@@ -373,6 +373,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::LambdaAlgorithm3Example());
                 ui->codeOverview->setText(StlStandard::LambdaAlgorithm3Code());
                 break;
+            case StlStandard::LIST :
+                ui->outputExample->setText(StlStandard::ListExample());
+                ui->codeOverview->setText(StlStandard::ListCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
