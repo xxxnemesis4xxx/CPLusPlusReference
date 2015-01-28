@@ -736,3 +736,28 @@ QString StlStandard::LambdaAlgorithmCode()
                 "std::vector<int> coll { 1,2,3,4,5,6,7,8,9 };\n\nstd::transform(coll.begin(),coll.end(),coll.begin(),[](int n) {return n*n*n;});"
                 );
 }
+
+QString StlStandard::LambdaAlgorithm2Example()
+{
+    QString display = "Finding the first element inside the container\nwith a value superior to 5 and inferior to 12\nThe first value we found : ";
+    std::deque<int> coll { 1,3,19,5,13,7,11,2,17 };
+    int x = 5;
+    int y = 12;
+
+    auto pos = std::find_if(coll.cbegin(),coll.cend(), [=] (int i)
+    {
+        return i > x && i < y;
+    });
+    display += QString(QString::fromStdString(std::to_string(*pos)));
+
+    return display;
+}
+
+QString StlStandard::LambdaAlgorithm2Code()
+{
+    return QString(
+                "std::deque<int> coll { 1,3,19,5,13,7,11,2,17 };\nint x = 5;\nint y = 12;\n\n"
+                "auto pos = std::find_if(coll.cbegin(),coll.cend(), [=] (int i)\n{\n   return i > x && i < y;\n"
+                "});"
+                );
+}

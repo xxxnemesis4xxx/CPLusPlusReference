@@ -365,6 +365,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::LambdaAlgorithmExample());
                 ui->codeOverview->setText(StlStandard::LambdaAlgorithmCode());
                 break;
+            case StlStandard::LAMBDA2 :
+                ui->outputExample->setText(StlStandard::LambdaAlgorithm2Example());
+                ui->codeOverview->setText(StlStandard::LambdaAlgorithm2Code());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
