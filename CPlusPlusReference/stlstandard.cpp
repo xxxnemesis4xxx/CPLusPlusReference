@@ -822,4 +822,23 @@ QString StlStandard::ListCode()
                 );
 }
 
+QString StlStandard::MultimapOverviewExample()
+{
+    QString display = "Insert element in a multimap and print all his values :\n";
+    std::multimap<int,std::string> coll { {5,"tagged"},{2,"a"},{1,"this"},{4,"of"},{6,"strings"},{1,"is"},{3,"multimaps"}};
+
+    for(const auto& elem : coll)
+        display += QString("(" + QString::fromStdString(std::to_string(elem.first)) + ",\"" + QString::fromStdString(elem.second) + "\")\n");
+
+    return display;
+}
+
+
+QString StlStandard::MultimapOverviewCode()
+{
+    return QString(
+                "std::multimap<int,std::string> coll \n{\n {5,\"tagged\"},{2,\"a\"},{1,\"this\"},{4,\"of\"},{6,\"strings\"},{1,\"is\"},{3,\"multimaps\"}\n};"
+                "\n\nfor(const auto& elem : coll)\n   display += ... elem.first ... elem.second;"
+                );
+}
 
