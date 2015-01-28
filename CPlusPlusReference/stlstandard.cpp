@@ -917,3 +917,55 @@ QString StlStandard::PredefinedFuncObjCode()
                 );
 }
 
+bool isPrime(int number)
+{
+    //Ignore negative sign
+        number = std::abs(number);
+
+        //0 and 1 are no prime numbers
+        if (number == 0 || number == 1)
+            return false;
+
+        //find divisor that divides without a remainder
+        int divisor;
+        for( divisor = number /2; number%divisor != 0; --divisor)
+        {
+            ;
+        }
+
+        //if no divisor greather than 1 is found, it is a prime number
+        //True if divisor == 1, false if not
+        return divisor == 1;
+}
+
+QString StlStandard::PredicatesExample()
+{
+    QString display = "Print Elements inside the container :\n";
+
+    std::list<int> coll { 24,25,26,27,28,29,30 };
+    display += printContainer(coll);
+
+    auto pos = std::find_if(coll.cbegin(),coll.cend(),isPrime);
+    if (pos != coll.end())
+    {
+        display += QString("\n\nLooking for Prime number in the container!\nWe Found a prime Number : " + QString::fromStdString(std::to_string(*pos)));
+    }
+    else
+    {
+        display += QString("\n\nLooking for Prime number in the container!\nNo prime number found.");
+    }
+
+    return display;
+}
+
+QString StlStandard::PredicatesCode()
+{
+    return QString(
+                "bool isPrime (int number)\n{\n   number = std::abs(number);\n\n   if(number == 0 || number == 1)\n      "
+                "return false;\n\n   int divisor;\n   for(divisor = number / 2; number%divisor != 0; --divisor)\n      ;\n\n"
+                "return divisor == 1;\n}\n\n"
+                "std::list<int> coll { 24,25,26,27,28,29,30 };\n\nauto pos = std::find_if(coll.cbegin(),coll.cend(),isPrime);"
+                "\nif (pos != coll.end())\n   ...\n}\nelse\n{\n   ...\n}"
+                );
+}
+
