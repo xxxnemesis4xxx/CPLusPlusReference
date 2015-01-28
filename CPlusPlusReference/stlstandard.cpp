@@ -1068,3 +1068,29 @@ QString StlStandard::ReverseIteratorsCode()
                 "std::reverse(coll.begin(),coll.end());"
                 );
 }
+
+QString StlStandard::UnorderedMultimapExample()
+{
+    QString display = "Print the values inside the container :\n";
+    std::unordered_multimap<std::string, double> coll { {"trim",9.9},{"Struppi",11.77} };
+    for(const auto& elem : coll)
+        display += QString("(\"" + QString::fromStdString(elem.first) + "\"," + QString::fromStdString(std::to_string(elem.second)) + ")\n");
+
+    for(std::pair<const std::string,double>& elem : coll)
+    {
+        elem.second *= elem.second;
+    }
+    display += QString("\n\nSquare the value of each element :\n");
+    for(const auto& elem : coll)
+        display += QString("(\"" + QString::fromStdString(elem.first) + "\"," + QString::fromStdString(std::to_string(elem.second)) + ")\n");
+
+    return display;
+}
+
+QString StlStandard::UnorderedMultimapCode()
+{
+    return QString(
+                "std::unordered_multimap<std::string, double> coll { {\"trim\",9.9},{\"Struppi\",11.77} };\n\n"
+                "for(std::pair<const std::string,double>& elem : coll)\n   elem.second *= elem.second;"
+                );
+}

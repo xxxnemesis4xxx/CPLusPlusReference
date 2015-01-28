@@ -409,6 +409,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::ReverseIteratorsExample());
                 ui->codeOverview->setText(StlStandard::ReverseIteratorsCode());
                 break;
+            case StlStandard::UNORDEREDMULTIMAP :
+                ui->outputExample->setText(StlStandard::UnorderedMultimapExample());
+                ui->codeOverview->setText(StlStandard::UnorderedMultimapCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
