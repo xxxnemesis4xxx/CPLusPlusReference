@@ -381,6 +381,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::MultimapOverviewExample());
                 ui->codeOverview->setText(StlStandard::MultimapOverviewCode());
                 break;
+            case StlStandard::MULTISET :
+                ui->outputExample->setText(StlStandard::MultisetOverviewExample());
+                ui->codeOverview->setText(StlStandard::MultisetOverviewCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

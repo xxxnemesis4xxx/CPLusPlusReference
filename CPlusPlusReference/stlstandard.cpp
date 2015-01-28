@@ -842,3 +842,32 @@ QString StlStandard::MultimapOverviewCode()
                 );
 }
 
+QString StlStandard::MultisetOverviewExample()
+{
+    QString display = "Print all the values inside the multimaps :\n";
+    std::multiset<std::string> cities
+    {
+        "Chicoutimi","Quebec","Montreal","St-honore","Falardeau",
+        "Toronto","Vancouver","Levis"
+    };
+
+    for(const auto& elem : cities)
+        display += QString("\"" + QString::fromStdString(elem) + "\" ");
+
+    display += QString("\n\nInsert additional cities in our multiset\nValues in the container now :\n");
+    cities.insert({"London","Munich","Hanover","Chicoutimi"});
+    for(const auto& elem : cities)
+        display += QString("\"" + QString::fromStdString(elem) + "\" ");
+
+    return display;
+}
+
+QString StlStandard::MultisetOverviewCode()
+{
+    return QString(
+                "std::multiset<std::string> cities\m{\n\"Chicoutimi\",\"Quebec\",\"Montreal\",\"St-honore\",\"Falardeau\",\"Toronto\",\"Vancouver\",\"Levis\"\n"
+                "};\n\ncities.insert({\"London\",\"Munich\",\"Hanover\",\"Chicoutimi\"});"
+                "\nfor (const auto& elem : cities)\n   display += ...elem...;"
+                );
+}
+

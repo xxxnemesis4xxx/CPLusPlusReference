@@ -12,7 +12,7 @@ public:
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
                             FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, LAMBDA, LAMBDA2, LAMBDA3,
-                            LIST, MULTIMAPS, RETURN };
+                            LIST, MULTIMAPS, MULTISET, RETURN };
 
     static const QStringList listExamples()
     {
@@ -20,7 +20,7 @@ public:
                                 << TemplateInlineFunc() << deque() << templateSpecialization() << Find() << ForwardList() << ForEachWithContainer()
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
                                 << InsertIterator() << IteratorsManipulations() << LambdaAlgorithm() << LambdaAlgorithm2() << LambdaAlgorithm3()
-                                << List() << MultimapOverview() << "Return";
+                                << List() << MultimapOverview() << MultisetOverview() << "Return";
 
     }
 
@@ -47,6 +47,7 @@ public:
     static QString LambdaAlgorithm3() { return "Using Lambda with Algorithm 3"; }
     static QString List() { return "List"; }
     static QString MultimapOverview() { return "Multimaps"; }
+    static QString MultisetOverview() { return "Multisets"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -71,6 +72,7 @@ public:
     static QString LambdaAlgorithm3Example();
     static QString ListExample();
     static QString MultimapOverviewExample();
+    static QString MultisetOverviewExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -95,6 +97,7 @@ public:
     static QString LambdaAlgorithm3Code();
     static QString ListCode();
     static QString MultimapOverviewCode();
+    static QString MultisetOverviewCode();
 };
 
 #endif // STLSTANDARD_H
