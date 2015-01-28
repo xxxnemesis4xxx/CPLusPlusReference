@@ -1027,3 +1027,23 @@ QString StlStandard::Remove1Code()
                 "std::list<int>::iterator end = std::remove(coll.begin(),coll.end(),3);\n\n coll.erase(end,coll.end());"
                 );
 }
+
+QString StlStandard::Remove2Example()
+{
+    QString display = "Print all elements of the collection :\n";
+    std::set<int> coll { 1,2,3,4,5,6,7,8,9 };
+    display += printContainer(coll);
+
+    int num = coll.erase(3);
+    display += QString("\n\nRemove all elements with value 3\nNumber of elements removed : " + QString::fromStdString(std::to_string(num)));
+    display += QString("\n\nPrint all elements of the collection :\n" + printContainer(coll));
+
+    return display;
+}
+
+QString StlStandard::Remove2Code()
+{
+    return QString(
+                "std::set<int> coll { 1,2,3,4,5,6,7,8,9 };\n\nint num = coll.erase(3);"
+                );
+}

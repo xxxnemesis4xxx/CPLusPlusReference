@@ -401,6 +401,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::Remove1Example());
                 ui->codeOverview->setText(StlStandard::Remove1Code());
                 break;
+            case StlStandard::REMOVE2 :
+                ui->outputExample->setText(StlStandard::Remove2Example());
+                ui->codeOverview->setText(StlStandard::Remove2Code());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());
