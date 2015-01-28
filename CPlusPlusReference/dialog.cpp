@@ -413,6 +413,10 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 ui->outputExample->setText(StlStandard::UnorderedMultimapExample());
                 ui->codeOverview->setText(StlStandard::UnorderedMultimapCode());
                 break;
+            case StlStandard::UNORDEREDMULTISET :
+                ui->outputExample->setText(StlStandard::UnorderedMultisetExample());
+                ui->codeOverview->setText(StlStandard::UnorderedMultisetCode());
+                break;
             case StlStandard::RETURN :
                 ui->listWidget->clear();
                 ui->listWidget->addItems(Categorie::Categories());

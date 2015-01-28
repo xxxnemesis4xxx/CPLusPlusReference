@@ -13,7 +13,7 @@ public:
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
                             FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, LAMBDA, LAMBDA2, LAMBDA3,
                             LIST, MULTIMAPS, MULTISET, PREDFUNCOBJ, PREDICATES, FUNCWRAPPERS, REMOVE1, REMOVE2, REVITERATORS, UNORDEREDMULTIMAP,
-                            RETURN };
+                            UNORDEREDMULTISET, RETURN };
 
     static const QStringList listExamples()
     {
@@ -22,7 +22,7 @@ public:
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
                                 << InsertIterator() << IteratorsManipulations() << LambdaAlgorithm() << LambdaAlgorithm2() << LambdaAlgorithm3()
                                 << List() << MultimapOverview() << MultisetOverview() << PredefinedFuncObj() << Predicates() << FunctionWrapper()
-                                << Remove1() << Remove2() << ReverseIterators() << UnorderedMultimap() << "Return";
+                                << Remove1() << Remove2() << ReverseIterators() << UnorderedMultimap() << UnorderedMultiset() << "Return";
 
     }
 
@@ -57,6 +57,7 @@ public:
     static QString Remove2() { return "Remove 2"; }
     static QString ReverseIterators() { return "Reverse Iterators"; }
     static QString UnorderedMultimap() { return "Unordered multimap"; }
+    static QString UnorderedMultiset() { return "Unordered multiset"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -89,6 +90,7 @@ public:
     static QString Remove2Example();
     static QString ReverseIteratorsExample();
     static QString UnorderedMultimapExample();
+    static QString UnorderedMultisetExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -121,6 +123,7 @@ public:
     static QString Remove2Code();
     static QString ReverseIteratorsCode();
     static QString UnorderedMultimapCode();
+    static QString UnorderedMultisetCode();
 };
 
 #endif // STLSTANDARD_H

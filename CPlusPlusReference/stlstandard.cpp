@@ -10,6 +10,7 @@
 #include <locale>
 #include <list>
 #include <forward_list>
+#include <unordered_set>
 
 template <typename Container>
 QString printContainer(Container coll)
@@ -1092,5 +1093,32 @@ QString StlStandard::UnorderedMultimapCode()
     return QString(
                 "std::unordered_multimap<std::string, double> coll { {\"trim\",9.9},{\"Struppi\",11.77} };\n\n"
                 "for(std::pair<const std::string,double>& elem : coll)\n   elem.second *= elem.second;"
+                );
+}
+
+QString StlStandard::UnorderedMultisetExample()
+{
+    QString display = "Print values inside the container :\n";
+    std::unordered_multiset<std::string> cities
+    {
+        "Chicoutimi","Quebec","Montreal","Toronto","Ottawa","Vacouver","Levis","Chicago"
+    };
+    for (const auto& elem : cities)
+        display += QString("\"" + QString::fromStdString(elem) + "\" " );
+
+    cities.insert({"London","Munich","Montreal","Chicoutimi"});
+    display += QString("\n\nInsert additional values inside our unordered_multiset :\n");
+    for (const auto& elem : cities)
+        display += QString("\"" + QString::fromStdString(elem) + "\" " );
+
+    return display;
+}
+
+QString StlStandard::UnorderedMultisetCode()
+{
+    return QString(
+                "std::unordered_multiset<std::string> cities\n{\n   "
+                "\"Chicoutimi\",\"Quebec\",\"Montreal\",\"Toronto\",\"Ottawa\",\"Vacouver\",\"Levis\",\"Chicago\"\n};\n\n"
+                "cities.insert({\"London\",\"Munich\",\"Montreal\",\"Chicoutimi\"});"
                 );
 }
