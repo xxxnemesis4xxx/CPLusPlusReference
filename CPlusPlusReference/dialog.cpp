@@ -5,6 +5,7 @@
 #include "pair.h"
 #include "iterator.h"
 #include "funcobjandlambda.h"
+#include "stlstandard.h"
 #include <QVariant>
 #include <QDebug>
 
@@ -53,6 +54,9 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
         case Categorie::STLALGO :
             break;
         case Categorie::STLSTAND :
+            ui->listWidget->addItems(StlStandard::listExamples());
+            setPosition(4);
+            setDebut(false);
             break;
         case Categorie::THREAD:
             break;
@@ -282,6 +286,143 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             }
 
             break;
+        case 4:
+            switch(row)
+            {
+            case StlStandard::BASICVECTOR :
+                ui->outputExample->setText(StlStandard::BasicVectorOperationsExample());
+                ui->codeOverview->setText(StlStandard::BasicVectorOperationsCode());
+                break;
+            case StlStandard::ARRAYSTRING :
+                ui->outputExample->setText(StlStandard::PrintStringInArrayExample());
+                ui->codeOverview->setText(StlStandard::PrintStringInArrayCode());
+                break;
+            case StlStandard::ASSOCIATIVEARRAY :
+                ui->outputExample->setText(StlStandard::AssociativeArrayExample());
+                ui->codeOverview->setText(StlStandard::AssociativeArrayCode());
+                break;
+            case StlStandard::BINARYPREDICATE :
+                ui->outputExample->setText(StlStandard::BinaryPredicatesExample());
+                ui->codeOverview->setText(StlStandard::BinaryPredicatesCode());
+                break;
+            case StlStandard::BINDER :
+                ui->outputExample->setText(StlStandard::BinderExample());
+                ui->codeOverview->setText(StlStandard::BinderCode());
+                break;
+            case StlStandard::TEMPLINLINE :
+                ui->outputExample->setText(StlStandard::TemplateInlineFuncExample());
+                ui->codeOverview->setText(StlStandard::TemplateInlineFuncCode());
+                break;
+            case StlStandard::DEQUE :
+                ui->outputExample->setText(StlStandard::dequeExample());
+                ui->codeOverview->setText(StlStandard::dequeCode());
+                break;
+            case StlStandard::TEMPLSPECI :
+                ui->outputExample->setText(StlStandard::templateSpecializationExample());
+                ui->codeOverview->setText(StlStandard::templateSpecializationCode());
+                break;
+            case StlStandard::FIND :
+                ui->outputExample->setText(StlStandard::FindExample());
+                ui->codeOverview->setText(StlStandard::FindCode());
+                break;
+            case StlStandard::FORWARDLIST :
+                ui->outputExample->setText(StlStandard::ForwardListExample());
+                ui->codeOverview->setText(StlStandard::ForwardListCode());
+                break;
+            case StlStandard::FOREACH :
+                ui->outputExample->setText(StlStandard::ForEachWithContainerExample());
+                ui->codeOverview->setText(StlStandard::ForEachWithContainerCode());
+                break;
+            case StlStandard::TRANSFORM :
+                ui->outputExample->setText(StlStandard::TransformWithContainerExample());
+                ui->codeOverview->setText(StlStandard::TransformWithContainerCode());
+                break;
+            case StlStandard::FUNCOBJ :
+                ui->outputExample->setText(StlStandard::FunctionObjectExample());
+                ui->codeOverview->setText(StlStandard::FunctionObjectCode());
+                break;
+            case StlStandard::FUNCOBJ2 :
+                ui->outputExample->setText(StlStandard::FunctionObject2Example());
+                ui->codeOverview->setText(StlStandard::FunctionObject2Code());
+                break;
+            case StlStandard::FUNCWRAPPER :
+                ui->outputExample->setText(StlStandard::FunctionWrapperExample());
+                ui->codeOverview->setText(StlStandard::FunctionWrapperCode());
+                break;
+            case StlStandard::HANDRANGES :
+                ui->outputExample->setText(StlStandard::HandlingMultipleRangesExample());
+                ui->codeOverview->setText(StlStandard::HandlingMultipleRangesCode());
+                break;
+            case StlStandard::INSERTITERATOR :
+                ui->outputExample->setText(StlStandard::InsertIteratorExample());
+                ui->codeOverview->setText(StlStandard::InsertIteratorCode());
+                break;
+            case StlStandard::ITERATORS :
+                ui->outputExample->setText(StlStandard::IteratorsManipulationsExample());
+                ui->codeOverview->setText(StlStandard::IteratorsManipulationsCode());
+                break;
+            case StlStandard::LAMBDA :
+                ui->outputExample->setText(StlStandard::LambdaAlgorithmExample());
+                ui->codeOverview->setText(StlStandard::LambdaAlgorithmCode());
+                break;
+            case StlStandard::LAMBDA2 :
+                ui->outputExample->setText(StlStandard::LambdaAlgorithm2Example());
+                ui->codeOverview->setText(StlStandard::LambdaAlgorithm2Code());
+                break;
+            case StlStandard::LAMBDA3 :
+                ui->outputExample->setText(StlStandard::LambdaAlgorithm3Example());
+                ui->codeOverview->setText(StlStandard::LambdaAlgorithm3Code());
+                break;
+            case StlStandard::LIST :
+                ui->outputExample->setText(StlStandard::ListExample());
+                ui->codeOverview->setText(StlStandard::ListCode());
+                break;
+            case StlStandard::MULTIMAPS :
+                ui->outputExample->setText(StlStandard::MultimapOverviewExample());
+                ui->codeOverview->setText(StlStandard::MultimapOverviewCode());
+                break;
+            case StlStandard::MULTISET :
+                ui->outputExample->setText(StlStandard::MultisetOverviewExample());
+                ui->codeOverview->setText(StlStandard::MultisetOverviewCode());
+                break;
+            case StlStandard::PREDFUNCOBJ :
+                ui->outputExample->setText(StlStandard::PredefinedFuncObjExample());
+                ui->codeOverview->setText(StlStandard::PredefinedFuncObjCode());
+                break;
+            case StlStandard::PREDICATES :
+                ui->outputExample->setText(StlStandard::PredicatesExample());
+                ui->codeOverview->setText(StlStandard::PredicatesCode());
+                break;
+            case StlStandard::FUNCWRAPPERS :
+                ui->outputExample->setText(StlStandard::ReferenceWrappersExample());
+                ui->codeOverview->setText(StlStandard::ReferenceWrappersCode());
+                break;
+            case StlStandard::REMOVE1 :
+                ui->outputExample->setText(StlStandard::Remove1Example());
+                ui->codeOverview->setText(StlStandard::Remove1Code());
+                break;
+            case StlStandard::REMOVE2 :
+                ui->outputExample->setText(StlStandard::Remove2Example());
+                ui->codeOverview->setText(StlStandard::Remove2Code());
+                break;
+            case StlStandard::REVITERATORS :
+                ui->outputExample->setText(StlStandard::ReverseIteratorsExample());
+                ui->codeOverview->setText(StlStandard::ReverseIteratorsCode());
+                break;
+            case StlStandard::UNORDEREDMULTIMAP :
+                ui->outputExample->setText(StlStandard::UnorderedMultimapExample());
+                ui->codeOverview->setText(StlStandard::UnorderedMultimapCode());
+                break;
+            case StlStandard::UNORDEREDMULTISET :
+                ui->outputExample->setText(StlStandard::UnorderedMultisetExample());
+                ui->codeOverview->setText(StlStandard::UnorderedMultisetCode());
+                break;
+            case StlStandard::RETURN :
+                ui->listWidget->clear();
+                ui->listWidget->addItems(Categorie::Categories());
+                setDebut(true);
+                break;
+            }
         default:
             break;
         }
