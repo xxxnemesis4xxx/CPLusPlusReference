@@ -12,7 +12,7 @@ public:
 
     enum indexStlStandard { BASICVECTOR, ARRAYSTRING, ASSOCIATIVEARRAY, BINARYPREDICATE, BINDER, TEMPLINLINE, DEQUE, TEMPLSPECI, FIND, FORWARDLIST,
                             FOREACH, TRANSFORM, FUNCOBJ, FUNCOBJ2, FUNCWRAPPER, HANDRANGES, INSERTITERATOR, ITERATORS, LAMBDA, LAMBDA2, LAMBDA3,
-                            LIST, MULTIMAPS, MULTISET, PREDFUNCOBJ, PREDICATES, FUNCWRAPPERS, REMOVE1, REMOVE2, RETURN };
+                            LIST, MULTIMAPS, MULTISET, PREDFUNCOBJ, PREDICATES, FUNCWRAPPERS, REMOVE1, REMOVE2, REVITERATORS, RETURN };
 
     static const QStringList listExamples()
     {
@@ -21,7 +21,7 @@ public:
                                 << TransformWithContainer() << FunctionObject() << FunctionObject2() << FunctionWrapper() << HandlingMultipleRanges()
                                 << InsertIterator() << IteratorsManipulations() << LambdaAlgorithm() << LambdaAlgorithm2() << LambdaAlgorithm3()
                                 << List() << MultimapOverview() << MultisetOverview() << PredefinedFuncObj() << Predicates() << FunctionWrapper()
-                                << Remove1() << Remove2() << "Return";
+                                << Remove1() << Remove2() << ReverseIterators() << "Return";
 
     }
 
@@ -54,6 +54,7 @@ public:
     static QString ReferenceWrappers() { return "Reference wrappers"; }
     static QString Remove1() { return "Remove 1"; }
     static QString Remove2() { return "Remove 2"; }
+    static QString ReverseIterators() { return "Reverse Iterators"; }
 
     static QString BasicVectorOperationsExample();
     static QString PrintStringInArrayExample();
@@ -84,6 +85,7 @@ public:
     static QString ReferenceWrappersExample();
     static QString Remove1Example();
     static QString Remove2Example();
+    static QString ReverseIteratorsExample();
 
     static QString BasicVectorOperationsCode();
     static QString PrintStringInArrayCode();
@@ -114,6 +116,7 @@ public:
     static QString ReferenceWrappersCode();
     static QString Remove1Code();
     static QString Remove2Code();
+    static QString ReverseIteratorsCode();
 };
 
 #endif // STLSTANDARD_H

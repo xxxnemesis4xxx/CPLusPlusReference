@@ -1047,3 +1047,24 @@ QString StlStandard::Remove2Code()
                 "std::set<int> coll { 1,2,3,4,5,6,7,8,9 };\n\nint num = coll.erase(3);"
                 );
 }
+
+QString StlStandard::ReverseIteratorsExample()
+{
+    QString display = "Print all elements inside the container :\n";
+    std::vector<int> coll { 1,2,3,4,5,6,7,8,9 };
+    display += printContainer(coll);
+
+    display += QString("\n\nPrint all element in reverse order :\n");
+    std::reverse(coll.begin(),coll.end());
+    display += printContainer(coll);
+
+    return display;
+}
+
+QString StlStandard::ReverseIteratorsCode()
+{
+    return QString(
+                "std::vector<int> coll { 1,2,3,4,5,6,7,8,9 };\n\n"
+                "std::reverse(coll.begin(),coll.end());"
+                );
+}
