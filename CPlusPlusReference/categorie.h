@@ -8,12 +8,12 @@
 class Categorie
 {
 public:
-    enum indexCategorie { TUPLES,PAIRS, ITERATOR, FUNCOBJLAM, STLSTAND, STLALGO, THREAD };
+    enum indexCategorie { TUPLES,PAIRS, ITERATOR, FUNCOBJLAM, STLSTAND, CONTAINER, STLALGO, THREAD };
 
     static const QStringList Categories()
     {
         return QStringList() << Tuple() << Pair() << Iterators() << FunctionObjetAndLambda()
-                             << StlStandardOverview() << StlAlgorithms()  << Thread();
+                             << StlStandardOverview() << StlContainer() << StlAlgorithms()  << Thread();
     }
 
     static const QString Tuple() { return "Tuple"; }
@@ -22,6 +22,7 @@ public:
     static const QString FunctionObjetAndLambda() { return "Function Objet and Lambda"; }
     static const QString StlAlgorithms() { return "Stl Algorithms"; }
     static const QString StlStandardOverview() { return "Stl Standard Overview"; }
+    static const QString StlContainer() { return "Stl Containers"; }
     static const QString Thread() { return "Thread"; }
 };
 

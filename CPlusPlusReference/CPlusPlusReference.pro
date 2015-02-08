@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     pair.cpp \
     iterator.cpp \
     funcobjandlambda.cpp \
-    stlstandard.cpp
+    stlstandard.cpp \
+    stlcontainer.cpp
 
 HEADERS  += dialog.h \
     categorie.h \
@@ -26,6 +27,7 @@ HEADERS  += dialog.h \
     pair.h \
     iterator.h \
     funcobjandlambda.h \
-    stlstandard.h
+    stlstandard.h \
+    stlcontainer.h
 
 FORMS    += dialog.ui
