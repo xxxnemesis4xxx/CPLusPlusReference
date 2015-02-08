@@ -10,11 +10,12 @@ public:
     StlContainer();
     ~StlContainer();
 
-    enum indexStlContainer { RETURN };
+    enum indexStlContainer { ARRAY, DEQUE, FORWARDLIST, LIST, MAPMULTIMAP, SETMULTISET, UNORDERED, VECTOR, RETURN };
 
-    static const QStringList ListExamples()
+    static const QStringList ListContainer()
     {
-        return QStringList() << "Return";
+        return QStringList() << "Array" << "Deque" << "Forward List" << "List" << "Map and Multimap" << "Set and Multiset"
+                             << "Unordered Containers" << "Vector" << "Return";
     }
 
 
