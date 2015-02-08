@@ -60,7 +60,15 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             setDebut(false);
             break;
         case Categorie::CONTAINER :
-            ui->listWidget->addItems(StlContainer::ListContainer());
+            ui->listWidget->addItem(StlContainer::array());
+            ui->listWidget->addItem(StlContainer::deque());
+            ui->listWidget->addItem(StlContainer::forwardlist());
+            ui->listWidget->addItem(StlContainer::list());
+            ui->listWidget->addItem(StlContainer::mapmultimap());
+            ui->listWidget->addItem(StlContainer::setmultiset());
+            ui->listWidget->addItem(StlContainer::unordered());
+            ui->listWidget->addItem(StlContainer::vector());
+            ui->listWidget->addItems(StlContainer::listContainer());
             setPosition(5);
             setDebut(false);
             break;
@@ -435,19 +443,12 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
             switch(row)
             {
             case StlContainer::ARRAY :
-                break;
             case StlContainer::DEQUE :
-                break;
             case StlContainer::FORWARDLIST :
-                break;
             case StlContainer::LIST :
-                break;
             case StlContainer::MAPMULTIMAP :
-                break;
             case StlContainer::SETMULTISET :
-                break;
             case StlContainer::UNORDERED :
-                break;
             case StlContainer::VECTOR :
                 break;
             case StlContainer::RETURN :
@@ -456,7 +457,6 @@ void Dialog::on_listWidget_doubleClicked(const QModelIndex &index)
                 setDebut(true);
                 break;
             }
-
         default:
             break;
         }
